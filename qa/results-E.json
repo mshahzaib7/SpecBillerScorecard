@@ -1,0 +1,82 @@
+[
+  {
+    "id": "E1a",
+    "name": "Payload carries name, practice, email, phone, specialty, grade, offer, pain points and the subject",
+    "pass": true,
+    "expected": "_subject, name, practiceName, email, phone, specialty, grade, offer, painPoints",
+    "actual": "{\"_subject\":\"New scorecard lead: QA Test Practice A-no-numbers, grade F\",\"name\":\"QA TEST A-no-numbers (please ignore)\",\"practiceName\":\"QA Test Practice A-no-numbers\",\"email\":\"shahzaib.ventures@gmail.com\",\"phone\":\"843 555 0100\",\"specialty\":\"behavioral\",\"grade\":\"F\",\"offer\":\"gapToTop\",\"painPoints\":[\"slowPayment\",\"denials\"],\"includeNumbers\":false}",
+    "shot": null
+  },
+  {
+    "id": "E1b",
+    "name": "Formspree accepted both submissions (HTTP 200)",
+    "pass": true,
+    "expected": "200 / 200",
+    "actual": "200 / 200",
+    "shot": null
+  },
+  {
+    "id": "E2a",
+    "name": "Checkbox unticked: no scorecard numbers in the payload",
+    "pass": true,
+    "expected": "no numbers",
+    "actual": "{\"_subject\":\"New scorecard lead: QA Test Practice A-no-numbers, grade F\",\"name\":\"QA TEST A-no-numbers (please ignore)\",\"practiceName\":\"QA Test Practice A-no-numbers\",\"email\":\"shahzaib.ventures@gmail.com\",\"phone\":\"843 555 0100\",\"specialty\":\"behavioral\",\"grade\":\"F\",\"offer\":\"gapToTop\",\"painPoints\":[\"slowPayment\",\"denials\"],\"includeNumbers\":false}",
+    "shot": null
+  },
+  {
+    "id": "E2b",
+    "name": "Checkbox ticked: the 5 values and money figures are included",
+    "pass": true,
+    "expected": "numbers included",
+    "actual": "{\"overallScore\":56.3,\"metrics\":{\"ncr\":92.5,\"dar\":57,\"ar90\":25,\"den\":12,\"fpr\":84},\"moneyCards\":[{\"id\":\"uncollected\",\"vsGood\":18000,\"vsTop\":39600,\"headline\":null},{\"id\":\"cashFaster\",\"vsGood\":34000,\"vsTop\":54000,\"headline\":null},{\"id\":\"deniedAboveTarget\",\"vsGood\":4200,\"vsTop\":5400,\"headline\":null},{\"id\":\"stuckOver90\",\"vsGood\":11400,\"vsTop\":17100,\"headline\":28500}]}",
+    "shot": null
+  },
+  {
+    "id": "E3b",
+    "name": "Nothing leaves the page before Submit (whole flow, both runs)",
+    "pass": true,
+    "expected": "no external requests",
+    "actual": "[]",
+    "shot": null
+  },
+  {
+    "id": "E5a",
+    "name": "Success message \"Thanks, [Name]. Your report is on its way.\"",
+    "pass": true,
+    "expected": "Thanks, QA. Your report is on its way.",
+    "actual": "Thanks, QA. Your report is on its way.",
+    "shot": "qa/screenshots/E-success-A-no-numbers.png"
+  },
+  {
+    "id": "E5b",
+    "name": "Booking calendar loads only after a successful send",
+    "pass": true,
+    "expected": "0 Calendly requests before, iframe after",
+    "actual": "before 0, after 15, iframe https://calendly.com/muhammadshahzaibkhan/30min?embed_type=Inline&embed_domain=localhost&hide_gdpr_banner=1",
+    "shot": "qa/screenshots/E-success-A-no-numbers.png"
+  },
+  {
+    "id": "E3a",
+    "name": "Honeypot filled: nothing is sent",
+    "pass": true,
+    "expected": "0 requests",
+    "actual": "0 requests",
+    "shot": null
+  },
+  {
+    "id": "E4",
+    "name": "Blocked request: friendly message, email fallback, everything typed is kept",
+    "pass": true,
+    "expected": "message + fallback + values kept",
+    "actual": "msg \"Sorry, we couldn't send that just now. Nothing you typed was lost. Send it by email instead\", kept [\"Dana Lopez\",\"Harbor Behavioral Health\",\"shahzaib.ventures@gmail.com\",\"843 555 0100\"], fallback mailto:shahzaib.ventures@gmail.com?subject=Scoreca",
+    "shot": "qa/screenshots/E4-blocked-request.png"
+  },
+  {
+    "id": "E6",
+    "name": "Every booking button opens the Calendly link in a new tab",
+    "pass": true,
+    "expected": "all → calendly.com/muhammadshahzaibkhan/30min",
+    "actual": "[{\"text\":\"Book my free billing review\",\"href\":\"https://calendly.com/muhammadshahzaibkhan/30min\",\"target\":\"_blank\"}]",
+    "shot": null
+  }
+]

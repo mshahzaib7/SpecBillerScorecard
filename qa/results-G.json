@@ -1,0 +1,476 @@
+[
+  {
+    "id": "G-safari-iphone14-390x844",
+    "name": "safari-iphone14-390x844: SKIPPED: to be checked on a real iPhone/iPad after deploy (WebKit download did not finish)",
+    "pass": null,
+    "skipped": true
+  },
+  {
+    "id": "G-safari-iphoneSE-375x667",
+    "name": "safari-iphoneSE-375x667: SKIPPED: to be checked on a real iPhone/iPad after deploy (WebKit download did not finish)",
+    "pass": null,
+    "skipped": true
+  },
+  {
+    "id": "G-safari-ipad-834x1194",
+    "name": "safari-ipad-834x1194: SKIPPED: to be checked on a real iPhone/iPad after deploy (WebKit download did not finish)",
+    "pass": null,
+    "skipped": true
+  },
+  {
+    "id": "G-chrome-1536x730-keyboard-type",
+    "name": "chrome-1536x730: number pad on money (decimal) and claim (numeric) fields",
+    "pass": true,
+    "expected": "decimal / numeric",
+    "actual": "decimal / numeric",
+    "shot": null
+  },
+  {
+    "id": "G-chrome-1536x730-figures",
+    "name": "chrome-1536x730: QA-1 flow completes with C, 73.5, $30,000 a year",
+    "pass": true,
+    "expected": "C / 73.5 / $30,000 a year",
+    "actual": "[\"C\",\"73.5 / 100\",\"$30,000 a year\"]",
+    "shot": null
+  },
+  {
+    "id": "G-chrome-1536x730-layout",
+    "name": "chrome-1536x730: no sideways scroll on any captured screen",
+    "pass": true,
+    "expected": "0px",
+    "actual": "0px",
+    "shot": "qa/screenshots/G-chrome-1536x730-3-verdict.png"
+  },
+  {
+    "id": "G-chrome-1536x730-sticky",
+    "name": "chrome-1536x730: sticky bar never covers content (checked at the page bottom)",
+    "pass": true,
+    "expected": "no overlap",
+    "actual": "{\"visible\":false}",
+    "shot": "qa/screenshots/G-chrome-1536x730-5-page-bottom.png"
+  },
+  {
+    "id": "G-chrome-1536x730-errors",
+    "name": "chrome-1536x730: no page errors",
+    "pass": true,
+    "expected": "none",
+    "actual": "",
+    "shot": null
+  },
+  {
+    "id": "G-chrome-1366x768-keyboard-type",
+    "name": "chrome-1366x768: number pad on money (decimal) and claim (numeric) fields",
+    "pass": true,
+    "expected": "decimal / numeric",
+    "actual": "decimal / numeric",
+    "shot": null
+  },
+  {
+    "id": "G-chrome-1366x768-figures",
+    "name": "chrome-1366x768: QA-1 flow completes with C, 73.5, $30,000 a year",
+    "pass": true,
+    "expected": "C / 73.5 / $30,000 a year",
+    "actual": "[\"C\",\"73.5 / 100\",\"$30,000 a year\"]",
+    "shot": null
+  },
+  {
+    "id": "G-chrome-1366x768-layout",
+    "name": "chrome-1366x768: no sideways scroll on any captured screen",
+    "pass": true,
+    "expected": "0px",
+    "actual": "0px",
+    "shot": "qa/screenshots/G-chrome-1366x768-3-verdict.png"
+  },
+  {
+    "id": "G-chrome-1366x768-sticky",
+    "name": "chrome-1366x768: sticky bar never covers content (checked at the page bottom)",
+    "pass": true,
+    "expected": "no overlap",
+    "actual": "{\"visible\":false}",
+    "shot": "qa/screenshots/G-chrome-1366x768-5-page-bottom.png"
+  },
+  {
+    "id": "G-chrome-1366x768-errors",
+    "name": "chrome-1366x768: no page errors",
+    "pass": true,
+    "expected": "none",
+    "actual": "",
+    "shot": null
+  },
+  {
+    "id": "G-chrome-1920x1080-keyboard-type",
+    "name": "chrome-1920x1080: number pad on money (decimal) and claim (numeric) fields",
+    "pass": true,
+    "expected": "decimal / numeric",
+    "actual": "decimal / numeric",
+    "shot": null
+  },
+  {
+    "id": "G-chrome-1920x1080-figures",
+    "name": "chrome-1920x1080: QA-1 flow completes with C, 73.5, $30,000 a year",
+    "pass": true,
+    "expected": "C / 73.5 / $30,000 a year",
+    "actual": "[\"C\",\"73.5 / 100\",\"$30,000 a year\"]",
+    "shot": null
+  },
+  {
+    "id": "G-chrome-1920x1080-layout",
+    "name": "chrome-1920x1080: no sideways scroll on any captured screen",
+    "pass": true,
+    "expected": "0px",
+    "actual": "0px",
+    "shot": "qa/screenshots/G-chrome-1920x1080-3-verdict.png"
+  },
+  {
+    "id": "G-chrome-1920x1080-sticky",
+    "name": "chrome-1920x1080: sticky bar never covers content (checked at the page bottom)",
+    "pass": true,
+    "expected": "no overlap",
+    "actual": "{\"visible\":false}",
+    "shot": "qa/screenshots/G-chrome-1920x1080-5-page-bottom.png"
+  },
+  {
+    "id": "G-chrome-1920x1080-errors",
+    "name": "chrome-1920x1080: no page errors",
+    "pass": true,
+    "expected": "none",
+    "actual": "",
+    "shot": null
+  },
+  {
+    "id": "G-edge-1536x730-keyboard-type",
+    "name": "edge-1536x730: number pad on money (decimal) and claim (numeric) fields",
+    "pass": true,
+    "expected": "decimal / numeric",
+    "actual": "decimal / numeric",
+    "shot": null
+  },
+  {
+    "id": "G-edge-1536x730-figures",
+    "name": "edge-1536x730: QA-1 flow completes with C, 73.5, $30,000 a year",
+    "pass": true,
+    "expected": "C / 73.5 / $30,000 a year",
+    "actual": "[\"C\",\"73.5 / 100\",\"$30,000 a year\"]",
+    "shot": null
+  },
+  {
+    "id": "G-edge-1536x730-layout",
+    "name": "edge-1536x730: no sideways scroll on any captured screen",
+    "pass": true,
+    "expected": "0px",
+    "actual": "0px",
+    "shot": "qa/screenshots/G-edge-1536x730-3-verdict.png"
+  },
+  {
+    "id": "G-edge-1536x730-sticky",
+    "name": "edge-1536x730: sticky bar never covers content (checked at the page bottom)",
+    "pass": true,
+    "expected": "no overlap",
+    "actual": "{\"visible\":false}",
+    "shot": "qa/screenshots/G-edge-1536x730-5-page-bottom.png"
+  },
+  {
+    "id": "G-edge-1536x730-errors",
+    "name": "edge-1536x730: no page errors",
+    "pass": true,
+    "expected": "none",
+    "actual": "",
+    "shot": null
+  },
+  {
+    "id": "G-edge-1366x768-keyboard-type",
+    "name": "edge-1366x768: number pad on money (decimal) and claim (numeric) fields",
+    "pass": true,
+    "expected": "decimal / numeric",
+    "actual": "decimal / numeric",
+    "shot": null
+  },
+  {
+    "id": "G-edge-1366x768-figures",
+    "name": "edge-1366x768: QA-1 flow completes with C, 73.5, $30,000 a year",
+    "pass": true,
+    "expected": "C / 73.5 / $30,000 a year",
+    "actual": "[\"C\",\"73.5 / 100\",\"$30,000 a year\"]",
+    "shot": null
+  },
+  {
+    "id": "G-edge-1366x768-layout",
+    "name": "edge-1366x768: no sideways scroll on any captured screen",
+    "pass": true,
+    "expected": "0px",
+    "actual": "0px",
+    "shot": "qa/screenshots/G-edge-1366x768-3-verdict.png"
+  },
+  {
+    "id": "G-edge-1366x768-sticky",
+    "name": "edge-1366x768: sticky bar never covers content (checked at the page bottom)",
+    "pass": true,
+    "expected": "no overlap",
+    "actual": "{\"visible\":false}",
+    "shot": "qa/screenshots/G-edge-1366x768-5-page-bottom.png"
+  },
+  {
+    "id": "G-edge-1366x768-errors",
+    "name": "edge-1366x768: no page errors",
+    "pass": true,
+    "expected": "none",
+    "actual": "",
+    "shot": null
+  },
+  {
+    "id": "G-edge-1920x1080-keyboard-type",
+    "name": "edge-1920x1080: number pad on money (decimal) and claim (numeric) fields",
+    "pass": true,
+    "expected": "decimal / numeric",
+    "actual": "decimal / numeric",
+    "shot": null
+  },
+  {
+    "id": "G-edge-1920x1080-figures",
+    "name": "edge-1920x1080: QA-1 flow completes with C, 73.5, $30,000 a year",
+    "pass": true,
+    "expected": "C / 73.5 / $30,000 a year",
+    "actual": "[\"C\",\"73.5 / 100\",\"$30,000 a year\"]",
+    "shot": null
+  },
+  {
+    "id": "G-edge-1920x1080-layout",
+    "name": "edge-1920x1080: no sideways scroll on any captured screen",
+    "pass": true,
+    "expected": "0px",
+    "actual": "0px",
+    "shot": "qa/screenshots/G-edge-1920x1080-3-verdict.png"
+  },
+  {
+    "id": "G-edge-1920x1080-sticky",
+    "name": "edge-1920x1080: sticky bar never covers content (checked at the page bottom)",
+    "pass": true,
+    "expected": "no overlap",
+    "actual": "{\"visible\":false}",
+    "shot": "qa/screenshots/G-edge-1920x1080-5-page-bottom.png"
+  },
+  {
+    "id": "G-edge-1920x1080-errors",
+    "name": "edge-1920x1080: no page errors",
+    "pass": true,
+    "expected": "none",
+    "actual": "",
+    "shot": null
+  },
+  {
+    "id": "G-firefox-1536x730",
+    "name": "firefox-1536x730: SKIPPED (browser could not launch)",
+    "pass": null,
+    "skipped": true,
+    "expected": "launches",
+    "actual": "Error: browserType.launch: Executable doesn't exist at C:\\Users\\HP\\AppData\\Local\\ms-playwright\\firefox-1495\\firefox\\firefox.exe\n╔═══════════════════════════════════════════════════════════════════════"
+  },
+  {
+    "id": "G-firefox-1366x768",
+    "name": "firefox-1366x768: SKIPPED (browser could not launch)",
+    "pass": null,
+    "skipped": true,
+    "expected": "launches",
+    "actual": "Error: browserType.launch: Executable doesn't exist at C:\\Users\\HP\\AppData\\Local\\ms-playwright\\firefox-1495\\firefox\\firefox.exe\n╔═══════════════════════════════════════════════════════════════════════"
+  },
+  {
+    "id": "G-firefox-1920x1080",
+    "name": "firefox-1920x1080: SKIPPED (browser could not launch)",
+    "pass": null,
+    "skipped": true,
+    "expected": "launches",
+    "actual": "Error: browserType.launch: Executable doesn't exist at C:\\Users\\HP\\AppData\\Local\\ms-playwright\\firefox-1495\\firefox\\firefox.exe\n╔═══════════════════════════════════════════════════════════════════════"
+  },
+  {
+    "id": "G-chromium-mobile-390x844-keyboard-type",
+    "name": "chromium-mobile-390x844: number pad on money (decimal) and claim (numeric) fields",
+    "pass": true,
+    "expected": "decimal / numeric",
+    "actual": "decimal / numeric",
+    "shot": null
+  },
+  {
+    "id": "G-chromium-mobile-390x844-figures",
+    "name": "chromium-mobile-390x844: QA-1 flow completes with C, 73.5, $30,000 a year",
+    "pass": true,
+    "expected": "C / 73.5 / $30,000 a year",
+    "actual": "[\"C\",\"73.5 / 100\",\"$30,000 a year\"]",
+    "shot": null
+  },
+  {
+    "id": "G-chromium-mobile-390x844-layout",
+    "name": "chromium-mobile-390x844: no sideways scroll on any captured screen",
+    "pass": true,
+    "expected": "0px",
+    "actual": "0px",
+    "shot": "qa/screenshots/G-chromium-mobile-390x844-3-verdict.png"
+  },
+  {
+    "id": "G-chromium-mobile-390x844-sticky",
+    "name": "chromium-mobile-390x844: sticky bar never covers content (checked at the page bottom)",
+    "pass": true,
+    "expected": "no overlap",
+    "actual": "{\"visible\":false}",
+    "shot": "qa/screenshots/G-chromium-mobile-390x844-5-page-bottom.png"
+  },
+  {
+    "id": "G-chromium-mobile-390x844-verdict-fit",
+    "name": "chromium-mobile-390x844: verdict band button inside the first screen",
+    "pass": true,
+    "expected": "button visible",
+    "actual": "true",
+    "shot": "qa/screenshots/G-chromium-mobile-390x844-3-verdict.png"
+  },
+  {
+    "id": "G-chromium-mobile-390x844-errors",
+    "name": "chromium-mobile-390x844: no page errors",
+    "pass": true,
+    "expected": "none",
+    "actual": "",
+    "shot": null
+  },
+  {
+    "id": "G-chromium-mobile-375x667-keyboard-type",
+    "name": "chromium-mobile-375x667: number pad on money (decimal) and claim (numeric) fields",
+    "pass": true,
+    "expected": "decimal / numeric",
+    "actual": "decimal / numeric",
+    "shot": null
+  },
+  {
+    "id": "G-chromium-mobile-375x667-figures",
+    "name": "chromium-mobile-375x667: QA-1 flow completes with C, 73.5, $30,000 a year",
+    "pass": true,
+    "expected": "C / 73.5 / $30,000 a year",
+    "actual": "[\"C\",\"73.5 / 100\",\"$30,000 a year\"]",
+    "shot": null
+  },
+  {
+    "id": "G-chromium-mobile-375x667-layout",
+    "name": "chromium-mobile-375x667: no sideways scroll on any captured screen",
+    "pass": true,
+    "expected": "0px",
+    "actual": "0px",
+    "shot": "qa/screenshots/G-chromium-mobile-375x667-3-verdict.png"
+  },
+  {
+    "id": "G-chromium-mobile-375x667-sticky",
+    "name": "chromium-mobile-375x667: sticky bar never covers content (checked at the page bottom)",
+    "pass": true,
+    "expected": "no overlap",
+    "actual": "{\"visible\":false}",
+    "shot": "qa/screenshots/G-chromium-mobile-375x667-5-page-bottom.png"
+  },
+  {
+    "id": "G-chromium-mobile-375x667-verdict-fit",
+    "name": "chromium-mobile-375x667: verdict band button inside the first screen",
+    "pass": true,
+    "expected": "button visible",
+    "actual": "true",
+    "shot": "qa/screenshots/G-chromium-mobile-375x667-3-verdict.png"
+  },
+  {
+    "id": "G-chromium-mobile-375x667-errors",
+    "name": "chromium-mobile-375x667: no page errors",
+    "pass": true,
+    "expected": "none",
+    "actual": "",
+    "shot": null
+  },
+  {
+    "id": "G-chromium-android-360x800-keyboard-type",
+    "name": "chromium-android-360x800: number pad on money (decimal) and claim (numeric) fields",
+    "pass": true,
+    "expected": "decimal / numeric",
+    "actual": "decimal / numeric",
+    "shot": null
+  },
+  {
+    "id": "G-chromium-android-360x800-figures",
+    "name": "chromium-android-360x800: QA-1 flow completes with C, 73.5, $30,000 a year",
+    "pass": true,
+    "expected": "C / 73.5 / $30,000 a year",
+    "actual": "[\"C\",\"73.5 / 100\",\"$30,000 a year\"]",
+    "shot": null
+  },
+  {
+    "id": "G-chromium-android-360x800-layout",
+    "name": "chromium-android-360x800: no sideways scroll on any captured screen",
+    "pass": true,
+    "expected": "0px",
+    "actual": "0px",
+    "shot": "qa/screenshots/G-chromium-android-360x800-3-verdict.png"
+  },
+  {
+    "id": "G-chromium-android-360x800-sticky",
+    "name": "chromium-android-360x800: sticky bar never covers content (checked at the page bottom)",
+    "pass": true,
+    "expected": "no overlap",
+    "actual": "{\"visible\":false}",
+    "shot": "qa/screenshots/G-chromium-android-360x800-5-page-bottom.png"
+  },
+  {
+    "id": "G-chromium-android-360x800-verdict-fit",
+    "name": "chromium-android-360x800: verdict band button inside the first screen",
+    "pass": true,
+    "expected": "button visible",
+    "actual": "true",
+    "shot": "qa/screenshots/G-chromium-android-360x800-3-verdict.png"
+  },
+  {
+    "id": "G-chromium-android-360x800-errors",
+    "name": "chromium-android-360x800: no page errors",
+    "pass": true,
+    "expected": "none",
+    "actual": "",
+    "shot": null
+  },
+  {
+    "id": "G-chromium-tablet-834x1194-keyboard-type",
+    "name": "chromium-tablet-834x1194: number pad on money (decimal) and claim (numeric) fields",
+    "pass": true,
+    "expected": "decimal / numeric",
+    "actual": "decimal / numeric",
+    "shot": null
+  },
+  {
+    "id": "G-chromium-tablet-834x1194-figures",
+    "name": "chromium-tablet-834x1194: QA-1 flow completes with C, 73.5, $30,000 a year",
+    "pass": true,
+    "expected": "C / 73.5 / $30,000 a year",
+    "actual": "[\"C\",\"73.5 / 100\",\"$30,000 a year\"]",
+    "shot": null
+  },
+  {
+    "id": "G-chromium-tablet-834x1194-layout",
+    "name": "chromium-tablet-834x1194: no sideways scroll on any captured screen",
+    "pass": true,
+    "expected": "0px",
+    "actual": "0px",
+    "shot": "qa/screenshots/G-chromium-tablet-834x1194-3-verdict.png"
+  },
+  {
+    "id": "G-chromium-tablet-834x1194-sticky",
+    "name": "chromium-tablet-834x1194: sticky bar never covers content (checked at the page bottom)",
+    "pass": true,
+    "expected": "no overlap",
+    "actual": "{\"visible\":false}",
+    "shot": "qa/screenshots/G-chromium-tablet-834x1194-5-page-bottom.png"
+  },
+  {
+    "id": "G-chromium-tablet-834x1194-errors",
+    "name": "chromium-tablet-834x1194: no page errors",
+    "pass": true,
+    "expected": "none",
+    "actual": "",
+    "shot": null
+  },
+  {
+    "id": "G-keyboard",
+    "name": "Whole flow works with the keyboard alone (Chrome)",
+    "pass": true,
+    "expected": "every step works",
+    "actual": "22 steps ok",
+    "shot": null
+  }
+]

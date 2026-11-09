@@ -1,0 +1,112 @@
+[
+  {
+    "name": "Skip link is the first Tab stop",
+    "ok": true,
+    "info": ""
+  },
+  {
+    "name": "Tab reaches a practice tile",
+    "ok": true,
+    "info": ""
+  },
+  {
+    "name": "Tab reaches a pain chip, Space toggles it",
+    "ok": true,
+    "info": ""
+  },
+  {
+    "name": "  chip is pressed",
+    "ok": true,
+    "info": ""
+  },
+  {
+    "name": "Focus lands in the number input",
+    "ok": true,
+    "info": ""
+  },
+  {
+    "name": "Escape skips the reveal, results reached",
+    "ok": true,
+    "info": ""
+  },
+  {
+    "name": "Tab reaches the offer button in the verdict band",
+    "ok": true,
+    "info": ""
+  },
+  {
+    "name": "Tab reaches \"See the full statement\"",
+    "ok": true,
+    "info": ""
+  },
+  {
+    "name": "Tab reaches a statement row; Enter toggles it",
+    "ok": true,
+    "info": ""
+  },
+  {
+    "name": "  row state changed",
+    "ok": true,
+    "info": ""
+  },
+  {
+    "name": "Tab reaches the compare switch; Arrow switches it",
+    "ok": true,
+    "info": ""
+  },
+  {
+    "name": "  \"Good target\" selected",
+    "ok": true,
+    "info": ""
+  },
+  {
+    "name": "Tab reaches the master slider; Arrow moves it",
+    "ok": true,
+    "info": ""
+  },
+  {
+    "name": "  slider moved to 10%",
+    "ok": true,
+    "info": ""
+  },
+  {
+    "name": "Tab reaches the form name field",
+    "ok": true,
+    "info": ""
+  },
+  {
+    "name": "Enter submits the form; success shown",
+    "ok": true,
+    "info": ""
+  },
+  {
+    "name": "Tab reaches an FAQ question; Enter opens it",
+    "ok": true,
+    "info": ""
+  },
+  {
+    "name": "  answer shown",
+    "ok": true,
+    "info": ""
+  },
+  {
+    "name": "Tab reaches \"How we calculate\" in the footer; Enter opens the drawer",
+    "ok": true,
+    "info": ""
+  },
+  {
+    "name": "  drawer open, focus inside",
+    "ok": true,
+    "info": ""
+  },
+  {
+    "name": "  Escape closes it, focus returns to the opener",
+    "ok": true,
+    "info": ""
+  },
+  {
+    "name": "Focus ring visible (2px outline) on the focused control",
+    "ok": true,
+    "info": ""
+  }
+]

@@ -1,0 +1,72 @@
+{
+  "a": {
+    "_subject": "New scorecard lead: QA Test Practice A-no-numbers, grade F",
+    "name": "QA TEST A-no-numbers (please ignore)",
+    "practiceName": "QA Test Practice A-no-numbers",
+    "email": "shahzaib.ventures@gmail.com",
+    "phone": "843 555 0100",
+    "specialty": "behavioral",
+    "grade": "F",
+    "offer": "gapToTop",
+    "painPoints": [
+      "slowPayment",
+      "denials"
+    ],
+    "includeNumbers": false
+  },
+  "b": {
+    "_subject": "New scorecard lead: QA Test Practice B-with-numbers, grade F",
+    "name": "QA TEST B-with-numbers (please ignore)",
+    "practiceName": "QA Test Practice B-with-numbers",
+    "email": "shahzaib.ventures@gmail.com",
+    "phone": "843 555 0100",
+    "specialty": "behavioral",
+    "grade": "F",
+    "offer": "gapToTop",
+    "painPoints": [
+      "slowPayment",
+      "denials"
+    ],
+    "includeNumbers": true,
+    "scorecard": {
+      "overallScore": 56.3,
+      "metrics": {
+        "ncr": 92.5,
+        "dar": 57,
+        "ar90": 25,
+        "den": 12,
+        "fpr": 84
+      },
+      "moneyCards": [
+        {
+          "id": "uncollected",
+          "vsGood": 18000,
+          "vsTop": 39600,
+          "headline": null
+        },
+        {
+          "id": "cashFaster",
+          "vsGood": 34000,
+          "vsTop": 54000,
+          "headline": null
+        },
+        {
+          "id": "deniedAboveTarget",
+          "vsGood": 4200,
+          "vsTop": 5400,
+          "headline": null
+        },
+        {
+          "id": "stuckOver90",
+          "vsGood": 11400,
+          "vsTop": 17100,
+          "headline": 28500
+        }
+      ]
+    }
+  },
+  "statusA": 200,
+  "statusB": 200,
+  "respA": "",
+  "respB": ""
+}

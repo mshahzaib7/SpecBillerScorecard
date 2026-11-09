@@ -1,0 +1,482 @@
+{
+  "healthy@1440": {
+    "grade": "B",
+    "score": "83.2 / 100",
+    "offer": "Close the gap to top practices.",
+    "offerButton": "Show me my 3 fixes",
+    "figure": "Your biggest yearly gap vs. top practicesabout $14,400 per year",
+    "switchShown": true,
+    "referralShown": false,
+    "moneyCards": [
+      {
+        "title": "Room to grow",
+        "eyebrow": "Uncollected money · per year · estimate",
+        "lines": [
+          "vs. top-performing practicesabout $14,400per year"
+        ],
+        "headline": null
+      },
+      {
+        "title": "Room to grow",
+        "eyebrow": "Cash that could come in faster · one-time · estimate",
+        "lines": [
+          "vs. top-performing practicesabout $6,000one-time"
+        ],
+        "headline": null
+      },
+      {
+        "title": "Claims held up by denials",
+        "eyebrow": "Denied claims above target · per month · estimate",
+        "lines": [
+          "vs. top-performing practicesabout $3,000per month",
+          "vs. Good targetabout $1,800 per month"
+        ],
+        "headline": null
+      },
+      {
+        "title": "Room to grow",
+        "eyebrow": "Money stuck over 90 days · right now · estimate",
+        "lines": [
+          "vs. top-performing practicesabout $1,300right now"
+        ],
+        "headline": "about $7,900 is in claims over 90 days old right now."
+      }
+    ],
+    "moneyEmpty": null,
+    "overflowX": false,
+    "badText": null,
+    "errors": [],
+    "externalRequests": []
+  },
+  "healthy@390": {
+    "grade": "B",
+    "score": "83.2 / 100",
+    "offer": "Close the gap to top practices.",
+    "offerButton": "Show me my 3 fixes",
+    "figure": "Your biggest yearly gap vs. top practicesabout $14,400 per year",
+    "switchShown": true,
+    "referralShown": false,
+    "moneyCards": [
+      {
+        "title": "Room to grow",
+        "eyebrow": "Uncollected money · per year · estimate",
+        "lines": [
+          "vs. top-performing practicesabout $14,400per year"
+        ],
+        "headline": null
+      },
+      {
+        "title": "Room to grow",
+        "eyebrow": "Cash that could come in faster · one-time · estimate",
+        "lines": [
+          "vs. top-performing practicesabout $6,000one-time"
+        ],
+        "headline": null
+      },
+      {
+        "title": "Claims held up by denials",
+        "eyebrow": "Denied claims above target · per month · estimate",
+        "lines": [
+          "vs. top-performing practicesabout $3,000per month",
+          "vs. Good targetabout $1,800 per month"
+        ],
+        "headline": null
+      },
+      {
+        "title": "Room to grow",
+        "eyebrow": "Money stuck over 90 days · right now · estimate",
+        "lines": [
+          "vs. top-performing practicesabout $1,300right now"
+        ],
+        "headline": "about $7,900 is in claims over 90 days old right now."
+      }
+    ],
+    "moneyEmpty": null,
+    "overflowX": false,
+    "badText": null,
+    "errors": [],
+    "externalRequests": []
+  },
+  "struggling@1440": {
+    "grade": "F",
+    "score": "18.9 / 100",
+    "offer": "Close the gap to top practices.",
+    "offerButton": "Show me my 3 fixes",
+    "figure": "Your biggest yearly gap vs. top practicesabout $129,600 per year",
+    "switchShown": true,
+    "referralShown": false,
+    "moneyCards": [
+      {
+        "title": "Money you are owed but not collecting",
+        "eyebrow": "Uncollected money · per year · estimate",
+        "lines": [
+          "vs. top-performing practicesabout $129,600per year",
+          "vs. Good targetabout $108,000 per year"
+        ],
+        "headline": null
+      },
+      {
+        "title": "Money that could already be in your account",
+        "eyebrow": "Cash that could come in faster · one-time · estimate",
+        "lines": [
+          "vs. top-performing practicesabout $60,000one-time",
+          "vs. Good targetabout $40,000 one-time"
+        ],
+        "headline": null
+      },
+      {
+        "title": "Claims held up by denials",
+        "eyebrow": "Denied claims above target · per month · estimate",
+        "lines": [
+          "vs. top-performing practicesabout $9,000per month",
+          "vs. Good targetabout $7,800 per month"
+        ],
+        "headline": null
+      },
+      {
+        "title": "Money stuck in old claims",
+        "eyebrow": "Money stuck over 90 days · right now · estimate",
+        "lines": [
+          "vs. top-performing practicesabout $24,000right now",
+          "vs. Good targetabout $18,000 right now"
+        ],
+        "headline": "about $36,000 is in claims over 90 days old right now."
+      }
+    ],
+    "moneyEmpty": null,
+    "overflowX": false,
+    "badText": null,
+    "errors": [],
+    "externalRequests": []
+  },
+  "struggling@390": {
+    "grade": "F",
+    "score": "18.9 / 100",
+    "offer": "Close the gap to top practices.",
+    "offerButton": "Show me my 3 fixes",
+    "figure": "Your biggest yearly gap vs. top practicesabout $129,600 per year",
+    "switchShown": true,
+    "referralShown": false,
+    "moneyCards": [
+      {
+        "title": "Money you are owed but not collecting",
+        "eyebrow": "Uncollected money · per year · estimate",
+        "lines": [
+          "vs. top-performing practicesabout $129,600per year",
+          "vs. Good targetabout $108,000 per year"
+        ],
+        "headline": null
+      },
+      {
+        "title": "Money that could already be in your account",
+        "eyebrow": "Cash that could come in faster · one-time · estimate",
+        "lines": [
+          "vs. top-performing practicesabout $60,000one-time",
+          "vs. Good targetabout $40,000 one-time"
+        ],
+        "headline": null
+      },
+      {
+        "title": "Claims held up by denials",
+        "eyebrow": "Denied claims above target · per month · estimate",
+        "lines": [
+          "vs. top-performing practicesabout $9,000per month",
+          "vs. Good targetabout $7,800 per month"
+        ],
+        "headline": null
+      },
+      {
+        "title": "Money stuck in old claims",
+        "eyebrow": "Money stuck over 90 days · right now · estimate",
+        "lines": [
+          "vs. top-performing practicesabout $24,000right now",
+          "vs. Good targetabout $18,000 right now"
+        ],
+        "headline": "about $36,000 is in claims over 90 days old right now."
+      }
+    ],
+    "moneyEmpty": null,
+    "overflowX": false,
+    "badText": null,
+    "errors": [],
+    "externalRequests": []
+  },
+  "golden1@1440": {
+    "grade": "F",
+    "score": "56.3 / 100",
+    "offer": "Close the gap to top practices.",
+    "offerButton": "Show me my 3 fixes",
+    "figure": "Your biggest yearly gap vs. top practicesabout $39,600 per year",
+    "switchShown": true,
+    "referralShown": false,
+    "moneyCards": [
+      {
+        "title": "Money you are owed but not collecting",
+        "eyebrow": "Uncollected money · per year · estimate",
+        "lines": [
+          "vs. top-performing practicesabout $39,600per year",
+          "vs. Good targetabout $18,000 per year"
+        ],
+        "headline": null
+      },
+      {
+        "title": "Money that could already be in your account",
+        "eyebrow": "Cash that could come in faster · one-time · estimate",
+        "lines": [
+          "vs. top-performing practicesabout $54,000one-time",
+          "vs. Good targetabout $34,000 one-time"
+        ],
+        "headline": null
+      },
+      {
+        "title": "Claims held up by denials",
+        "eyebrow": "Denied claims above target · per month · estimate",
+        "lines": [
+          "vs. top-performing practicesabout $5,400per month",
+          "vs. Good targetabout $4,200 per month"
+        ],
+        "headline": null
+      },
+      {
+        "title": "Money stuck in old claims",
+        "eyebrow": "Money stuck over 90 days · right now · estimate",
+        "lines": [
+          "vs. top-performing practicesabout $17,100right now",
+          "vs. Good targetabout $11,400 right now"
+        ],
+        "headline": "about $28,500 is in claims over 90 days old right now."
+      }
+    ],
+    "moneyEmpty": null,
+    "overflowX": false,
+    "badText": null,
+    "errors": [],
+    "externalRequests": []
+  },
+  "golden2@1440": {
+    "grade": "F",
+    "score": "59.8 / 100",
+    "offer": "Close the gap to top practices.",
+    "offerButton": "Show me my 3 fixes",
+    "figure": "Your biggest yearly gap vs. top practicesabout $39,600 per year",
+    "switchShown": true,
+    "referralShown": false,
+    "moneyCards": [
+      {
+        "title": "Money you are owed but not collecting",
+        "eyebrow": "Uncollected money · per year · estimate",
+        "lines": [
+          "vs. top-performing practicesabout $39,600per year",
+          "vs. Good targetabout $18,000 per year"
+        ],
+        "headline": null
+      },
+      {
+        "title": "Money that could already be in your account",
+        "eyebrow": "Cash that could come in faster · one-time · estimate",
+        "lines": [
+          "vs. top-performing practicesabout $54,000one-time",
+          "vs. Good targetabout $34,000 one-time"
+        ],
+        "headline": null
+      },
+      {
+        "title": "Claims held up by denials",
+        "eyebrow": "Denied claims above target · per month · estimate",
+        "lines": [
+          "vs. top-performing practicesabout $5,400per month",
+          "vs. Good targetabout $4,200 per month"
+        ],
+        "headline": null
+      },
+      {
+        "title": "Money stuck in old claims",
+        "eyebrow": "Money stuck over 90 days · right now · estimate",
+        "lines": [
+          "vs. top-performing practicesabout $17,100right now",
+          "vs. Good targetabout $11,400 right now"
+        ],
+        "headline": "about $28,500 is in claims over 90 days old right now."
+      }
+    ],
+    "moneyEmpty": null,
+    "overflowX": false,
+    "badText": null,
+    "errors": [],
+    "externalRequests": []
+  },
+  "golden3@1440": {
+    "grade": "A",
+    "score": "100.0 / 100",
+    "offer": "You're performing at a high level. Let's keep it that way.",
+    "offerButton": "Get my free quarterly check-up",
+    "figure": "",
+    "switchShown": false,
+    "referralShown": true,
+    "moneyCards": [],
+    "moneyEmpty": "Your billing is performing at a top level. That's rare. We'd love to help you keep it that way.",
+    "overflowX": false,
+    "badText": null,
+    "errors": [],
+    "externalRequests": []
+  },
+  "golden4@1440": {
+    "grade": "A",
+    "score": "91.9 / 100",
+    "offer": "You're performing at a high level. Let's keep it that way.",
+    "offerButton": "Get my free quarterly check-up",
+    "figure": "",
+    "switchShown": false,
+    "referralShown": true,
+    "moneyCards": [
+      {
+        "title": "Room to grow",
+        "eyebrow": "Uncollected money · per year · estimate",
+        "lines": [
+          "vs. top-performing practicesabout $14,400per year"
+        ],
+        "headline": null
+      },
+      {
+        "title": "Room to grow",
+        "eyebrow": "Cash that could come in faster · one-time · estimate",
+        "lines": [
+          "vs. top-performing practicesabout $3,000one-time"
+        ],
+        "headline": null
+      },
+      {
+        "title": "Room to grow",
+        "eyebrow": "Denied claims above target · per month · estimate",
+        "lines": [
+          "vs. top-performing practicesabout $600per month"
+        ],
+        "headline": null
+      },
+      {
+        "title": "Room to grow",
+        "eyebrow": "Money stuck over 90 days · right now · estimate",
+        "lines": [
+          "vs. top-performing practicesabout $1,300right now"
+        ],
+        "headline": "about $7,600 is in claims over 90 days old right now."
+      }
+    ],
+    "moneyEmpty": null,
+    "overflowX": false,
+    "badText": null,
+    "errors": [],
+    "externalRequests": []
+  },
+  "allUnknown@1440": {
+    "grade": "none",
+    "score": "",
+    "offer": "Your biller should be able to give you these numbers.",
+    "offerButton": "Get my free scorecard built",
+    "figure": "",
+    "switchShown": true,
+    "referralShown": false,
+    "moneyCards": [
+      {
+        "title": "Room to grow",
+        "eyebrow": "Uncollected money · per year · estimate",
+        "lines": [
+          "vs. top-performing practicesabout $14,400per year"
+        ],
+        "headline": null
+      },
+      {
+        "title": "Room to grow",
+        "eyebrow": "Cash that could come in faster · one-time · estimate",
+        "lines": [
+          "vs. top-performing practicesabout $6,000one-time"
+        ],
+        "headline": null
+      }
+    ],
+    "moneyEmpty": null,
+    "overflowX": false,
+    "badText": null,
+    "errors": [],
+    "externalRequests": []
+  },
+  "simulator": {
+    "start": {
+      "letter": "F",
+      "score": "56.3 / 100",
+      "values": [
+        "92.5%",
+        "57.0 days",
+        "25.0%",
+        "12.0%",
+        "84.0%"
+      ],
+      "money": [
+        "Uncollected money · gap to top, per yearabout $39,600",
+        "Cash that could come in faster · gap to top, one-timeabout $54,000",
+        "Denied claims above target · gap to top, per monthabout $5,400",
+        "Money stuck over 90 days · gap to top, right nowabout $17,100"
+      ],
+      "extra": "+$0",
+      "reveal": "56.3 / 100"
+    },
+    "good": {
+      "letter": "B",
+      "score": "85.0 / 100",
+      "values": [
+        "95.0%",
+        "40.0 days",
+        "15.0%",
+        "5.0%",
+        "95.0%"
+      ],
+      "money": [
+        "Uncollected money · gap to top, per yearabout $21,600",
+        "Cash that could come in faster · gap to top, one-timeabout $20,000",
+        "Denied claims above target · gap to top, per monthabout $1,200",
+        "Money stuck over 90 days · gap to top, right nowabout $4,000"
+      ],
+      "extra": "+$18,000",
+      "reveal": "56.3 / 100"
+    },
+    "top": {
+      "letter": "A",
+      "score": "100.0 / 100",
+      "values": [
+        "98.0%",
+        "30.0 days",
+        "10.0%",
+        "3.0%",
+        "97.0%"
+      ],
+      "money": [
+        "Uncollected money · gap to top, per yearAt top level",
+        "Cash that could come in faster · gap to top, one-timeAt top level",
+        "Denied claims above target · gap to top, per monthAt top level",
+        "Money stuck over 90 days · gap to top, right nowAt top level"
+      ],
+      "extra": "+$39,600",
+      "reveal": "56.3 / 100"
+    },
+    "pair": {
+      "letter": "D",
+      "score": "68.0 / 100",
+      "values": [
+        "98.0%",
+        "30.0 days",
+        "10.0%",
+        "20.0%",
+        "80.0%"
+      ],
+      "money": [
+        "Uncollected money · gap to top, per yearAt top level",
+        "Cash that could come in faster · gap to top, one-timeAt top level",
+        "Denied claims above target · gap to top, per monthabout $10,200",
+        "Money stuck over 90 days · gap to top, right nowAt top level"
+      ],
+      "extra": "+$39,600",
+      "reveal": "56.3 / 100"
+    },
+    "errors": []
+  }
+}

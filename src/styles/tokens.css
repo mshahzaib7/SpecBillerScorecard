@@ -1,0 +1,114 @@
+/*
+ * Design tokens. DESIGN-BRIEF.md section 3 (color), 4 (type) and 5 (layout).
+ * Every color in the app comes from here. Two quiet colors set the mood, one loud color sells.
+ */
+:root {
+  /* Quiet 1: Sapphire Blue, the brand. Large flat fields only. */
+  --sapphire: #0042AC;
+  --sapphire-deep: #00307E;
+  --abyss: #001A47;
+
+  /* Quiet 2: Ocean Blue. Only the hero gradient, chart lines, slider tracks. Ink text on it, never white. */
+  --ocean: #00D3FB;
+
+  /* Loud: Neon Jade. Primary action, money the visitor could gain, "Top performer". Ink text on it. */
+  --jade: #83FD80;
+  --jade-press: #6EEB6B;
+
+  /* Neutrals */
+  --ink: #0A1A3A;
+  --slate: #56627D;
+  --paper: #FFFFFF;
+  --mist: #F3F6FB;
+  --rule: #D9E1EE;
+
+  /* Status (kept from the previous build) */
+  --status-problem: #D92D20;  --status-problem-bg: #FEF3F2;
+  --status-watch:   #B54708;  --status-watch-fill: #F79009;  --status-watch-bg: #FFFAEB;
+  --status-good:    #067647;  --status-good-fill: #17B26A;   --status-good-bg: #ECFDF3;
+  --status-top:     var(--jade);
+  /* Problem text on --status-problem-bg is 4.44:1 (fails AA); this darker mix is ~5.3:1. */
+  --status-problem-text: color-mix(in srgb, var(--status-problem) 82%, var(--ink));
+
+  /* The one shadow on the site: the statement sheet is paper on the page. */
+  --shadow-paper: 0 1px 1px rgba(10,26,58,.06), 0 24px 48px -24px rgba(0,26,71,.35);
+
+  /* Typography */
+  --font-sans: 'Archivo', 'Archivo Fallback', sans-serif;
+  --font-mono: 'IBM Plex Mono', 'Plex Mono Fallback', monospace;
+
+  --text-hero: clamp(2.75rem, 1.1rem + 6.2vw, 7.5rem);
+  --text-h2: clamp(2rem, 1.2rem + 3vw, 4rem);
+  --text-h3: clamp(1.125rem, 1rem + 0.5vw, 1.375rem);
+  --text-lead: clamp(1.125rem, 1rem + 0.4vw, 1.375rem);
+  --text-body: 1rem;
+  --text-small: 0.875rem;
+  --text-label: 0.8125rem;
+  --text-figure: clamp(0.9375rem, 0.88rem + 0.25vw, 1.125rem);
+  --text-grade: clamp(6rem, 3rem + 14vw, 14rem);
+  --text-money: clamp(3rem, 1.5rem + 6vw, 7rem);
+
+  /* Layout: 12 columns, max 1280px, gutters 24px (16px on phones). */
+  --container: 80rem;
+  --container-text: 47.5rem;
+  --gutter: 1.5rem;
+  --col-gap: 1.5rem;
+  --section-pad: clamp(4rem, 2.5rem + 5vw, 8rem);
+  --topbar-h: 64px;
+
+  --space-1: 0.25rem; --space-2: 0.5rem; --space-3: 0.75rem; --space-4: 1rem;
+  --space-6: 1.5rem;  --space-8: 2rem;   --space-12: 3rem;   --space-16: 4rem;
+  --space-24: 6rem;   --space-32: 8rem;  --space-40: 10rem;
+
+  /* Shape: color fields and the jade block are square. Controls 6px. Statement sheet 4px. */
+  --radius-control: 6px;
+  --radius-sheet: 4px;
+
+  --ease-out: cubic-bezier(.2,.8,.2,1);
+  --dur-fast: 200ms;
+  --dur: 300ms;
+  --dur-slow: 400ms;
+
+  /*
+   * Legacy aliases. Sections not yet rebuilt (questions, results, closing) still read these.
+   * They now point at the brief palette; each is removed as its section is redesigned.
+   */
+  --color-brand: var(--sapphire);
+  --color-brand-deep: var(--sapphire);
+  --color-brand-deeper: var(--sapphire-deep);
+  --color-sky: var(--ocean);
+  --color-accent: var(--jade);
+  --color-accent-hover: var(--jade-press);
+  --color-on-accent: var(--ink);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--slate);
+  --color-ink-subtle: var(--slate);
+  --color-bg: var(--paper);
+  --color-surface: var(--mist);
+  --color-surface-2: var(--mist);
+  --color-border: var(--rule);
+  --color-on-dark: var(--paper);
+  --color-on-dark-muted: rgba(255,255,255,.85);
+  --color-dark-border: rgba(255,255,255,.24);
+  --color-dark-card: transparent;
+  --shadow-card: none;
+  --shadow-lift: none;
+  --focus-ring: none;
+  --focus-ring-dark: none;
+  --text-body-lg: var(--text-lead);
+  --text-eyebrow: var(--text-label);
+  --text-stat: clamp(2rem, 1.5rem + 2vw, 3.25rem);
+  --radius-input: var(--radius-control);
+  --radius-card: var(--radius-sheet);
+  --radius-panel: var(--radius-sheet);
+  --radius-pill: 999px;
+}
+
+@media (max-width: 639px) {
+  :root { --gutter: 1rem; --col-gap: 1rem; --topbar-h: 56px; }
+}
+
+/* Large monitors and TVs: scale gently so the page fills the screen without stretching line lengths. */
+@media (min-width: 1921px) {
+  html { font-size: clamp(16px, 0.35vw + 10px, 20px); }
+}

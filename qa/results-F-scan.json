@@ -1,0 +1,33 @@
+{
+ "F1 em/en dashes": [],
+ "F1 banned words": [],
+ "F1 exclamation marks": [],
+ "F1 raw placeholders": [],
+ "F1 NaN/undefined/Infinity/null": [],
+ "F2 trial lines not 60": [],
+ "F2 trial with 90": [],
+ "F3 trust words": [],
+ "F4 not in dictionary": [
+  "Shahzaib",
+  "adj",
+  "biller",
+  "biller's",
+  "billers",
+  "telehealth"
+ ],
+ "F5 plain \"vs\" without period": [],
+ "F5 short-month dates": [],
+ "F5 long dates seen": [
+  "November 10, 2026"
+ ],
+ "F5 \"Something else\" lines": [
+  "Something else"
+ ],
+ "F5 \"Other specialty\" lines": [
+  "Prepared November 10, 2026 · Other specialty"
+ ],
+ "F5 old A verdict at 100": [],
+ "F5 top-level verdict shown": [
+  "Your billing is running at a top level. That's rare."
+ ]
+}

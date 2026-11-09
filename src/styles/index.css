@@ -1,0 +1,116 @@
+@import "tailwindcss";
+@import "./tokens.css";
+@import "./fonts.css";
+@import "./brand.css";
+@import "./flow.css";
+@import "./results.css";
+@import "./closing.css";
+
+/* Remove Tailwind's default palette: every color must come from tokens.css. */
+@theme {
+  --color-*: initial;
+}
+
+/* ============================== Base ============================== */
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-padding-top: calc(var(--topbar-h) + 1rem);
+  }
+  body {
+    margin: 0;
+    font-family: var(--font-sans);
+    font-size: var(--text-body);
+    line-height: 1.6;
+    color: var(--ink);
+    background: var(--paper);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    overflow-x: clip;
+  }
+  h1, h2, h3, h4 { text-wrap: balance; margin: 0; }
+  p { text-wrap: pretty; margin: 0; }
+  em, i { font-style: normal; }
+  button { font: inherit; color: inherit; cursor: pointer; }
+  input { font: inherit; color: inherit; }
+  :focus-visible { outline: 2px solid var(--sapphire); outline-offset: 2px; box-shadow: none; }
+  .on-dark :focus-visible, .section--dark :focus-visible { outline-color: var(--paper); }
+  ::selection { background: color-mix(in srgb, var(--ocean) 30%, var(--paper)); color: var(--ink); }
+}
+@media (max-width: 639px) {
+  body { font-size: 1.0625rem; } /* 17px body on phones */
+}
+
+.num, .mono { font-variant-numeric: tabular-nums; }
+.mono { font-family: var(--font-mono); }
+
+.skiplink {
+  position: absolute; left: 1rem; top: -100px; z-index: 100;
+  background: var(--jade); color: var(--ink);
+  padding: 0.75rem 1rem; border-radius: var(--radius-control); font-weight: 600;
+}
+.skiplink:focus { top: 1rem; }
+
+/* ============================== Layout ============================== */
+.container {
+  width: 100%;
+  max-width: calc(var(--container) + 2 * var(--gutter));
+  margin-inline: auto;
+  padding-inline: max(var(--gutter), env(safe-area-inset-left)) max(var(--gutter), env(safe-area-inset-right));
+}
+.container--text { max-width: calc(var(--container-text) + 2 * var(--gutter)); }
+
+.section { position: relative; padding-block: var(--section-pad); }
+.section--light { background: var(--paper); }
+.section--surface { background: var(--mist); }
+.section--dark {
+  color: var(--paper);
+  background: var(--sapphire);
+  overflow: clip;
+  isolation: isolate;
+}
+/* Glows were removed in the redesign (brief section 13). */
+.glow { display: none; }
+
+.section__head { margin-bottom: clamp(2rem, 1.5rem + 2vw, 3.5rem); max-width: var(--container-text); }
+.section__head--center { margin-inline: auto; }
+
+/* ============================== Type ============================== */
+/* Old eyebrow labels: no longer uppercase (brief section 6). Each is replaced section by section in later rounds. */
+.eyebrow {
+  font-family: var(--font-mono); font-size: var(--text-label); font-weight: 400; line-height: 1.4;
+  letter-spacing: 0.01em; color: var(--slate);
+  margin-bottom: 0.75rem;
+}
+.eyebrow--dark { color: rgba(255,255,255,.85); }
+.h2 {
+  font-size: var(--text-h2); font-weight: 700; font-stretch: 108%;
+  line-height: 1; letter-spacing: -0.03em;
+}
+.lead {
+  font-size: var(--text-lead); line-height: 1.5;
+  color: var(--slate); max-width: 60ch; margin-top: 1rem;
+}
+.serif-em { font: inherit; color: inherit; }
+
+/* ============================== Buttons ============================== */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+  min-height: 52px; padding: 0 1.375rem; border-radius: var(--radius-control);
+  font-weight: 600; font-size: 1.0625rem; line-height: 1.2; text-align: center;
+  border: 1px solid transparent; text-decoration: none;
+  transition: transform var(--dur-fast) var(--ease-out), background-color var(--dur-fast) var(--ease-out),
+    border-color var(--dur-fast) var(--ease-out);
+}
+.btn--primary { background: var(--jade); color: var(--ink); }
+.btn--secondary { background: var(--paper); color: var(--sapphire); border-color: var(--rule); }
+.btn--ghost-dark { background: transparent; color: var(--paper); border-color: rgba(255,255,255,.4); }
+.btn--small { min-height: 40px; padding: 0 0.875rem; font-size: 0.9375rem; }
+.btn--block { width: 100%; }
+@media (hover: hover) {
+  .btn--primary:hover { background: var(--jade-press); transform: translateY(-1px); }
+  .btn--secondary:hover { border-color: var(--sapphire); }
+  .btn--ghost-dark:hover { border-color: var(--paper); }
+}
+.btn:active, .btn--primary:active { transform: translateY(1px); }

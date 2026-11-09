@@ -1,0 +1,1388 @@
+[
+  {
+    "case": "golden1",
+    "checks": [
+      {
+        "name": "letter",
+        "pass": true,
+        "expected": "F",
+        "actual": "F"
+      },
+      {
+        "name": "overall score",
+        "pass": true,
+        "expected": "56.3 / 100",
+        "actual": "56.3 / 100"
+      },
+      {
+        "name": "statement values",
+        "pass": true,
+        "expected": [
+          "92.5%",
+          "57.0 days",
+          "25.0%",
+          "12.0%",
+          "84.0%"
+        ],
+        "actual": [
+          "92.5%",
+          "57.0 days",
+          "25.0%",
+          "12.0%",
+          "84.0%"
+        ]
+      },
+      {
+        "name": "statement statuses",
+        "pass": true,
+        "expected": [
+          "Watch",
+          "Watch",
+          "Problem",
+          "Problem",
+          "Problem"
+        ],
+        "actual": [
+          "Watch",
+          "Watch",
+          "Problem",
+          "Problem",
+          "Problem"
+        ]
+      },
+      {
+        "name": "statement Good/Top columns",
+        "pass": true,
+        "expected": [
+          "95%",
+          "40 days",
+          "15%",
+          "5%",
+          "95%",
+          "98%",
+          "30 days",
+          "10%",
+          "3%",
+          "97%"
+        ],
+        "actual": [
+          "95%",
+          "40 days",
+          "15%",
+          "5%",
+          "95%",
+          "98%",
+          "30 days",
+          "10%",
+          "3%",
+          "97%"
+        ]
+      },
+      {
+        "name": "ledger vs Top",
+        "pass": true,
+        "expected": [
+          "$39,600",
+          "$54,000",
+          "$5,400",
+          "$17,100"
+        ],
+        "actual": [
+          "$39,600",
+          "$54,000",
+          "$5,400",
+          "$17,100"
+        ]
+      },
+      {
+        "name": "ledger vs Good",
+        "pass": true,
+        "expected": [
+          "$18,000",
+          "$34,000",
+          "$4,200",
+          "$11,400"
+        ],
+        "actual": [
+          "$18,000",
+          "$34,000",
+          "$4,200",
+          "$11,400"
+        ]
+      },
+      {
+        "name": "over-90 stuck now",
+        "pass": true,
+        "expected": "$28,500",
+        "actual": "$28,500"
+      },
+      {
+        "name": "verdict money line",
+        "pass": true,
+        "expected": "$39,600 a year",
+        "actual": "$39,600 a year"
+      },
+      {
+        "name": "biggest opportunity sentence",
+        "pass": true,
+        "expected": true,
+        "actual": true
+      },
+      {
+        "name": "offer",
+        "pass": true,
+        "expected": "Close the gap to top practices.",
+        "actual": "Close the gap to top practices."
+      },
+      {
+        "name": "no page errors",
+        "pass": true,
+        "expected": [],
+        "actual": []
+      }
+    ]
+  },
+  {
+    "case": "golden2",
+    "checks": [
+      {
+        "name": "letter",
+        "pass": true,
+        "expected": "F",
+        "actual": "F"
+      },
+      {
+        "name": "overall score",
+        "pass": true,
+        "expected": "59.8 / 100",
+        "actual": "59.8 / 100"
+      },
+      {
+        "name": "statement values",
+        "pass": true,
+        "expected": [
+          "92.5%",
+          "57.0 days",
+          "25.0%",
+          "12.0%",
+          "Not reported"
+        ],
+        "actual": [
+          "92.5%",
+          "57.0 days",
+          "25.0%",
+          "12.0%",
+          "Not reported"
+        ]
+      },
+      {
+        "name": "statement statuses",
+        "pass": true,
+        "expected": [
+          "Watch",
+          "Watch",
+          "Problem",
+          "Problem",
+          "Not reported"
+        ],
+        "actual": [
+          "Watch",
+          "Watch",
+          "Problem",
+          "Problem",
+          "Not reported"
+        ]
+      },
+      {
+        "name": "statement Good/Top columns",
+        "pass": true,
+        "expected": [
+          "95%",
+          "40 days",
+          "15%",
+          "5%",
+          "95%",
+          "98%",
+          "30 days",
+          "10%",
+          "3%",
+          "97%"
+        ],
+        "actual": [
+          "95%",
+          "40 days",
+          "15%",
+          "5%",
+          "95%",
+          "98%",
+          "30 days",
+          "10%",
+          "3%",
+          "97%"
+        ]
+      },
+      {
+        "name": "ledger vs Top",
+        "pass": true,
+        "expected": [
+          "$39,600",
+          "$54,000",
+          "$5,400",
+          "$17,100"
+        ],
+        "actual": [
+          "$39,600",
+          "$54,000",
+          "$5,400",
+          "$17,100"
+        ]
+      },
+      {
+        "name": "ledger vs Good",
+        "pass": true,
+        "expected": [
+          "$18,000",
+          "$34,000",
+          "$4,200",
+          "$11,400"
+        ],
+        "actual": [
+          "$18,000",
+          "$34,000",
+          "$4,200",
+          "$11,400"
+        ]
+      },
+      {
+        "name": "over-90 stuck now",
+        "pass": true,
+        "expected": "$28,500",
+        "actual": "$28,500"
+      },
+      {
+        "name": "verdict money line",
+        "pass": true,
+        "expected": "$39,600 a year",
+        "actual": "$39,600 a year"
+      },
+      {
+        "name": "offer",
+        "pass": true,
+        "expected": "Close the gap to top practices.",
+        "actual": "Close the gap to top practices."
+      },
+      {
+        "name": "no page errors",
+        "pass": true,
+        "expected": [],
+        "actual": []
+      }
+    ]
+  },
+  {
+    "case": "golden3",
+    "checks": [
+      {
+        "name": "letter",
+        "pass": true,
+        "expected": "A",
+        "actual": "A"
+      },
+      {
+        "name": "overall score",
+        "pass": true,
+        "expected": "100.0 / 100",
+        "actual": "100.0 / 100"
+      },
+      {
+        "name": "statement values",
+        "pass": true,
+        "expected": [
+          "99.0%",
+          "27.0 days",
+          "9.0%",
+          "2.0%",
+          "98.0%"
+        ],
+        "actual": [
+          "99.0%",
+          "27.0 days",
+          "9.0%",
+          "2.0%",
+          "98.0%"
+        ]
+      },
+      {
+        "name": "statement statuses",
+        "pass": true,
+        "expected": [
+          "Good",
+          "Good",
+          "Good",
+          "Good",
+          "Good"
+        ],
+        "actual": [
+          "Good",
+          "Good",
+          "Good",
+          "Good",
+          "Good"
+        ]
+      },
+      {
+        "name": "statement Good/Top columns",
+        "pass": true,
+        "expected": [
+          "95%",
+          "40 days",
+          "15%",
+          "5%",
+          "95%",
+          "98%",
+          "30 days",
+          "10%",
+          "3%",
+          "97%"
+        ],
+        "actual": [
+          "95%",
+          "40 days",
+          "15%",
+          "5%",
+          "95%",
+          "98%",
+          "30 days",
+          "10%",
+          "3%",
+          "97%"
+        ]
+      },
+      {
+        "name": "ledger vs Top",
+        "pass": true,
+        "expected": [],
+        "actual": []
+      },
+      {
+        "name": "ledger vs Good",
+        "pass": true,
+        "expected": [],
+        "actual": []
+      },
+      {
+        "name": "Top performer mark on all 5 rows",
+        "pass": true,
+        "expected": 5,
+        "actual": 5
+      },
+      {
+        "name": "top-level message when no money rows",
+        "pass": true,
+        "expected": "Your billing is performing at a top level. That's rare. We'd love to help you keep it that way.",
+        "actual": "Your billing is performing at a top level. That's rare. We'd love to help you keep it that way."
+      },
+      {
+        "name": "offer",
+        "pass": true,
+        "expected": "You're performing at a high level. Let's keep it that way.",
+        "actual": "You're performing at a high level. Let's keep it that way."
+      },
+      {
+        "name": "no page errors",
+        "pass": true,
+        "expected": [],
+        "actual": []
+      }
+    ]
+  },
+  {
+    "case": "golden4",
+    "checks": [
+      {
+        "name": "letter",
+        "pass": true,
+        "expected": "A",
+        "actual": "A"
+      },
+      {
+        "name": "overall score",
+        "pass": true,
+        "expected": "91.9 / 100",
+        "actual": "91.9 / 100"
+      },
+      {
+        "name": "statement values",
+        "pass": true,
+        "expected": [
+          "96.0%",
+          "31.5 days",
+          "12.0%",
+          "4.0%",
+          "95.0%"
+        ],
+        "actual": [
+          "96.0%",
+          "31.5 days",
+          "12.0%",
+          "4.0%",
+          "95.0%"
+        ]
+      },
+      {
+        "name": "statement statuses",
+        "pass": true,
+        "expected": [
+          "Good",
+          "Good",
+          "Good",
+          "Good",
+          "Good"
+        ],
+        "actual": [
+          "Good",
+          "Good",
+          "Good",
+          "Good",
+          "Good"
+        ]
+      },
+      {
+        "name": "statement Good/Top columns",
+        "pass": true,
+        "expected": [
+          "95%",
+          "40 days",
+          "15%",
+          "5%",
+          "95%",
+          "98%",
+          "30 days",
+          "10%",
+          "3%",
+          "97%"
+        ],
+        "actual": [
+          "95%",
+          "40 days",
+          "15%",
+          "5%",
+          "95%",
+          "98%",
+          "30 days",
+          "10%",
+          "3%",
+          "97%"
+        ]
+      },
+      {
+        "name": "ledger vs Top",
+        "pass": true,
+        "expected": [
+          "$14,400",
+          "$3,000",
+          "$600",
+          "$1,300"
+        ],
+        "actual": [
+          "$14,400",
+          "$3,000",
+          "$600",
+          "$1,300"
+        ]
+      },
+      {
+        "name": "ledger vs Good",
+        "pass": true,
+        "expected": [
+          "Already at Good",
+          "Already at Good",
+          "Already at Good",
+          "Already at Good"
+        ],
+        "actual": [
+          "Already at Good",
+          "Already at Good",
+          "Already at Good",
+          "Already at Good"
+        ]
+      },
+      {
+        "name": "over-90 stuck now",
+        "pass": true,
+        "expected": "$7,600",
+        "actual": "$7,600"
+      },
+      {
+        "name": "verdict money line",
+        "pass": true,
+        "expected": "$14,400 a year",
+        "actual": "$14,400 a year"
+      },
+      {
+        "name": "offer",
+        "pass": true,
+        "expected": "You're performing at a high level. Let's keep it that way.",
+        "actual": "You're performing at a high level. Let's keep it that way."
+      },
+      {
+        "name": "no page errors",
+        "pass": true,
+        "expected": [],
+        "actual": []
+      }
+    ]
+  },
+  {
+    "case": "healthy",
+    "checks": [
+      {
+        "name": "letter",
+        "pass": true,
+        "expected": "B",
+        "actual": "B"
+      },
+      {
+        "name": "overall score",
+        "pass": true,
+        "expected": "83.2 / 100",
+        "actual": "83.2 / 100"
+      },
+      {
+        "name": "statement values",
+        "pass": true,
+        "expected": [
+          "96.0%",
+          "33.0 days",
+          "12.0%",
+          "8.0%",
+          "90.0%"
+        ],
+        "actual": [
+          "96.0%",
+          "33.0 days",
+          "12.0%",
+          "8.0%",
+          "90.0%"
+        ]
+      },
+      {
+        "name": "statement statuses",
+        "pass": true,
+        "expected": [
+          "Good",
+          "Good",
+          "Good",
+          "Watch",
+          "Watch"
+        ],
+        "actual": [
+          "Good",
+          "Good",
+          "Good",
+          "Watch",
+          "Watch"
+        ]
+      },
+      {
+        "name": "statement Good/Top columns",
+        "pass": true,
+        "expected": [
+          "95%",
+          "40 days",
+          "15%",
+          "5%",
+          "95%",
+          "98%",
+          "30 days",
+          "10%",
+          "3%",
+          "97%"
+        ],
+        "actual": [
+          "95%",
+          "40 days",
+          "15%",
+          "5%",
+          "95%",
+          "98%",
+          "30 days",
+          "10%",
+          "3%",
+          "97%"
+        ]
+      },
+      {
+        "name": "ledger vs Top",
+        "pass": true,
+        "expected": [
+          "$14,400",
+          "$6,000",
+          "$3,000",
+          "$1,300"
+        ],
+        "actual": [
+          "$14,400",
+          "$6,000",
+          "$3,000",
+          "$1,300"
+        ]
+      },
+      {
+        "name": "ledger vs Good",
+        "pass": true,
+        "expected": [
+          "Already at Good",
+          "Already at Good",
+          "$1,800",
+          "Already at Good"
+        ],
+        "actual": [
+          "Already at Good",
+          "Already at Good",
+          "$1,800",
+          "Already at Good"
+        ]
+      },
+      {
+        "name": "over-90 stuck now",
+        "pass": true,
+        "expected": "$7,900",
+        "actual": "$7,900"
+      },
+      {
+        "name": "verdict money line",
+        "pass": true,
+        "expected": "$14,400 a year",
+        "actual": "$14,400 a year"
+      },
+      {
+        "name": "offer",
+        "pass": true,
+        "expected": "Close the gap to top practices.",
+        "actual": "Close the gap to top practices."
+      },
+      {
+        "name": "no page errors",
+        "pass": true,
+        "expected": [],
+        "actual": []
+      }
+    ]
+  },
+  {
+    "case": "all-unknown",
+    "checks": [
+      {
+        "name": "letter",
+        "pass": true,
+        "expected": "No grade",
+        "actual": "No grade"
+      },
+      {
+        "name": "overall score",
+        "pass": true,
+        "expected": "Too few graded numbers",
+        "actual": "Too few graded numbers"
+      },
+      {
+        "name": "statement values",
+        "pass": true,
+        "expected": [
+          "92.5%",
+          "57.0 days",
+          "Not reported",
+          "Not reported",
+          "Not reported"
+        ],
+        "actual": [
+          "92.5%",
+          "57.0 days",
+          "Not reported",
+          "Not reported",
+          "Not reported"
+        ]
+      },
+      {
+        "name": "statement statuses",
+        "pass": true,
+        "expected": [
+          "Watch",
+          "Watch",
+          "Not reported",
+          "Not reported",
+          "Not reported"
+        ],
+        "actual": [
+          "Watch",
+          "Watch",
+          "Not reported",
+          "Not reported",
+          "Not reported"
+        ]
+      },
+      {
+        "name": "statement Good/Top columns",
+        "pass": true,
+        "expected": [
+          "95%",
+          "40 days",
+          "15%",
+          "5%",
+          "95%",
+          "98%",
+          "30 days",
+          "10%",
+          "3%",
+          "97%"
+        ],
+        "actual": [
+          "95%",
+          "40 days",
+          "15%",
+          "5%",
+          "95%",
+          "98%",
+          "30 days",
+          "10%",
+          "3%",
+          "97%"
+        ]
+      },
+      {
+        "name": "ledger vs Top",
+        "pass": true,
+        "expected": [
+          "$39,600",
+          "$54,000"
+        ],
+        "actual": [
+          "$39,600",
+          "$54,000"
+        ]
+      },
+      {
+        "name": "ledger vs Good",
+        "pass": true,
+        "expected": [
+          "$18,000",
+          "$34,000"
+        ],
+        "actual": [
+          "$18,000",
+          "$34,000"
+        ]
+      },
+      {
+        "name": "verdict money line",
+        "pass": true,
+        "expected": "$39,600 a year",
+        "actual": "$39,600 a year"
+      },
+      {
+        "name": "offer",
+        "pass": true,
+        "expected": "Your biller should be able to give you these numbers.",
+        "actual": "Your biller should be able to give you these numbers."
+      },
+      {
+        "name": "\"worth asking about\" note visible on the results statement without clicking",
+        "pass": true,
+        "expected": true,
+        "actual": true
+      },
+      {
+        "name": "no page errors",
+        "pass": true,
+        "expected": [],
+        "actual": []
+      }
+    ]
+  },
+  {
+    "case": "qa1",
+    "checks": [
+      {
+        "name": "letter",
+        "pass": true,
+        "expected": "C",
+        "actual": "C"
+      },
+      {
+        "name": "overall score",
+        "pass": true,
+        "expected": "73.5 / 100",
+        "actual": "73.5 / 100"
+      },
+      {
+        "name": "statement values",
+        "pass": true,
+        "expected": [
+          "93.0%",
+          "45.0 days",
+          "18.0%",
+          "7.0%",
+          "91.0%"
+        ],
+        "actual": [
+          "93.0%",
+          "45.0 days",
+          "18.0%",
+          "7.0%",
+          "91.0%"
+        ]
+      },
+      {
+        "name": "statement statuses",
+        "pass": true,
+        "expected": [
+          "Watch",
+          "Watch",
+          "Watch",
+          "Watch",
+          "Watch"
+        ],
+        "actual": [
+          "Watch",
+          "Watch",
+          "Watch",
+          "Watch",
+          "Watch"
+        ]
+      },
+      {
+        "name": "statement Good/Top columns",
+        "pass": true,
+        "expected": [
+          "95%",
+          "40 days",
+          "15%",
+          "5%",
+          "95%",
+          "98%",
+          "30 days",
+          "10%",
+          "3%",
+          "97%"
+        ],
+        "actual": [
+          "95%",
+          "40 days",
+          "15%",
+          "5%",
+          "95%",
+          "98%",
+          "30 days",
+          "10%",
+          "3%",
+          "97%"
+        ]
+      },
+      {
+        "name": "ledger vs Top",
+        "pass": true,
+        "expected": [
+          "$30,000",
+          "$25,000",
+          "$2,000",
+          "$6,000"
+        ],
+        "actual": [
+          "$30,000",
+          "$25,000",
+          "$2,000",
+          "$6,000"
+        ]
+      },
+      {
+        "name": "ledger vs Good",
+        "pass": true,
+        "expected": [
+          "$12,000",
+          "$8,300",
+          "$1,000",
+          "$2,300"
+        ],
+        "actual": [
+          "$12,000",
+          "$8,300",
+          "$1,000",
+          "$2,300"
+        ]
+      },
+      {
+        "name": "over-90 stuck now",
+        "pass": true,
+        "expected": "$13,500",
+        "actual": "$13,500"
+      },
+      {
+        "name": "verdict money line",
+        "pass": true,
+        "expected": "$30,000 a year",
+        "actual": "$30,000 a year"
+      },
+      {
+        "name": "biggest opportunity sentence",
+        "pass": true,
+        "expected": true,
+        "actual": true
+      },
+      {
+        "name": "biggest opportunity mark on row",
+        "pass": true,
+        "expected": "First-pass rate",
+        "actual": "First-pass rate"
+      },
+      {
+        "name": "offer",
+        "pass": true,
+        "expected": "Close the gap to top practices.",
+        "actual": "Close the gap to top practices."
+      },
+      {
+        "name": "no page errors",
+        "pass": true,
+        "expected": [],
+        "actual": []
+      }
+    ]
+  },
+  {
+    "case": "qa2",
+    "checks": [
+      {
+        "name": "letter",
+        "pass": true,
+        "expected": "D",
+        "actual": "D"
+      },
+      {
+        "name": "overall score",
+        "pass": true,
+        "expected": "62.9 / 100",
+        "actual": "62.9 / 100"
+      },
+      {
+        "name": "statement values",
+        "pass": true,
+        "expected": [
+          "93.0%",
+          "117.0 days",
+          "40.4%",
+          "9.0%",
+          "84.0%"
+        ],
+        "actual": [
+          "93.0%",
+          "117.0 days",
+          "40.4%",
+          "9.0%",
+          "84.0%"
+        ]
+      },
+      {
+        "name": "statement statuses",
+        "pass": true,
+        "expected": [
+          "Watch",
+          "Not graded",
+          "Not graded",
+          "Watch",
+          "Problem"
+        ],
+        "actual": [
+          "Watch",
+          "Not graded",
+          "Not graded",
+          "Watch",
+          "Problem"
+        ]
+      },
+      {
+        "name": "statement Good/Top columns",
+        "pass": true,
+        "expected": [
+          "95%",
+          "40 days",
+          "15%",
+          "5%",
+          "95%",
+          "98%",
+          "30 days",
+          "10%",
+          "3%",
+          "97%"
+        ],
+        "actual": [
+          "95%",
+          "40 days",
+          "15%",
+          "5%",
+          "95%",
+          "98%",
+          "30 days",
+          "10%",
+          "3%",
+          "97%"
+        ]
+      },
+      {
+        "name": "ledger vs Top",
+        "pass": true,
+        "expected": [
+          "$48,000",
+          "$4,800"
+        ],
+        "actual": [
+          "$48,000",
+          "$4,800"
+        ]
+      },
+      {
+        "name": "ledger vs Good",
+        "pass": true,
+        "expected": [
+          "$19,200",
+          "$3,200"
+        ],
+        "actual": [
+          "$19,200",
+          "$3,200"
+        ]
+      },
+      {
+        "name": "verdict money line",
+        "pass": true,
+        "expected": "$48,000 a year",
+        "actual": "$48,000 a year"
+      },
+      {
+        "name": "only these money rows (PI rule hides the others)",
+        "pass": true,
+        "expected": [
+          "Uncollected money",
+          "Denied claims above target"
+        ],
+        "actual": [
+          "Uncollected money",
+          "Denied claims above target"
+        ]
+      },
+      {
+        "name": "offer",
+        "pass": true,
+        "expected": "Close the gap to top practices.",
+        "actual": "Close the gap to top practices."
+      },
+      {
+        "name": "PI explanation shown (on expanding the Not graded row, per brief 7.7)",
+        "pass": true,
+        "expected": true,
+        "actual": true
+      },
+      {
+        "name": "note: PI explanation visible before expanding",
+        "pass": true,
+        "expected": "info",
+        "actual": false
+      },
+      {
+        "name": "no page errors",
+        "pass": true,
+        "expected": [],
+        "actual": []
+      }
+    ]
+  },
+  {
+    "case": "qa3",
+    "checks": [
+      {
+        "name": "letter",
+        "pass": true,
+        "expected": "B",
+        "actual": "B"
+      },
+      {
+        "name": "overall score",
+        "pass": true,
+        "expected": "85.0 / 100",
+        "actual": "85.0 / 100"
+      },
+      {
+        "name": "statement values",
+        "pass": true,
+        "expected": [
+          "95.0%",
+          "40.0 days",
+          "15.0%",
+          "5.0%",
+          "95.0%"
+        ],
+        "actual": [
+          "95.0%",
+          "40.0 days",
+          "15.0%",
+          "5.0%",
+          "95.0%"
+        ]
+      },
+      {
+        "name": "statement statuses",
+        "pass": true,
+        "expected": [
+          "Good",
+          "Good",
+          "Good",
+          "Good",
+          "Good"
+        ],
+        "actual": [
+          "Good",
+          "Good",
+          "Good",
+          "Good",
+          "Good"
+        ]
+      },
+      {
+        "name": "statement Good/Top columns",
+        "pass": true,
+        "expected": [
+          "95%",
+          "40 days",
+          "15%",
+          "5%",
+          "95%",
+          "98%",
+          "30 days",
+          "10%",
+          "3%",
+          "97%"
+        ],
+        "actual": [
+          "95%",
+          "40 days",
+          "15%",
+          "5%",
+          "95%",
+          "98%",
+          "30 days",
+          "10%",
+          "3%",
+          "97%"
+        ]
+      },
+      {
+        "name": "ledger vs Top",
+        "pass": true,
+        "expected": [
+          "$25,900",
+          "$24,000",
+          "$1,400",
+          "$4,800"
+        ],
+        "actual": [
+          "$25,900",
+          "$24,000",
+          "$1,400",
+          "$4,800"
+        ]
+      },
+      {
+        "name": "ledger vs Good",
+        "pass": true,
+        "expected": [
+          "Already at Good",
+          "Already at Good",
+          "Already at Good",
+          "Already at Good"
+        ],
+        "actual": [
+          "Already at Good",
+          "Already at Good",
+          "Already at Good",
+          "Already at Good"
+        ]
+      },
+      {
+        "name": "over-90 stuck now",
+        "pass": true,
+        "expected": "$14,400",
+        "actual": "$14,400"
+      },
+      {
+        "name": "biggest opportunity mark on row",
+        "pass": true,
+        "expected": "Net collection rate",
+        "actual": "Net collection rate"
+      },
+      {
+        "name": "every money row is Room to grow",
+        "pass": true,
+        "expected": 4,
+        "actual": 4
+      },
+      {
+        "name": "offer",
+        "pass": true,
+        "expected": "Close the gap to top practices.",
+        "actual": "Close the gap to top practices."
+      },
+      {
+        "name": "what-if at today / Good levels (already at Good)",
+        "pass": true,
+        "expected": [
+          "B",
+          "85.0 / 100"
+        ],
+        "actual": [
+          "B",
+          "85.0 / 100"
+        ]
+      },
+      {
+        "name": "what-if at Top levels",
+        "pass": true,
+        "expected": [
+          "A",
+          "100.0 / 100"
+        ],
+        "actual": [
+          "A",
+          "100.0 / 100"
+        ]
+      },
+      {
+        "name": "no page errors",
+        "pass": true,
+        "expected": [],
+        "actual": []
+      }
+    ]
+  },
+  {
+    "case": "qa4",
+    "checks": [
+      {
+        "name": "letter",
+        "pass": true,
+        "expected": "No grade",
+        "actual": "No grade"
+      },
+      {
+        "name": "overall score",
+        "pass": true,
+        "expected": "Too few graded numbers",
+        "actual": "Too few graded numbers"
+      },
+      {
+        "name": "statement values",
+        "pass": true,
+        "expected": [
+          "92.0%",
+          "45.0 days",
+          "Not reported",
+          "Not reported",
+          "Not reported"
+        ],
+        "actual": [
+          "92.0%",
+          "45.0 days",
+          "Not reported",
+          "Not reported",
+          "Not reported"
+        ]
+      },
+      {
+        "name": "statement statuses",
+        "pass": true,
+        "expected": [
+          "Watch",
+          "Watch",
+          "Not reported",
+          "Not reported",
+          "Not reported"
+        ],
+        "actual": [
+          "Watch",
+          "Watch",
+          "Not reported",
+          "Not reported",
+          "Not reported"
+        ]
+      },
+      {
+        "name": "statement Good/Top columns",
+        "pass": true,
+        "expected": [
+          "95%",
+          "40 days",
+          "15%",
+          "5%",
+          "95%",
+          "98%",
+          "30 days",
+          "10%",
+          "3%",
+          "97%"
+        ],
+        "actual": [
+          "95%",
+          "40 days",
+          "15%",
+          "5%",
+          "95%",
+          "98%",
+          "30 days",
+          "10%",
+          "3%",
+          "97%"
+        ]
+      },
+      {
+        "name": "ledger vs Top",
+        "pass": true,
+        "expected": [
+          "$28,800",
+          "$20,000"
+        ],
+        "actual": [
+          "$28,800",
+          "$20,000"
+        ]
+      },
+      {
+        "name": "ledger vs Good",
+        "pass": true,
+        "expected": [
+          "$14,400",
+          "$6,700"
+        ],
+        "actual": [
+          "$14,400",
+          "$6,700"
+        ]
+      },
+      {
+        "name": "offer",
+        "pass": true,
+        "expected": "Your biller should be able to give you these numbers.",
+        "actual": "Your biller should be able to give you these numbers."
+      },
+      {
+        "name": "\"worth asking about\" note visible on the results statement without clicking",
+        "pass": true,
+        "expected": true,
+        "actual": true
+      },
+      {
+        "name": "no page errors",
+        "pass": true,
+        "expected": [],
+        "actual": []
+      }
+    ]
+  }
+]

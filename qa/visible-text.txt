@@ -1,0 +1,531 @@
+Skip to the questions
+Shahzaib Khan
+Medical billing
+How we calculate
+Get my scorecard
+Your biller says everything's fine.
+See the numbers in 3 minutes.
+Answer a few questions from two reports your biller already has. You'll get a grade, a line-by-line statement, and what the gap is costing you each year.
+What kind of practice do you run?
+Behavioral and mental health
+Primary care and general medicine
+Accident and personal injury
+Something else
+Free. No sign-up. Your numbers stay on your device unless you choose to send them.
+Example practice with sample numbers. Grade F, 56.3 out of 100. Net collection rate 92.5%, Watch. Days in AR 57 days, Watch. AR over 90 days 25.0%, Problem. Denial rate 12.0%, Problem. First-pass rate 84.0%, Problem. Yearly gap versus top practices $39,600.
+Example practice
+Sample numbers
+Pause
+F
+56.3 / 100
+Net collection rate
+92.5%
+Watch
+Days in AR
+57 days
+AR over 90 days
+25.0%
+Problem
+Denial rate
+12.0%
+First-pass rate
+84.0%
+Yearly gap vs. top practices
+$39,600
+SK
+Built by Muhammad Shahzaib Khan. My team works on billing for practices in Florida and South Carolina.
+5
+The same five numbers well-run practices review every month.
+2
+Reports your biller can send you today: a charges and payments summary, and an AR aging report.
+0
+Numbers sent anywhere unless you ask for your report.
+Ask your biller for two reports: a charges and payments summary for the last 3 full months, and an AR aging report as of today. A good biller can send both in minutes.
+Question 1 of 10
+This tailors what we tell you about your numbers.
+Next
+Enter to continue · Shift + Enter to go back
+Your statement
+Prepared November 10, 2026
+Your lines appear here as you answer.
+Estimates for information only. Not financial, legal or accounting advice.
+© 2026 Shahzaib Khan
+Billing Scorecard · Shahzaib Khan
+Page
+Pause the example
+About this scorecard
+Progress
+Your statement so far
+Footer
+Question 1 of 9
+What's been bothering you about billing?
+Pick any, or skip.
+Insurance pays too slowly
+Too many denied claims
+Old unpaid claims piling up
+Not sure we're collecting everything we're owed
+Patients not paying their balances
+My biller doesn't send clear reports
+I don't know if my biller is doing a good job
+Front desk / staff overwhelmed with billing work
+Skip
+Prepared November 10, 2026 · Behavioral and mental health
+Question 2 of 9
+What did you bill in the last 3 full months?
+Total charges, before any insurance discounts. From your charges and payments summary.
+Charges, 3 months
+$
+Please enter this number.
+Where's this?
+Back
+Charges and payments summary
+Last 3 full months · Example
+Month	Charges	Contractual adj.	Payments
+August	$98,400	$39,500	$54,900
+September	$101,250	$40,800	$55,900
+October	$100,350	$39,700	$55,700
+Total	$300,000
+(use this)
+$120,000	$166,500
+Use total charges for all 3 months.
+Your biller's report may look different. The line names are usually the same.
+$300,000
+Question 3 of 9
+How much came off in contractual adjustments?
+The discounts your payer contracts require. Leave out bad debt and courtesy write-offs.
+Contractual adjustments
+Month	Charges	Contractual adj.	Other adj.
+August	$98,400	$39,500	$1,200
+September	$101,250	$40,800	$900
+October	$100,350	$39,700	$1,400
+Total	$300,000	$120,000
+$3,500
+Use contractual adjustments only. Leave out other adjustments like bad debt.
+$120,000
+Question 4 of 9
+How much was actually paid in those 3 months?
+Insurance payments plus patient payments, added together.
+Payments received
+Month	Charges	Insurance paid	Patient paid
+August	$98,400	$49,800	$5,100
+September	$101,250	$51,000	$4,900
+October	$100,350	$50,400	$5,300
+Total	$300,000	$151,200
+$15,300
+Add these two: $151,200 + $15,300 = $166,500.
+$166,500
+Question 5 of 9
+How many claims went out in those 3 months?
+Every claim sent to a payer, from your claims or clearinghouse report.
+Claims submitted
+Claims summary
+Line	Claims
+Claims submitted	1,500
+Rejected by clearinghouse	45
+Denied by payer, first submission	135
+Paid on first submission	1,260
+Paid after correction	38
+Still in process	22
+Use the number of claims submitted.
+1,500
+Question 6 of 9
+How many came back denied or rejected the first time?
+Payer denials plus clearinghouse rejections, on first submission.
+Denied or rejected
+I don't have this number
+Add these two: 45 + 135 = 180.
+180
+Question 7 of 9
+How many were paid on the first try?
+Paid with no corrections and no resubmission. Some reports call these clean claims.
+Paid on first try
+Use claims paid on first submission. Leave out claims paid after a correction.
+1,260
+Question 8 of 9
+How much is still unpaid today?
+The grand total on your AR aging report, insurance and patient together.
+Total AR today
+AR aging report
+As of today · Example
+Current	31 to 60	61 to 90	91 to 120	120+	Total
+Insurance	$70,200	$34,100	$22,800	$18,300	$20,600	$166,000
+Patient	$7,800	$4,400	$3,200	$3,200	$5,400	$24,000
+Total	$78,000	$38,500	$26,000	$21,500	$26,000	$190,000
+Use the grand total.
+$190,000
+57.0 days
+Question 9 of 9
+How much of that is older than 90 days?
+On the same aging report, the columns past 90 days.
+Unpaid over 90 days
+Total	$78,000	$38,500	$26,000	$21,500
+$26,000
+Add these two columns: $21,500 + $26,000 = $47,500.
+See my scorecard
+$47,500
+Update my scorecard
+Your grade: F, 56.3 out of 100.
+Money is leaking out of your practice.
+$39,600 a year
+What you'd collect on top of today if your numbers matched top practices. An estimate based on what you entered.
+Your biggest opportunity: first-pass rate, 84% vs. 97% at top practices.
+Show me my 3 fixes
+See the full statement
+Your billing statement
+Number
+You
+Good
+Top
+Status
+95%
+98%
+40 days
+30 days
+15%
+10%
+5%
+3%
+97%
+Biggest opportunity
+What this means
+84.0% of your claims are paid the first time they are sent, with no rework.
+Every claim that needs rework costs staff time and delays payment.
+Why it usually happens
+Authorization numbers missing from claims, or provider details that do not match payer records.
+Claims sent without being checked against payer rules first.
+Patient demographics or insurance details entered incorrectly.
+How we fix it
+Make sure authorization and provider details are on every claim.
+Check every claim against payer rules before it goes out.
+Use what was learned from past denials to stop the same errors.
+Where the money is.
+Compare to:
+Top practices
+Good target
+Uncollected money
+per year
+How we got this
+Cash that could come in faster
+one-time
+$54,000
+Denied claims above target
+per month
+$5,400
+Money stuck over 90 days
+right now
+$17,100
+$28,500 is in claims over 90 days old right now.
+Separate estimates with different time units, so they're never added together.
+Drag to see what better billing pays.
+Slide from your numbers today to top-practice levels. Every number moves by the same share, and the grade and money update with the same math as your statement.
+Move every number toward top-practice levels
+Good levels
+Today
+Adjust each number
+This shows what changes if your numbers reach these levels. Actual results depend on your payers, specialty and processes.
++$0 a year
+Drag the slider to see what changes.
+Recommended for your numbers
+Close the gap to top practices.
+On a free 20-minute call, we'll show you the 3 fixes that close your gap. Then try us for 60 days, with no long-term contract. Cancel anytime.
+Your yearly gap vs. top practices
+You told us
+We follow up on every unpaid claim on a set schedule, not when someone remembers.
+We check what was paid against what should have been paid.
+What happens on the call
+1
+We go through your statement together.
+We show you the 3 fixes that matter most for your practice.
+3
+You leave with a plan, whether you hire us or not.
+Switching billers? We handle the whole move. No gap in claims, and no extra work for your staff.
+Get your full report and fix plan by email.
+Name
+Practice name
+Email
+Phone (optional)
+Website
+Include my scorecard numbers so you can prepare for our call.
+Send me my report
+Only your report and one follow-up. No spam.
+Questions owners ask.
+Do I have to sign a long contract?
+What does it cost?
+Is my patient data safe?
+What if my biller is doing a good job?
+How does switching work?
+Who will work on my account?
+You didn't open your practice to chase insurance companies. That's our job. We follow up on every unpaid claim, fix denials so they stop coming back, and send you these same five numbers every month. You'll always know where your money is and what we're doing about it.
+Muhammad Shahzaib Khan
+Medical billing for practices in Florida and South Carolina
+Book my free billing review
+Save as PDF
+Your grade is F, 56.3 out of 100. Yearly gap vs. top practices: $39,600.
+Compare to
+0% of the way to top practices. Grade F, 56.3 out of 100.
+Your numbers at this point
+Optional
+After insurance contract discounts, you collect 92.5% of the money you're owed.
+The rest is still unpaid, or was written off when it could have been collected.
+Missing or expired authorizations, and visit limits that run out mid-treatment.
+Denied or underpaid claims that are never appealed.
+Claims that pass the filing deadline before anyone follows up.
+Track authorizations and visit limits so sessions are covered before they happen.
+Check each payment against what the contract says should have been paid.
+Appeal underpaid and denied claims before the deadlines close.
+On average, it takes about 57.0 days from the date of service until you are paid.
+Every extra day is money your practice has earned but cannot use yet.
+Waiting on authorizations, or on paperwork from the provider, before claims can go out.
+Claims sent days or weeks after the visit.
+Unpaid claims that are not followed up on a fixed schedule.
+Get authorizations and provider paperwork in order before claims are due.
+Send claims within a day or two of the visit.
+Follow up on every unpaid claim on a set schedule, starting at 30 days.
+25.0% of the money you're owed is more than 90 days old.
+The older a claim gets, the harder it is to collect.
+Claims stuck on authorization or credentialing problems.
+Old claims nobody is working, because new claims come first.
+Denials that were never reworked and resubmitted.
+Clear authorization and credentialing problems that hold up whole groups of claims.
+Work old AR oldest-first, before filing deadlines close.
+Find the root cause of each stuck claim, then fix and resubmit it.
+About 12.0% of your claims are denied or rejected the first time they are sent.
+Most denials can be fixed and recovered, but each one delays your cash and costs staff time.
+Missing authorizations, wrong telehealth codes or place of service, or provider credentialing gaps.
+Eligibility or insurance details that are wrong or out of date.
+Coding or modifier errors.
+Check authorization, telehealth and credentialing rules for each payer.
+Find the root cause of each denial so it stops repeating.
+Check eligibility and claim details before claims go out.
+Net charges for 3 months × 4 × (target rate − your rate) ÷ 100
+vs. top-performing practices: $180,000 × 4 × (98 − 92.5) ÷ 100 = about $39,600 per year
+Rounded to the nearest $100. An estimate, not a promise.
+See every formula
+(Your days in AR − target days) × average daily charges × net ratio. Average daily charges = charges ÷ 90 days; net ratio = net charges ÷ charges.
+vs. top-performing practices: (57 − 30) × $3,333 × 0.6 = about $54,000, one time
+(Denied claims − target % × claims submitted) ÷ 3 months × average net claim value. Average net claim value = (charges ÷ claims submitted) × net ratio.
+vs. top-performing practices: (180 − 3% × 1,500) ÷ 3 = 45 claims per month × $120 = about $5,400 per month
+Headline: AR over 90 days × net ratio. Gap: (AR over 90 days − target % × total AR) × net ratio.
+Stuck right now: $47,500 × 0.6 = about $28,500
+vs. top-performing practices: ($47,500 − 10% × $190,000) × 0.6 = about $17,100
+$18,000
+vs. Good target: $180,000 × 4 × (95 − 92.5) ÷ 100 = about $18,000 per year
+$34,000
+vs. Good target: (57 − 40) × $3,333 × 0.6 = about $34,000, one time
+$4,200
+vs. Good target: (180 − 5% × 1,500) ÷ 3 = 35 claims per month × $120 = about $4,200 per month
+$11,400
+vs. Good target: ($47,500 − 15% × $190,000) × 0.6 = about $11,400
+95.3%
+43.5 days
+17.5%
+7.5%
+90.5%
+Hide the single sliders
+Yours 92.5% · Good 95% · Top 98%
+Yours 57.0 days · Good 40 days · Top 30 days
+Yours 25.0% · Good 15% · Top 10%
+Yours 12.0% · Good 5% · Top 3%
+Yours 84.0% · Good 95% · Top 97%
+C
+76.8 / 100
++$19,800 a year
+more collected than today
+50% of the way to top practices. Grade C, 76.8 out of 100.
+No. Try us for 60 days. If it's not working, you can leave.
+We charge a percentage of what we actually collect for you, so we only get paid when you get paid. You'll get an exact quote on the call, based on your specialty and claim volume.
+This tool never asks for patient information. Before we touch any real claims, we sign a Business Associate Agreement with you.
+Then your scorecard will say so, and you should keep them. We'd rather earn your trust than talk you into a switch.
+We take over from your current biller, set up access, and work any open claims so nothing falls through the gap.
+My team. You'll have one person who knows your practice and answers your emails.
+Close
+The 90-day method
+Your report numbers cover the last 3 full months, which we treat as 90 days. This is the standard 3-month method for days in AR. Yearly figures multiply the 3 months by 4.
+Formulas
+Net charges
+charges − contractual adjustments
+Net ratio
+net charges ÷ charges
+Average daily charges
+charges ÷ 90
+payments × 100 ÷ net charges
+total AR × 90 ÷ charges
+AR older than 90 days × 100 ÷ total AR
+claims denied × 100 ÷ claims submitted
+claims paid on the first try × 100 ÷ claims submitted
+Money estimates
+Uncollected money, per year
+net charges × 4 × (target − your rate) ÷ 100
+Cash that could come in faster, one-time
+(your days in AR − target) × average daily charges × net ratio
+Denied claims above target, per month
+(claims denied − target % × claims submitted) ÷ 3 × (charges ÷ claims submitted) × net ratio
+Money stuck over 90 days, right now
+AR over 90 days × net ratio. Gap: (AR over 90 − target % × total AR) × net ratio
+Each estimate is compared with the Good target and with the top-performer target. Estimates are rounded to the nearest $100 and are never added together.
+Targets, score anchors and weights
+Number	Good	Top	Anchors (value → score)	Weight
+Net collection rate	95%	98%	80→0, 90→60, 95→85, 98→100	30
+Days in AR	40 days	30 days	30→100, 40→85, 60→60, 90→0	20
+AR over 90 days	15%	10%	10→100, 15→85, 20→60, 40→0	15
+Denial rate	5%	3%	3→100, 5→85, 10→60, 20→0	20
+First-pass rate	95%	97%	75→0, 90→60, 95→85, 97→100	15
+Grading
+Scores move in a straight line between anchors and stop at 0 and 100. A score of 85 or more is Good, 60 up to 85 is Watch, and below 60 is Problem. The overall score is the weighted average of the numbers you entered, so a missing number never counts as zero. Letters: A 90+, B 80+, C 70+, D 60+, F below 60. With fewer than 3 numbers we don't give a grade.
+Source
+Targets are commonly cited industry benchmarks for US physician practices. 'Top performer' reflects best-in-class levels. Benchmarks vary by specialty and payer mix.
+Please enter your name.
+Please enter your practice name.
+Please enter a valid email, like name@practice.com.
+Please enter a 10-digit US phone number, or leave it empty.
+Thanks, Dana. Your report is on its way.
+Want to talk it through sooner? Pick a time below.
+Book a time for your free billing review
+Prepared November 10, 2026 · Accident and personal injury
+Question 2 of 10
+$400,000
+Question 3 of 10
+$160,000
+Question 4 of 10
+$223,200
+93.0%
+Question 5 of 10
+800
+Question 6 of 10
+72
+9.0%
+Question 7 of 10
+672
+Question 8 of 10
+Does your AR include attorney, LOP or PIP pending cases?
+Those cases often take months to settle, which changes how we grade your AR.
+Yes, it does
+No, health insurance only
+Question 9 of 10
+$520,000
+117.0 days
+Not graded
+Question 10 of 10
+$210,000
+40.4%
+D
+62.9 / 100
+Your grade: D, 62.9 out of 100.
+Your billing needs attention.
+$48,000 a year
+Claim forms missing accident details, dates of injury or claim numbers.
+Include the accident details and claim numbers each payer needs.
+$48,000
+$4,800
+Your grade is D, 62.9 out of 100. Yearly gap vs. top practices: $48,000.
+0% of the way to top practices. Grade D, 62.9 out of 100.
+After insurance contract discounts, you collect 93.0% of the money you're owed.
+PIP benefits running out, and liability or LOP balances that are not followed through to settlement.
+Track PIP limits and keep attorney and LOP balances followed up until settlement.
+Attorney and LOP cases naturally take months to settle, so Days in AR and AR over 90 days can't be fairly graded here. For a fair grade, enter health-insurance numbers only.
+On average, it takes about 117.0 days from the date of service until you are paid.
+Waiting on PIP or liability carriers, which pay more slowly than health insurance.
+Keep a separate follow-up schedule for PIP and liability carriers.
+40.4% of the money you're owed is more than 90 days old.
+Attorney and LOP cases waiting on settlement, mixed in with regular insurance AR.
+Separate attorney and LOP cases so insurance AR gets worked on its own schedule.
+About 9.0% of your claims are denied or rejected the first time they are sent.
+Wrong payer order between PIP, health insurance and liability coverage.
+Confirm which coverage pays first before billing.
+vs. top-performing practices: $240,000 × 4 × (98 − 93) ÷ 100 = about $48,000 per year
+vs. top-performing practices: (72 − 3% × 800) ÷ 3 = 16 claims per month × $300 = about $4,800 per month
+$19,200
+vs. Good target: $240,000 × 4 × (95 − 93) ÷ 100 = about $19,200 per year
+$3,200
+vs. Good target: (72 − 5% × 800) ÷ 3 = 10.7 claims per month × $300 = about $3,200 per month
+95.5%
+6.0%
+Yours 93.0% · Good 95% · Top 98%
+Yours 9.0% · Good 5% · Top 3%
+79.4 / 100
++$24,000 a year
+50% of the way to top practices. Grade C, 79.4 out of 100.
+Prepared November 10, 2026 · Other specialty
+$200,000
+$80,000
+$110,400
+92.0%
+500
+A good biller reports this every month. Worth asking about.
+Not reported
+$100,000
+45.0 days
+No grade
+Too few graded numbers
+No letter grade yet.
+We need a few more of your numbers for a letter grade. Here's what we can already see.
+$28,800 a year
+Your biggest opportunity: net collection rate, 92% vs. 98% at top practices.
+Get my free scorecard built
+After insurance contract discounts, you collect 92.0% of the money you're owed.
+Payers paying below the contracted rate, and nobody checking the payment against the contract.
+Flag payers that keep underpaying and escalate them.
+$28,800
+$20,000
+Your biller should be able to give you these numbers.
+Send us your two standard reports and we'll build your complete scorecard for free within 48 hours, with every number filled in and explained.
+Your biggest gap vs. top practices
+Not enough numbers for a letter grade. Yearly gap vs. top practices: $28,800.
+0% of the way to top practices. No grade.
+On average, it takes about 45.0 days from the date of service until you are paid.
+Eligibility not checked before the visit, so claims bounce and have to be redone.
+Check eligibility before each visit so claims go out right the first time.
+A good biller reports this number every month. If you don't have it, that's worth asking about.
+Patient balances with no statements or follow-up.
+Set up clear patient statements and a follow-up routine.
+Bundling and medical-necessity edits, and diagnosis codes that do not support the service.
+Review coding against payer edits before submission.
+Missing referrals, or modifiers that payers reject.
+Confirm referrals and modifiers before submission.
+vs. top-performing practices: $120,000 × 4 × (98 − 92) ÷ 100 = about $28,800 per year
+vs. top-performing practices: (45 − 30) × $2,222 × 0.6 = about $20,000, one time
+$14,400
+vs. Good target: $120,000 × 4 × (95 − 92) ÷ 100 = about $14,400 per year
+$6,700
+vs. Good target: (45 − 40) × $2,222 × 0.6 = about $6,700, one time
+95.0%
+37.5 days
+Yours 92.0% · Good 95% · Top 98%
+Yours 45.0 days · Good 40 days · Top 30 days
++$14,400 a year
+50% of the way to top practices. No grade.
+$178,200
+99.0%
+30
+2.0%
+1,470
+98.0%
+$90,000
+27.0 days
+$8,100
+A
+100.0 / 100
+Your grade: A, 100.0 out of 100.
+Your billing is running at a top level. That's rare.
+We'd love to help you keep it that way.
+Get my free quarterly check-up
+Top performer
+Your billing is performing at a top level. That's rare. We'd love to help you keep it that way.
+You're performing at a high level. Let's keep it that way.
+Get a free quarterly billing check-up, so you catch problems before they cost you.
+Know a practice that's struggling with billing? Send them this tool.
+Share
+Your numbers are at top-practice levels.
+Your grade is A, 100.0 out of 100.
+0% of the way to top practices. Grade A, 100.0 out of 100.
+After insurance contract discounts, you collect 99.0% of the money you're owed.
+On average, it takes about 27.0 days from the date of service until you are paid.
+9.0% of the money you're owed is more than 90 days old.
+About 2.0% of your claims are denied or rejected the first time they are sent.
+98.0% of your claims are paid the first time they are sent, with no rework.
+Yours 99.0% · Good 95% · Top 98%
+Yours 27.0 days · Good 40 days · Top 30 days
+Yours 9.0% · Good 15% · Top 10%
+Yours 2.0% · Good 5% · Top 3%
+Yours 98.0% · Good 95% · Top 97%
+50% of the way to top practices. Grade A, 100.0 out of 100.

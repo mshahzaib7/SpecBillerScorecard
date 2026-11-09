@@ -1,0 +1,53 @@
+/*
+ * Self-hosted fonts (preloaded in index.html), font-display: swap.
+ * Archivo: one variable file with weight (100 to 900) and width (62% to 125%) axes.
+ * If the width axis is unsupported the browser falls back to weight only (same family).
+ *
+ * Size-adjusted fallbacks keep text the same size while the real font loads.
+ * Measured in Chromium against the font files (100px sample, same string):
+ *   Archivo 400 is 98.6% of Arial's width; ascent 88, descent 21 (per 100px).
+ *   IBM Plex Mono is 100% of Courier New's width; ascent 103, descent 28.
+ */
+@font-face {
+  font-family: 'Archivo';
+  src: url('/fonts/archivo-latin-wdth.woff2') format('woff2-variations'),
+       url('/fonts/archivo-latin-wdth.woff2') format('woff2');
+  font-weight: 100 900;
+  font-stretch: 62% 125%;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'IBM Plex Mono';
+  src: url('/fonts/plex-mono-latin-400.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'IBM Plex Mono';
+  src: url('/fonts/plex-mono-latin-500.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Archivo Fallback';
+  src: local('Arial'), local('Helvetica'), local('Liberation Sans');
+  size-adjust: 98.6%;
+  ascent-override: 89.2%;
+  descent-override: 21.3%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: 'Plex Mono Fallback';
+  src: local('Courier New'), local('Courier');
+  size-adjust: 100%;
+  ascent-override: 103%;
+  descent-override: 28%;
+  line-gap-override: 0%;
+}

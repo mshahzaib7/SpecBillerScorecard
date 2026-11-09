@@ -1,0 +1,28 @@
+{
+  "N": 10000,
+  "invalidInputs": 0,
+  "mismatches": 0,
+  "coverage": {
+    "pi": 1241,
+    "unknownAny": 4813,
+    "noGrade": 507,
+    "letters": {
+      "C": 637,
+      "D": 848,
+      "B": 275,
+      "F": 7609,
+      "A": 124
+    },
+    "cards": 27678,
+    "roomToGrow": 3219,
+    "under100": 80,
+    "warnings": 2368,
+    "offers": {
+      "gapToTop": 3492,
+      "recoverySprint": 4988,
+      "scorecardBuild": 1423,
+      "keepItTop": 97
+    }
+  },
+  "first20": []
+}

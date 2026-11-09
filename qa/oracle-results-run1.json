@@ -1,0 +1,32 @@
+{
+  "N": 10000,
+  "invalidInputs": 0,
+  "mismatches": 3,
+  "coverage": {
+    "pi": 1241,
+    "unknownAny": 4813,
+    "noGrade": 507,
+    "letters": {
+      "C": 637,
+      "D": 848,
+      "B": 275,
+      "F": 7609,
+      "A": 124
+    },
+    "cards": 27678,
+    "roomToGrow": 3219,
+    "under100": 80,
+    "warnings": 2368,
+    "offers": {
+      "gapToTop": 3492,
+      "recoverySprint": 4988,
+      "scorecardBuild": 1423,
+      "keepItTop": 97
+    }
+  },
+  "first20": [
+    "#1402 {\"specialty\":\"behavioral\",\"attorney\":null,\"charges3\":2574000,\"adjustments3\":793000,\"payments3\":1781000,\"claimsSubmitted3\":3600,\"claimsDenied3\":321,\"claimsPaidFirstPass3\":3279,\"totalAR\":1144000,\"ar90\":114400}\n    biggestOpportunity: oracle=\"fpr\" engine=\"den\"",
+    "#5257 {\"specialty\":\"accident\",\"attorney\":true,\"charges3\":561773,\"adjustments3\":416299,\"payments3\":135822,\"claimsSubmitted3\":3385,\"claimsDenied3\":333,\"claimsPaidFirstPass3\":3052,\"totalAR\":500304,\"ar90\":\"unknown\"}\n    biggestOpportunity: oracle=\"fpr\" engine=\"den\"",
+    "#7091 {\"specialty\":\"accident\",\"attorney\":true,\"charges3\":1656503,\"adjustments3\":966228,\"payments3\":667556,\"claimsSubmitted3\":2882,\"claimsDenied3\":269,\"claimsPaidFirstPass3\":2613,\"totalAR\":930438,\"ar90\":115964}\n    biggestOpportunity: oracle=\"fpr\" engine=\"den\""
+  ]
+}

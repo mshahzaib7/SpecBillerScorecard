@@ -1,0 +1,45 @@
+PASS  17.19:1  need 4.5:1         ink on bg (white)                              body text, headings
+PASS  16.17:1  need 4.5:1         ink on surface                                 body text, headings
+PASS  15.02:1  need 4.5:1         ink on surface-2                               body text, headings
+PASS   7.10:1  need 4.5:1         ink-muted on bg (white)                        secondary text, hints
+PASS   6.68:1  need 4.5:1         ink-muted on surface                           secondary text, hints
+PASS   6.20:1  need 4.5:1         ink-muted on surface-2                         secondary text, hints
+PASS   8.84:1  need 4.5:1         brand on bg (white)                            eyebrows, links, toggles
+PASS   8.32:1  need 4.5:1         brand on surface                               eyebrows, links, toggles
+PASS   7.73:1  need 4.5:1         brand on surface-2                             eyebrows, links, toggles
+PASS   4.83:1  need 4.5:1         status-problem on bg (white)                   form error messages
+PASS   5.43:1  need 4.5:1         status-watch on bg (white)                     form warning messages
+PASS   5.40:1  need 4.5:1         status-good on good-bg                         Good badge
+PASS   5.20:1  need 4.5:1         status-watch on watch-bg                       Watch badge
+PASS   5.88:1  need 4.5:1         problem-text on problem-bg                     Problem badge, lead form error box
+FAIL   4.44:1  need 4.5:1         status-problem (raw) on problem-bg             NOT used for text (why problem-text exists)
+PASS  13.36:1  need 4.5:1         on-accent on accent                            primary buttons, Top badge
+PASS  11.71:1  need 4.5:1         on-accent on accent-hover                      primary buttons, Top badge
+PASS  14.20:1  need 4.5:1         ink on jade money marker                       big money figures on light cards
+PASS   8.84:1  need 4.5:1         on-dark (white) on brand                       checked chip/checkbox tick
+PASS  13.18:1  need 4.5:1         on-dark (white) on brand-deep (dark top)       text on dark sections
+PASS  16.95:1  need 4.5:1         on-dark (white) on brand-deeper (dark bottom)  text on dark sections
+PASS  11.24:1  need 4.5:1         on-dark (white) on dark card on deep           text on dark sections
+PASS   9.53:1  need 4.5:1         on-dark (white) on 2 dark cards on deep        text on dark sections
+PASS  14.56:1  need 4.5:1         on-dark (white) on dark card on deeper         text on dark sections
+PASS   8.60:1  need 4.5:1         on-dark (white) on glow centre (worst case)    text on dark sections
+PASS   7.77:1  need 4.5:1         on-dark-muted on brand-deep (dark top)         secondary text on dark
+PASS   9.99:1  need 4.5:1         on-dark-muted on brand-deeper (dark bottom)    secondary text on dark
+PASS   6.62:1  need 4.5:1         on-dark-muted on dark card on deep             secondary text on dark
+PASS   5.62:1  need 4.5:1         on-dark-muted on 2 dark cards on deep          secondary text on dark
+PASS   8.58:1  need 4.5:1         on-dark-muted on dark card on deeper           secondary text on dark
+PASS   5.07:1  need 4.5:1         on-dark-muted on glow centre (worst case)      secondary text on dark
+PASS   7.35:1  need 4.5:1         sky on brand-deep (dark top)                   dark eyebrows (small caps text)
+PASS   9.45:1  need 4.5:1         sky on brand-deeper (dark bottom)              dark eyebrows (small caps text)
+PASS   6.27:1  need 4.5:1         sky on dark card on deep                       dark eyebrows (small caps text)
+PASS   5.32:1  need 4.5:1         sky on 2 dark cards on deep                    dark eyebrows (small caps text)
+PASS   8.12:1  need 4.5:1         sky on dark card on deeper                     dark eyebrows (small caps text)
+PASS   4.80:1  need 4.5:1         sky on glow centre (worst case)                dark eyebrows (small caps text)
+PASS  10.25:1  need 4.5:1         accent (jade) on brand-deep (dark top)         money you could gain on dark
+PASS  13.18:1  need 4.5:1         accent (jade) on brand-deeper (dark bottom)    money you could gain on dark
+PASS   8.74:1  need 4.5:1         accent (jade) on dark card on deep             money you could gain on dark
+PASS   7.41:1  need 4.5:1         accent (jade) on 2 dark cards on deep          money you could gain on dark
+PASS  11.32:1  need 4.5:1         accent (jade) on dark card on deeper           money you could gain on dark
+PASS   6.69:1  need 4.5:1         accent (jade) on glow centre (worst case)      money you could gain on dark
+
+1 fail / 43 pairs

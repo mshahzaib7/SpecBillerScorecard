@@ -1,0 +1,354 @@
+/*
+ * Redesign, Round 1 (DESIGN-BRIEF.md): wordmark, top bar, hero with the live example statement,
+ * the start button, and the "why these numbers" strip.
+ */
+
+.sr-only {
+  position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+/* ============================== Wordmark ============================== */
+.wordmark {
+  display: inline-flex; flex-direction: column; gap: 3px;
+  color: inherit; text-decoration: none; line-height: 1;
+}
+.wordmark__name {
+  font-weight: 700; font-stretch: 112%; letter-spacing: -0.02em;
+  font-size: 1.1875rem; white-space: nowrap;
+}
+.wordmark__dot {
+  display: inline-block; width: 0.38em; height: 0.38em; margin-left: 0.09em;
+  background: var(--jade); vertical-align: baseline;
+}
+.wordmark__sub {
+  font-family: var(--font-mono); font-weight: 400; font-size: 0.75rem; letter-spacing: 0.01em;
+}
+.wordmark--light { color: var(--ink); }
+.wordmark--light .wordmark__sub { color: var(--slate); }
+.wordmark--dark { color: var(--paper); }
+.wordmark--dark .wordmark__sub { color: rgba(255,255,255,.7); }
+@media (min-width: 640px) {
+  .wordmark__sub { font-size: 0.8125rem; }
+}
+
+/* ============================== Top bar ============================== */
+.topbar {
+  position: fixed; inset: 0 0 auto 0; z-index: 50;
+  height: calc(var(--topbar-h) + env(safe-area-inset-top));
+  padding-top: env(safe-area-inset-top);
+  border-bottom: 1px solid transparent;
+  transition: background-color var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out);
+}
+.topbar--clear { background: transparent; color: var(--paper); }
+.topbar--solid { background: var(--paper); color: var(--ink); border-bottom-color: var(--rule); }
+.topbar__inner { height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.topbar__nav { display: flex; align-items: center; gap: 1.25rem; }
+.topbar__link {
+  background: none; border: 0; padding: 0; min-height: 44px;
+  font-size: 0.9375rem; font-weight: 500; color: inherit;
+  text-decoration: underline; text-decoration-color: transparent; text-underline-offset: 5px;
+  transition: text-decoration-color var(--dur-fast) var(--ease-out);
+}
+@media (hover: hover) {
+  .topbar__link:hover { text-decoration-color: currentColor; }
+}
+.topbar__link { white-space: nowrap; }
+@media (max-width: 359px) {
+  /* Very narrow phones (320px): keep the top bar on one line. */
+  .wordmark__name { font-size: 1.0625rem; }
+  .wordmark__sub { font-size: 0.6875rem; }
+  .topbar__link { font-size: 0.875rem; }
+  .topbar__nav { gap: 0.75rem; }
+}
+@media (max-width: 639px) {
+  /* Phones: over the hero, the hero button is the start, so only the link shows. Once scrolled, the button takes its place. */
+  .topbar--clear .topbar__start { display: none; }
+  .topbar--solid:has(.topbar__start) .topbar__link { display: none; }
+}
+
+/* ============================== Hero ============================== */
+/*
+ * The hero fits the first screen at every size we test: headline, lead, the "you'll know" list, the button,
+ * the privacy line and the full example statement with its jade total.
+ * Every size is the smaller of a width-based and a height-based (dvh) value.
+ * --hang is how far the jade total hangs below the hero's bottom edge; the hero is sized
+ * so that the hanging block still ends inside the viewport.
+ * The founder row sits just below the hero edge on phones and on desktop screens under 760px tall.
+ */
+.hero {
+  --hang: 2.25rem;
+  --hero-pt: clamp(0.375rem, 1dvh, 2rem);
+  --hero-pb: clamp(0.75rem, 1.8dvh, 1.5rem);
+  position: relative; z-index: 2;
+  color: var(--paper);
+  /* The only gradient on the site. Text sits on the sapphire side. */
+  background: linear-gradient(176deg, var(--sapphire) 0%, var(--sapphire) 62%, var(--ocean) 100%);
+  padding-top: calc(var(--topbar-h) + env(safe-area-inset-top) + var(--hero-pt));
+  padding-bottom: var(--hero-pb);
+}
+.hero__grid { position: relative; display: grid; gap: clamp(0.5rem, 1.4dvh, 2.5rem); }
+.hero__title {
+  /* Phones: capped by width (each sentence on 2 lines) and by height. */
+  font-size: min(var(--text-hero), 10.6vw, max(2rem, 4.6dvh));
+  font-weight: 700; font-stretch: 110%;
+  line-height: 0.95; letter-spacing: -0.035em;
+}
+.hero__l1, .hero__l2 { display: block; }
+.hero__l1 { color: var(--paper); }
+.hero__l2 { color: var(--jade); margin-top: 0.08em; }
+.hero__lead {
+  margin-top: clamp(0.375rem, 1dvh, 1.5rem); max-width: 46em;
+  font-size: clamp(0.9375rem, 2.1dvh, 1.125rem); line-height: 1.4; color: rgba(255,255,255,.85);
+}
+
+/* "In 3 minutes you'll know:" and the start button (the hero's one action). */
+.hero__know { margin-top: clamp(0.625rem, 1.8dvh, 2rem); max-width: 46em; }
+.hero__knowtitle { margin-bottom: clamp(0.25rem, 0.8dvh, 0.75rem); font-size: 1rem; line-height: 1.25; font-weight: 600; color: var(--paper); }
+.hero__knowlist { list-style: none; margin: 0; padding: 0; border-top: 1px solid rgba(255,255,255,.28); }
+.hero__knowlist li {
+  padding: clamp(0.25rem, 0.8dvh, 0.625rem) 0; border-bottom: 1px solid rgba(255,255,255,.18);
+  font-size: clamp(0.9375rem, 2dvh, 1.0625rem); line-height: 1.35; color: rgba(255,255,255,.85);
+}
+.hero__start { margin-top: clamp(0.75rem, 2dvh, 1.75rem); }
+
+/* Choice tiles (used by the specialty and attorney questions in the flow). */
+.tile {
+  display: flex; align-items: center; justify-content: space-between; gap: 0.5rem;
+  min-height: clamp(52px, 7.4dvh, 64px); padding: 0.375rem 0.75rem;
+  background: var(--paper); color: var(--ink);
+  border: 0; border-radius: var(--radius-control);
+  font-size: 0.9375rem; font-weight: 600; line-height: 1.2; text-align: left;
+  transition: background-color var(--dur-fast) var(--ease-out), transform var(--dur-fast) var(--ease-out);
+}
+.tile__check {
+  flex: none; display: grid; place-items: center; width: 24px; height: 24px;
+  opacity: 0; transform: scale(0.6);
+  transition: opacity var(--dur-fast) var(--ease-out), transform var(--dur-fast) var(--ease-out);
+}
+.tile--on { background: var(--jade); }
+.tile--on .tile__check { opacity: 1; transform: scale(1); }
+.tile:active { transform: translateY(1px); }
+@media (hover: hover) {
+  .tile:not(.tile--on):hover { background: var(--mist); transform: translateY(-1px); }
+}
+.hero__privacy {
+  margin-top: clamp(0.375rem, 1dvh, 1rem);
+  font-size: 0.8125rem; line-height: 1.35; color: rgba(255,255,255,.85);
+}
+
+/* Founder row. Phones: just below the hero edge, under the hanging jade total. */
+.hero__founder {
+  display: flex; align-items: center; gap: 0.75rem;
+  position: absolute; left: 0; right: 0;
+  top: calc(100% + var(--hero-pb) + var(--hang) + 1.5rem);
+  padding-top: 0.75rem; border-top: 1px solid var(--rule);
+  font-size: 0.875rem; line-height: 1.45; color: var(--ink);
+}
+.avatar { flex: none; width: 40px; height: 40px; border-radius: 50%; object-fit: cover; }
+.avatar--initials {
+  display: grid; place-items: center;
+  background: var(--sapphire); color: var(--paper);
+  font-family: var(--font-mono); font-size: 0.8125rem; font-weight: 500;
+}
+
+/* The sheet hangs over the bottom edge of the hero into the strip (the one planned grid break). */
+.hero__sheet { margin-bottom: calc(-1 * var(--hero-pb) - var(--hang)); }
+
+/* Short screens: the lead keeps its first sentence so it stays at 2 lines. */
+@media (max-height: 819px) and (max-width: 1279px), (max-height: 699px), (max-width: 639px) and (max-height: 899px) {
+  .hero__lead-more { display: none; }
+}
+@media (max-width: 639px) {
+  .hero__knowlist li { padding-block: 0.25rem; font-size: 0.9375rem; line-height: 1.3; }
+  /* Phones: tighter gaps so the example statement and its jade total still fit the first screen. */
+  .hero__know { margin-top: 0.5rem; }
+  .hero__start { margin-top: 0.625rem; }
+  .hero__grid { gap: 0.5rem; }
+  .sheet__row { padding-block: 0.25rem; }
+}
+
+@media (min-width: 640px) {
+  .tile { font-size: 1rem; padding-inline: 1rem; }
+}
+
+@media (min-width: 1024px) {
+  .hero {
+    --hang: 3rem;
+    --hero-pt: clamp(1rem, 3dvh, 3.5rem);
+    --hero-pb: clamp(1rem, 2dvh, 2.5rem);
+    background: linear-gradient(100deg, var(--sapphire) 0%, var(--sapphire) 50%, var(--ocean) 100%);
+    min-height: calc(100dvh - var(--hang) - 1rem); /* 16px of air under the jade total */
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  .hero > .container { width: 100%; }
+  .hero__grid {
+    grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--col-gap); row-gap: 0;
+    align-items: end;
+  }
+  .hero__text { grid-column: 1 / span 7; grid-row: 1; }
+  .hero__sheet { grid-column: 8 / span 5; grid-row: 1 / span 2; align-self: end; }
+  /* The brief's clamp, capped so each sentence stays within 2 lines in the 7-column field,
+     and by screen height. Never below 44px on desktop. */
+  .hero__title { font-size: max(2.75rem, min(var(--text-hero), 5.6vw, 5.25rem, 8.4dvh)); }
+  .hero__lead { margin-top: clamp(0.75rem, 1.6dvh, 1.5rem); font-size: clamp(1rem, 2.4dvh, 1.25rem); }
+  .hero__know { margin-top: clamp(0.875rem, 2dvh, 2rem); }
+  .hero__knowlist li { padding-block: clamp(0.25rem, 0.55dvh, 0.625rem); }
+  .hero__knowtitle { font-size: 1.0625rem; margin-bottom: clamp(0.375rem, 1dvh, 0.75rem); }
+  .hero__start { margin-top: clamp(0.875rem, 2dvh, 1.75rem); }
+  .tile { min-height: clamp(52px, 7.2dvh, 64px); }
+  .hero__privacy { margin-top: clamp(0.5rem, 1dvh, 1rem); font-size: 0.875rem; }
+
+  /* Tall enough: the founder row is the last line of the hero, under the button. */
+  .hero__founder {
+    position: static; grid-column: 1 / span 7; grid-row: 2;
+    margin-top: clamp(1rem, 2dvh, 2rem); padding-top: clamp(0.625rem, 1dvh, 1rem);
+    border-top-color: rgba(255,255,255,.28); color: rgba(255,255,255,.85);
+  }
+  .hero__founder .avatar--initials { background: var(--sapphire-deep); border: 1px solid rgba(255,255,255,.4); }
+}
+/* Desktop under 760px tall: the founder row drops just below the hero edge, beside the jade total. */
+@media (min-width: 1024px) and (max-height: 759px) {
+  /* Content sits at the bottom so the grid's bottom is the hero's bottom edge (minus padding). */
+  .hero { justify-content: flex-end; }
+  .hero__founder {
+    position: absolute; left: 0; right: auto; width: calc((100% - 5 * var(--col-gap)) * 7 / 12 + 6 * var(--col-gap));
+    top: calc(100% + var(--hero-pb) + 1.5rem); margin-top: 0; padding-top: 0.75rem;
+    border-top-color: var(--rule); color: var(--ink);
+  }
+  .hero__founder .avatar--initials { background: var(--sapphire); border: 0; }
+}
+
+/* ============================== Example statement sheet ============================== */
+.sheetwrap { position: relative; max-width: 32rem; margin-inline: auto; }
+.sheet {
+  position: relative;
+  background: var(--paper); color: var(--ink);
+  border-radius: var(--radius-sheet); box-shadow: var(--shadow-paper);
+  padding: clamp(0.5rem, 1.2dvh, 1.5rem) clamp(0.875rem, 4vw, 1.5rem) clamp(0.5rem, 1.2dvh, 1.5rem);
+}
+.sheet__head {
+  display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+  padding-bottom: clamp(0.375rem, 1.1dvh, 1rem); border-bottom: 1px solid var(--ink);
+}
+.sheet__title { font-size: 1rem; font-weight: 600; line-height: 1.25; }
+.sheet__meta {
+  display: flex; align-items: center; gap: 0.75rem; margin-top: 0.125rem;
+  font-family: var(--font-mono); font-size: var(--text-label); line-height: 1.3; color: var(--slate);
+}
+/* Phones: the grade sits inline ("56.3 / 100  F") to save height. */
+.sheet__grade { display: flex; align-items: flex-end; gap: 0.5rem; }
+.sheet__score { order: -1; padding-bottom: 0.15em; font-family: var(--font-mono); font-size: var(--text-label); color: var(--slate); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.sheet__letter {
+  display: block; font-size: clamp(2.25rem, 5.4dvh, 3rem); font-weight: 700; font-stretch: 112%;
+  line-height: 0.85; letter-spacing: -0.05em;
+  animation: grade-land 250ms var(--ease-out);
+}
+@keyframes grade-land { from { transform: scale(1.15); } to { transform: scale(1); } }
+
+.sheet__rows { list-style: none; margin: 0; padding: 0; }
+.sheet__row {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto 5.25rem; align-items: center; column-gap: 0.625rem;
+  padding: clamp(0.25rem, 0.6dvh, 0.75rem) 0; border-bottom: 1px solid var(--rule);
+}
+.sheet__row:last-child { border-bottom: 0; }
+.sheet__name { font-size: 0.875rem; font-weight: 500; line-height: 1.3; }
+.sheet__value {
+  font-family: var(--font-mono); font-weight: 500; font-size: max(14px, var(--text-figure)); line-height: 1.3;
+  font-variant-numeric: tabular-nums; text-align: right; white-space: nowrap;
+}
+
+/* Status: dot + word, always together. */
+.sdot {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  font-family: var(--font-mono); font-size: var(--text-label); white-space: nowrap;
+}
+.sdot i { width: 8px; height: 8px; border-radius: 50%; flex: none; }
+.sdot--good { color: var(--status-good); }
+.sdot--good i { background: var(--status-good-fill); }
+.sdot--watch { color: var(--status-watch); }
+.sdot--watch i { background: var(--status-watch-fill); }
+.sdot--problem { color: var(--status-problem-text); }
+.sdot--problem i { background: var(--status-problem); }
+
+.sheet__pause {
+  min-height: 24px; padding: 0; background: none; border: 0;
+  font-family: var(--font-mono); font-size: var(--text-label); color: var(--slate);
+  text-decoration: underline; text-underline-offset: 3px;
+}
+
+/* The jade total: a square block at the sheet's bottom-right corner. */
+.sheet__total {
+  position: relative; z-index: 1;
+  display: grid; gap: 0.125rem; width: fit-content;
+  margin: -0.5rem 0 0 auto;
+  padding: 0.5rem 0.875rem 0.625rem;
+  background: var(--jade); color: var(--ink);
+}
+.sheet__total-label { font-family: var(--font-mono); font-size: var(--text-label); }
+.sheet__total-figure {
+  font-size: clamp(2rem, 5dvh, 3rem); font-weight: 700; font-stretch: 108%;
+  line-height: 0.95; letter-spacing: -0.04em; font-variant-numeric: tabular-nums;
+}
+
+@media (min-width: 1024px) {
+  .sheetwrap { margin-inline: auto 0; }
+  .sheet { padding: clamp(0.875rem, 2.4dvh, 1.5rem) 1.5rem clamp(2rem, 4.4dvh, 3rem); }
+  .sheet__head { align-items: flex-start; padding-bottom: clamp(0.5rem, 1.4dvh, 1rem); }
+  .sheet__title { font-size: 1.125rem; }
+  .sheet__meta { margin-top: 0.25rem; }
+  .sheet__grade { display: grid; justify-items: end; gap: 0.375rem; }
+  .sheet__score { order: 0; padding: 0; }
+  .sheet__letter { font-size: max(2.75rem, min(clamp(3.5rem, 2.75rem + 2.5vw, 4.75rem), 7.6dvh)); }
+  .sheet__row { grid-template-columns: minmax(0, 1fr) auto 5.5rem; column-gap: 0.75rem; padding-block: clamp(0.375rem, 1.2dvh, 0.75rem); }
+  .sheet__row:last-child { border-bottom: 1px solid var(--rule); }
+  .sheet__name { font-size: 0.9375rem; }
+  .sheet__total { margin: clamp(-2rem, -3.2dvh, -1.25rem) 0 0 auto; padding: clamp(0.75rem, 1.8dvh, 1.125rem) 1.5rem clamp(0.75rem, 2dvh, 1.25rem); gap: clamp(0.25rem, 0.8dvh, 0.5rem); }
+  .sheet__total-figure { font-size: max(2.5rem, min(var(--text-money), 4.5rem, 8dvh)); }
+}
+
+/* Wide screens: the jade total steps 24px past the sheet's right edge (into the page margin). */
+@media (min-width: 1360px) {
+  .sheet__total { margin-right: -1.5rem; }
+}
+/* Phones: the jade total becomes a full-width bar under the sheet (label left, figure right) to save height. */
+@media (max-width: 639px) {
+  .sheet__total {
+    width: auto; margin: -0.375rem 0 0;
+    display: flex; align-items: center; justify-content: space-between; gap: 0.75rem;
+    padding: 0.375rem 0.875rem;
+  }
+  .sheet__total-label { max-width: 9.5em; line-height: 1.3; }
+  .sheet__total-figure { font-size: clamp(1.875rem, 4.6dvh, 2.75rem); }
+}
+
+/* ============================== Why these numbers ============================== */
+.facts {
+  position: relative; z-index: 1; background: var(--paper);
+  /* Room for the hanging jade total and, on phones, the founder row under it. */
+  padding-top: 10.75rem;
+  padding-bottom: clamp(3.5rem, 2.5rem + 4vw, 6rem);
+}
+.facts__grid { list-style: none; margin: 0; padding: 0; display: grid; gap: 2rem; }
+.facts__item { padding-top: 1.25rem; border-top: 1px solid var(--ink); }
+.facts__figure {
+  display: block; font-family: var(--font-mono); font-weight: 500;
+  font-size: clamp(3rem, 2.25rem + 3vw, 5rem); line-height: 1; letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+}
+.facts__text { margin-top: 1rem; max-width: 34ch; color: var(--ink); }
+@media (min-width: 768px) {
+  .facts__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--col-gap); }
+}
+@media (min-width: 1024px) {
+  .facts { padding-top: 7rem; }
+}
+@media (min-width: 1024px) and (max-height: 759px) {
+  .facts { padding-top: 7.5rem; }
+}
+
+/* ============================== Reduced motion ============================== */
+@media (prefers-reduced-motion: reduce) {
+  .sheet__letter { animation: none; }
+  .tile, .tile__check, .topbar, .btn { transition: none; }
+}

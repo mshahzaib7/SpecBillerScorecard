@@ -1,0 +1,98 @@
+PASS | QA-1 primary care, every metric in Watch | ncr value | expected 93 | oracle 93 | engine 93
+PASS | QA-1 primary care, every metric in Watch | ncr status | expected "watch" | oracle "watch" | engine "watch"
+PASS | QA-1 primary care, every metric in Watch | ncr score | expected 75 | oracle 75 | engine 75
+PASS | QA-1 primary care, every metric in Watch | dar value | expected 45 | oracle 45 | engine 45
+PASS | QA-1 primary care, every metric in Watch | dar status | expected "watch" | oracle "watch" | engine "watch"
+PASS | QA-1 primary care, every metric in Watch | dar score | expected 78.75 | oracle 78.75 | engine 78.75
+PASS | QA-1 primary care, every metric in Watch | ar90 value | expected 18 | oracle 18 | engine 18
+PASS | QA-1 primary care, every metric in Watch | ar90 status | expected "watch" | oracle "watch" | engine "watch"
+PASS | QA-1 primary care, every metric in Watch | ar90 score | expected 70 | oracle 70 | engine 70
+PASS | QA-1 primary care, every metric in Watch | den value | expected 7 | oracle 7 | engine 7
+PASS | QA-1 primary care, every metric in Watch | den status | expected "watch" | oracle "watch" | engine "watch"
+PASS | QA-1 primary care, every metric in Watch | den score | expected 75 | oracle 75 | engine 75
+PASS | QA-1 primary care, every metric in Watch | fpr value | expected 91 | oracle 91 | engine 91
+PASS | QA-1 primary care, every metric in Watch | fpr status | expected "watch" | oracle "watch" | engine "watch"
+PASS | QA-1 primary care, every metric in Watch | fpr score | expected 65 | oracle 65 | engine 65
+PASS | QA-1 primary care, every metric in Watch | overall score | expected 73.5 | oracle 73.5 | engine 73.5
+PASS | QA-1 primary care, every metric in Watch | letter | expected "C" | oracle "C" | engine "C"
+PASS | QA-1 primary care, every metric in Watch | weighted sum / weights (engine) | expected [7350,100] | oracle [7350,100] | engine [7350,100]
+PASS | QA-1 primary care, every metric in Watch | cards shown | expected ["uncollected","cashFaster","deniedAboveTarget","stuckOver90"] | oracle ["uncollected","cashFaster","deniedAboveTarget","stuckOver90"] | engine ["uncollected","cashFaster","deniedAboveTarget","stuckOver90"]
+PASS | QA-1 primary care, every metric in Watch | uncollected vs Top | expected 30000 | oracle 30000 | engine 30000
+PASS | QA-1 primary care, every metric in Watch | uncollected vs Good | expected 12000 | oracle 12000 | engine 12000
+PASS | QA-1 primary care, every metric in Watch | cashFaster vs Top | expected 25000 | oracle 25000 | engine 25000
+PASS | QA-1 primary care, every metric in Watch | cashFaster vs Good | expected 8300 | oracle 8300 | engine 8300
+PASS | QA-1 primary care, every metric in Watch | deniedAboveTarget vs Top | expected 2000 | oracle 2000 | engine 2000
+PASS | QA-1 primary care, every metric in Watch | deniedAboveTarget vs Good | expected 1000 | oracle 1000 | engine 1000
+PASS | QA-1 primary care, every metric in Watch | stuckOver90 vs Top | expected 6000 | oracle 6000 | engine 6000
+PASS | QA-1 primary care, every metric in Watch | stuckOver90 vs Good | expected 2300 | oracle 2300 | engine 2300
+PASS | QA-1 primary care, every metric in Watch | over-90 stuck now | expected 13500 | oracle 13500 | engine 13500
+PASS | QA-1 primary care, every metric in Watch | biggest opportunity | expected "fpr" | oracle "fpr" | engine "fpr"
+PASS | QA-1 primary care, every metric in Watch | offer (real config) | expected "gapToTop" | oracle "gapToTop" | engine "gapToTop"
+PASS | QA-2 accident/PI with attorney cases | ncr value | expected 93 | oracle 93 | engine 93
+PASS | QA-2 accident/PI with attorney cases | ncr status | expected "watch" | oracle "watch" | engine "watch"
+PASS | QA-2 accident/PI with attorney cases | ncr score | expected 75 | oracle 75 | engine 75
+PASS | QA-2 accident/PI with attorney cases | dar value | expected 117 | oracle 117 | engine 117
+PASS | QA-2 accident/PI with attorney cases | dar status | expected null | oracle null | engine null
+PASS | QA-2 accident/PI with attorney cases | dar graded | expected "notGraded" | oracle "notGraded" | engine "notGraded"
+PASS | QA-2 accident/PI with attorney cases | ar90 value | expected 40.4 | oracle 40.4 | engine 40.4
+PASS | QA-2 accident/PI with attorney cases | ar90 status | expected null | oracle null | engine null
+PASS | QA-2 accident/PI with attorney cases | ar90 graded | expected "notGraded" | oracle "notGraded" | engine "notGraded"
+PASS | QA-2 accident/PI with attorney cases | den value | expected 9 | oracle 9 | engine 9
+PASS | QA-2 accident/PI with attorney cases | den status | expected "watch" | oracle "watch" | engine "watch"
+PASS | QA-2 accident/PI with attorney cases | den score | expected 65 | oracle 65 | engine 65
+PASS | QA-2 accident/PI with attorney cases | fpr value | expected 84 | oracle 84 | engine 84
+PASS | QA-2 accident/PI with attorney cases | fpr status | expected "problem" | oracle "problem" | engine "problem"
+PASS | QA-2 accident/PI with attorney cases | fpr score | expected 36 | oracle 36 | engine 36
+PASS | QA-2 accident/PI with attorney cases | overall score | expected 62.9 | oracle 62.9 | engine 62.9
+PASS | QA-2 accident/PI with attorney cases | letter | expected "D" | oracle "D" | engine "D"
+PASS | QA-2 accident/PI with attorney cases | weighted sum / weights (engine) | expected [4090,65] | oracle [4090,65] | engine [4090,65]
+PASS | QA-2 accident/PI with attorney cases | cards shown | expected ["uncollected","deniedAboveTarget"] | oracle ["uncollected","deniedAboveTarget"] | engine ["uncollected","deniedAboveTarget"]
+PASS | QA-2 accident/PI with attorney cases | uncollected vs Top | expected 48000 | oracle 48000 | engine 48000
+PASS | QA-2 accident/PI with attorney cases | uncollected vs Good | expected 19200 | oracle 19200 | engine 19200
+PASS | QA-2 accident/PI with attorney cases | deniedAboveTarget vs Top | expected 4800 | oracle 4800 | engine 4800
+PASS | QA-2 accident/PI with attorney cases | deniedAboveTarget vs Good | expected 3200 | oracle 3200 | engine 3200
+PASS | QA-2 accident/PI with attorney cases | offer (real config) | expected "gapToTop" | oracle "gapToTop" | engine "gapToTop"
+PASS | QA-3 every number exactly on the Good target | ncr value | expected 95 | oracle 95 | engine 95
+PASS | QA-3 every number exactly on the Good target | ncr status | expected "good" | oracle "good" | engine "good"
+PASS | QA-3 every number exactly on the Good target | ncr score | expected 85 | oracle 85 | engine 85
+PASS | QA-3 every number exactly on the Good target | dar value | expected 40 | oracle 40 | engine 40
+PASS | QA-3 every number exactly on the Good target | dar status | expected "good" | oracle "good" | engine "good"
+PASS | QA-3 every number exactly on the Good target | dar score | expected 85 | oracle 85 | engine 85
+PASS | QA-3 every number exactly on the Good target | ar90 value | expected 15 | oracle 15 | engine 15
+PASS | QA-3 every number exactly on the Good target | ar90 status | expected "good" | oracle "good" | engine "good"
+PASS | QA-3 every number exactly on the Good target | ar90 score | expected 85 | oracle 85 | engine 85
+PASS | QA-3 every number exactly on the Good target | den value | expected 5 | oracle 5 | engine 5
+PASS | QA-3 every number exactly on the Good target | den status | expected "good" | oracle "good" | engine "good"
+PASS | QA-3 every number exactly on the Good target | den score | expected 85 | oracle 85 | engine 85
+PASS | QA-3 every number exactly on the Good target | fpr value | expected 95 | oracle 95 | engine 95
+PASS | QA-3 every number exactly on the Good target | fpr status | expected "good" | oracle "good" | engine "good"
+PASS | QA-3 every number exactly on the Good target | fpr score | expected 85 | oracle 85 | engine 85
+PASS | QA-3 every number exactly on the Good target | overall score | expected 85 | oracle 85 | engine 85
+PASS | QA-3 every number exactly on the Good target | letter | expected "B" | oracle "B" | engine "B"
+PASS | QA-3 every number exactly on the Good target | cards shown | expected ["uncollected","cashFaster","deniedAboveTarget","stuckOver90"] | oracle ["uncollected","cashFaster","deniedAboveTarget","stuckOver90"] | engine ["uncollected","cashFaster","deniedAboveTarget","stuckOver90"]
+PASS | QA-3 every number exactly on the Good target | uncollected vs Top | expected 25900 | oracle 25900 | engine 25900
+PASS | QA-3 every number exactly on the Good target | uncollected vs Good | expected null | oracle null | engine null
+PASS | QA-3 every number exactly on the Good target | cashFaster vs Top | expected 24000 | oracle 24000 | engine 24000
+PASS | QA-3 every number exactly on the Good target | cashFaster vs Good | expected null | oracle null | engine null
+PASS | QA-3 every number exactly on the Good target | deniedAboveTarget vs Top | expected 1400 | oracle 1400 | engine 1400
+PASS | QA-3 every number exactly on the Good target | deniedAboveTarget vs Good | expected null | oracle null | engine null
+PASS | QA-3 every number exactly on the Good target | stuckOver90 vs Top | expected 4800 | oracle 4800 | engine 4800
+PASS | QA-3 every number exactly on the Good target | stuckOver90 vs Good | expected null | oracle null | engine null
+PASS | QA-3 every number exactly on the Good target | over-90 stuck now | expected 14400 | oracle 14400 | engine 14400
+PASS | QA-3 every number exactly on the Good target | biggest opportunity | expected "ncr" | oracle "ncr" | engine "ncr"
+PASS | QA-3 every number exactly on the Good target | offer (real config) | expected "gapToTop" | oracle "gapToTop" | engine "gapToTop"
+PASS | QA-4 only 2 numbers (no grade) | ncr value | expected 92 | oracle 92 | engine 92
+PASS | QA-4 only 2 numbers (no grade) | ncr status | expected "watch" | oracle "watch" | engine "watch"
+PASS | QA-4 only 2 numbers (no grade) | dar value | expected 45 | oracle 45 | engine 45
+PASS | QA-4 only 2 numbers (no grade) | dar status | expected "watch" | oracle "watch" | engine "watch"
+PASS | QA-4 only 2 numbers (no grade) | ar90 availability | expected "unavailable" | oracle "unavailable" | engine "unavailable"
+PASS | QA-4 only 2 numbers (no grade) | den availability | expected "unavailable" | oracle "unavailable" | engine "unavailable"
+PASS | QA-4 only 2 numbers (no grade) | fpr availability | expected "unavailable" | oracle "unavailable" | engine "unavailable"
+PASS | QA-4 only 2 numbers (no grade) | overall score | expected null | oracle null | engine null
+PASS | QA-4 only 2 numbers (no grade) | letter | expected null | oracle null | engine null
+PASS | QA-4 only 2 numbers (no grade) | cards shown | expected ["uncollected","cashFaster"] | oracle ["uncollected","cashFaster"] | engine ["uncollected","cashFaster"]
+PASS | QA-4 only 2 numbers (no grade) | uncollected vs Top | expected 28800 | oracle 28800 | engine 28800
+PASS | QA-4 only 2 numbers (no grade) | uncollected vs Good | expected 14400 | oracle 14400 | engine 14400
+PASS | QA-4 only 2 numbers (no grade) | cashFaster vs Top | expected 20000 | oracle 20000 | engine 20000
+PASS | QA-4 only 2 numbers (no grade) | cashFaster vs Good | expected 6700 | oracle 6700 | engine 6700
+PASS | QA-4 only 2 numbers (no grade) | offer (real config) | expected "scorecardBuild" | oracle "scorecardBuild" | engine "scorecardBuild"

@@ -1,0 +1,210 @@
+[
+  {
+    "id": "C1a",
+    "name": "Adjustments equal to charges is blocked with a message at the field",
+    "pass": true,
+    "expected": "blocked + message",
+    "actual": "{\"shown\":\"300,000\",\"afterBlur\":\"Adjustments must be less than total charges. Please double-check both numbers.\",\"cls\":\"nq__msg nq__msg--error\",\"advanced\":false,\"nextMsg\":\"Adjustments must be less than total charges. Please double-check both numbers.\"}",
+    "shot": null
+  },
+  {
+    "id": "C1b",
+    "name": "Adjustments larger than charges is blocked",
+    "pass": true,
+    "expected": "blocked + message",
+    "actual": "{\"shown\":\"350,000\",\"afterBlur\":\"Adjustments must be less than total charges. Please double-check both numbers.\",\"cls\":\"nq__msg nq__msg--error\",\"advanced\":false,\"nextMsg\":\"Adjustments must be less than total charges. Please double-check both numbers.\"}",
+    "shot": "qa/screenshots/C1-adjustments-too-high.png"
+  },
+  {
+    "id": "C2",
+    "name": "AR over 90 days larger than total AR is blocked",
+    "pass": true,
+    "expected": "blocked + message",
+    "actual": "{\"shown\":\"200,000\",\"afterBlur\":\"AR over 90 days can't be more than your total AR.\",\"cls\":\"nq__msg nq__msg--error\",\"advanced\":false,\"nextMsg\":\"AR over 90 days can't be more than your total AR.\"}",
+    "shot": "qa/screenshots/C2-ar90-too-high.png"
+  },
+  {
+    "id": "C3a",
+    "name": "Denied larger than submitted is blocked",
+    "pass": true,
+    "expected": "blocked + message",
+    "actual": "{\"shown\":\"1,600\",\"afterBlur\":\"Denied claims can't be more than the claims you submitted.\",\"cls\":\"nq__msg nq__msg--error\",\"advanced\":false,\"nextMsg\":\"Denied claims can't be more than the claims you submitted.\"}",
+    "shot": null
+  },
+  {
+    "id": "C3b",
+    "name": "Paid first try larger than submitted is blocked",
+    "pass": true,
+    "expected": "blocked + message",
+    "actual": "{\"shown\":\"1,600\",\"afterBlur\":\"First-pass paid claims can't be more than the claims you submitted.\",\"cls\":\"nq__msg nq__msg--error\",\"advanced\":false,\"nextMsg\":\"First-pass paid claims can't be more than the claims you submitted.\"}",
+    "shot": null
+  },
+  {
+    "id": "C3c",
+    "name": "Denied + paid first try larger than submitted is blocked",
+    "pass": true,
+    "expected": "blocked + message",
+    "actual": "{\"shown\":\"1,400\",\"afterBlur\":\"Denied claims plus first-pass paid claims can't be more than the claims you submitted.\",\"cls\":\"nq__msg nq__msg--error\",\"advanced\":false,\"nextMsg\":\"Denied claims plus first-pass paid claims can't be more than the claims you submitted.\"}",
+    "shot": "qa/screenshots/C3-denied-plus-firstpass.png"
+  },
+  {
+    "id": "C4a",
+    "name": "Net collection rate above 105% is blocked",
+    "pass": true,
+    "expected": "blocked + message",
+    "actual": "{\"shown\":\"190,000\",\"afterBlur\":\"Payments look too high for these charges. Please double-check the numbers.\",\"cls\":\"nq__msg nq__msg--error\",\"advanced\":false,\"nextMsg\":\"Payments look too high for these charges. Please double-check the numbers.\"}",
+    "shot": null
+  },
+  {
+    "id": "C4b",
+    "name": "Net collection rate between 100% and 105% shows a warning and allows Next",
+    "pass": true,
+    "expected": "warning + allowed",
+    "actual": "{\"shown\":\"185,000\",\"afterBlur\":\"Above 100% can happen when late payments from earlier months land in this period.\",\"cls\":\"nq__msg nq__msg--warn\",\"advanced\":true,\"nextMsg\":null}",
+    "shot": null
+  },
+  {
+    "id": "C5",
+    "name": "Days in AR above 365 shows a warning and allows Next",
+    "pass": true,
+    "expected": "warning + allowed",
+    "actual": "{\"shown\":\"1,300,000\",\"afterBlur\":\"This is unusually high. Please double-check total AR and charges.\",\"cls\":\"nq__msg nq__msg--warn\",\"advanced\":true,\"nextMsg\":null}",
+    "shot": null
+  },
+  {
+    "id": "C6",
+    "name": "Fewer than 30 claims shows a warning and allows Next",
+    "pass": true,
+    "expected": "warning + allowed",
+    "actual": "{\"shown\":\"25\",\"afterBlur\":\"Small numbers can swing a lot. Results are less reliable.\",\"cls\":\"nq__msg nq__msg--warn\",\"advanced\":true,\"nextMsg\":null}",
+    "shot": null
+  },
+  {
+    "id": "C7a",
+    "name": "A minus sign in a money field is kept as typed, flagged \"Numbers only, please.\" and blocked",
+    "pass": true,
+    "expected": "kept + message + blocked",
+    "actual": "{\"shown\":\"-5000\",\"afterBlur\":\"Numbers only, please.\",\"cls\":\"nq__msg nq__msg--error\",\"advanced\":false,\"nextMsg\":\"Numbers only, please.\"}",
+    "shot": null
+  },
+  {
+    "id": "C7b",
+    "name": "Letters in a money field are kept, flagged and blocked",
+    "pass": true,
+    "expected": "kept + message + blocked",
+    "actual": "{\"shown\":\"abc\",\"afterBlur\":\"Numbers only, please.\",\"cls\":\"nq__msg nq__msg--error\",\"advanced\":false,\"nextMsg\":\"Numbers only, please.\"}",
+    "shot": null
+  },
+  {
+    "id": "C7c",
+    "name": "Empty required field is blocked with a message",
+    "pass": true,
+    "expected": "message \"Please enter this number.\"",
+    "actual": "Please enter this number.",
+    "shot": null
+  },
+  {
+    "id": "C7d",
+    "name": "\"12k5\" in a money field is kept, flagged and blocked (never silently stripped)",
+    "pass": true,
+    "expected": "kept + message + blocked",
+    "actual": "{\"shown\":\"12k5\",\"afterBlur\":\"Numbers only, please.\",\"cls\":\"nq__msg nq__msg--error\",\"advanced\":false,\"nextMsg\":\"Numbers only, please.\"}",
+    "shot": null
+  },
+  {
+    "id": "C7e",
+    "name": "\"12..5\" in a money field is kept, flagged and blocked",
+    "pass": true,
+    "expected": "kept + message + blocked",
+    "actual": "{\"shown\":\"12..5\",\"afterBlur\":\"Numbers only, please.\",\"cls\":\"nq__msg nq__msg--error\",\"advanced\":false,\"nextMsg\":\"Numbers only, please.\"}",
+    "shot": null
+  },
+  {
+    "id": "C8a",
+    "name": "\"$12,500\", \"12,500\" and \"12500\" give the same value",
+    "pass": true,
+    "expected": "all \"12,500\"",
+    "actual": "[\"12,500\",\"12,500\",\"12,500\"]",
+    "shot": null
+  },
+  {
+    "id": "C8b",
+    "name": "\"$12,500.50\" in a money field is valid and keeps its cents",
+    "pass": true,
+    "expected": "\"12,500.50\", no message",
+    "actual": "\"12,500.50\", message null",
+    "shot": null
+  },
+  {
+    "id": "C8c",
+    "name": "Pasted \"$ 300,000\" in a money field is valid and moves on",
+    "pass": true,
+    "expected": "\"300,000\", accepted",
+    "actual": "\"300,000\", message null, now Question 3 of 9",
+    "shot": null
+  },
+  {
+    "id": "C9a",
+    "name": "\"12.5\" claims: kept as typed, \"Please enter a whole number of claims.\", Next blocked",
+    "pass": true,
+    "expected": "kept + message + blocked",
+    "actual": "\"12.5\", \"Please enter a whole number of claims.\", blocked true",
+    "shot": "qa/screenshots/C9-decimal-claims.png"
+  },
+  {
+    "id": "C9b",
+    "name": "\"12k5\" claims: kept as typed, whole-number message, Next blocked",
+    "pass": true,
+    "expected": "kept + message + blocked",
+    "actual": "\"12k5\", \"Please enter a whole number of claims.\"",
+    "shot": null
+  },
+  {
+    "id": "C9c",
+    "name": "\"1,500\" claims is valid and moves on",
+    "pass": true,
+    "expected": "accepted",
+    "actual": "\"1,500\", now Question 6 of 9",
+    "shot": null
+  },
+  {
+    "id": "C10-1440",
+    "name": "Charges 50,000,000: no overflow, no scientific notation (1440px)",
+    "pass": true,
+    "expected": "overflow 0, no e-notation",
+    "actual": "overflow 0px, e-notation false, verdict \"$5,600,000 a year\", ledger $5,600,000 $5,000,000 $600,000 $1,500,000",
+    "shot": "qa/screenshots/C10-large-values-1440-ledger.png"
+  },
+  {
+    "id": "C10-390",
+    "name": "Charges 50,000,000: no overflow, no scientific notation (390px)",
+    "pass": true,
+    "expected": "overflow 0, no e-notation",
+    "actual": "overflow 0px, e-notation false, verdict \"$5,600,000 a year\", ledger $5,600,000 $5,000,000 $600,000 $1,500,000",
+    "shot": "qa/screenshots/C10-large-values-390-ledger.png"
+  },
+  {
+    "id": "C12",
+    "name": "Back, change paid-first-try 1,260 → 1,200: statement and final result update",
+    "pass": true,
+    "expected": "statement and result show 80.0%",
+    "actual": "back to \"How many were paid on the first try?\", statement \"First-pass rate80.0%\", result 80.0%",
+    "shot": null
+  },
+  {
+    "id": "C13a",
+    "name": "Specialty Behavioral → Primary care: same math, explanations and label change",
+    "pass": true,
+    "expected": "identical figures; specialty line and label change",
+    "actual": "same figures true; why text changed true; label \"Prepared November 10, 2026 · Primary care and general medicine\"",
+    "shot": null
+  },
+  {
+    "id": "C13b",
+    "name": "Specialty → Accident with attorney cases: PI rule applied (Days in AR, AR over 90 Not graded; 3-metric grade)",
+    "pass": true,
+    "expected": "DAR/AR90 Not graded; grade (30x72.5 + 20x48 + 15x36) / 65 = 56.5 F",
+    "actual": "statuses Watch, Not graded, Not graded, Problem, Problem; grade F 56.5 / 100",
+    "shot": null
+  }
+]

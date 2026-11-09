@@ -1,0 +1,146 @@
+[
+  {
+    "id": "D1-golden1-money",
+    "name": "Headline figure $39,600 identical in reveal, verdict, ledger, offer, both sticky bars",
+    "pass": true,
+    "expected": "$39,600",
+    "actual": "{\"reveal\":\"$39,600\",\"verdict\":\"$39,600\",\"ledger\":\"$39,600\",\"offer\":\"$39,600\",\"stickyDesktop\":\"$39,600\",\"stickyMobile\":\"$39,600\"}",
+    "shot": null
+  },
+  {
+    "id": "D1-golden1-grade",
+    "name": "Grade F 56.3 / 100 identical in reveal, verdict, sticky bar, what-if at 0%",
+    "pass": true,
+    "expected": "[\"F\",\"56.3 / 100\"]",
+    "actual": "{\"reveal\":[\"F\",\"56.3 / 100\"],\"verdict\":[\"F\",\"56.3 / 100\"],\"sticky\":[\"F\",\"56.3 / 100\"],\"whatIf0\":[\"F\",\"56.3 / 100\"]}",
+    "shot": null
+  },
+  {
+    "id": "D1-golden1-values",
+    "name": "The five values are identical in reveal, statement and what-if at 0%",
+    "pass": true,
+    "expected": "[\"92.5%\",\"57.0 days\",\"25.0%\",\"12.0%\",\"84.0%\"]",
+    "actual": "{\"reveal\":[\"92.5%\",\"57.0 days\",\"25.0%\",\"12.0%\",\"84.0%\"],\"whatIf0\":[\"92.5%\",\"57.0 days\",\"25.0%\",\"12.0%\",\"84.0%\"]}",
+    "shot": null
+  },
+  {
+    "id": "D2-golden1-zero",
+    "name": "What-if at 0% equals the scorecard (+$0)",
+    "pass": true,
+    "expected": "F 56.3 / 100 +$0",
+    "actual": "{\"letter\":\"F\",\"score\":\"56.3 / 100\",\"money\":\"+$0 a year\",\"values\":[\"92.5%\",\"57.0 days\",\"25.0%\",\"12.0%\",\"84.0%\"]}",
+    "shot": null
+  },
+  {
+    "id": "D2-golden1-pair",
+    "name": "Denial % + first-pass % never exceeds 100 while dragging (0 to 100% in 2% steps)",
+    "pass": true,
+    "expected": "≤ 100",
+    "actual": "max 100.0 at 98%",
+    "shot": null
+  },
+  {
+    "id": "D2-golden1-top",
+    "name": "What-if at 100% equals top levels (A 100.0)",
+    "pass": true,
+    "expected": "A 100.0",
+    "actual": "{\"letter\":\"A\",\"score\":\"100.0 / 100\",\"values\":[\"98.0%\",\"30.0 days\",\"10.0%\",\"3.0%\",\"97.0%\"]}",
+    "shot": null
+  },
+  {
+    "id": "D2-golden1-good",
+    "name": "\"Good levels\" snap (85%) puts every number at or better than Good",
+    "pass": true,
+    "expected": "every value at/better than Good, grade B or better",
+    "actual": "values 97.2, 34.1, 12.3, 4.4, 95.1, grade A",
+    "shot": "qa/screenshots/D-golden1-whatif-good.png"
+  },
+  {
+    "id": "D3-golden1",
+    "name": "Ledger toggle swaps every row to its Good figure (same rows, every row answered)",
+    "pass": true,
+    "expected": "all rows switch",
+    "actual": "top $39,600 $54,000 $5,400 $17,100 | good $18,000 $34,000 $4,200 $11,400",
+    "shot": null
+  },
+  {
+    "id": "D4-golden1",
+    "name": "Print / PDF: 2 pages, and every printed number matches the screen",
+    "pass": true,
+    "expected": "2 pages, same numbers",
+    "actual": "2 pages; printed {\"verdict\":[\"$39,600\"],\"letter\":[\"F\"],\"score\":[\"56.3 / 100\"],\"values\":[\"92.5%\",\"57.0 days\",\"25.0%\",\"12.0%\",\"84.0%\"],\"ledger\":[\"$39,600\",\"$54,000\",\"$5,400\",\"$17,100\"],\"offer\":[\"$39,600 a year\"]}",
+    "shot": "qa/print-golden1.pdf"
+  },
+  {
+    "id": "D1-qa1-money",
+    "name": "Headline figure $30,000 identical in reveal, verdict, ledger, offer, both sticky bars",
+    "pass": true,
+    "expected": "$30,000",
+    "actual": "{\"reveal\":\"$30,000\",\"verdict\":\"$30,000\",\"ledger\":\"$30,000\",\"offer\":\"$30,000\",\"stickyDesktop\":\"$30,000\",\"stickyMobile\":\"$30,000\"}",
+    "shot": null
+  },
+  {
+    "id": "D1-qa1-grade",
+    "name": "Grade C 73.5 / 100 identical in reveal, verdict, sticky bar, what-if at 0%",
+    "pass": true,
+    "expected": "[\"C\",\"73.5 / 100\"]",
+    "actual": "{\"reveal\":[\"C\",\"73.5 / 100\"],\"verdict\":[\"C\",\"73.5 / 100\"],\"sticky\":[\"C\",\"73.5 / 100\"],\"whatIf0\":[\"C\",\"73.5 / 100\"]}",
+    "shot": null
+  },
+  {
+    "id": "D1-qa1-values",
+    "name": "The five values are identical in reveal, statement and what-if at 0%",
+    "pass": true,
+    "expected": "[\"93.0%\",\"45.0 days\",\"18.0%\",\"7.0%\",\"91.0%\"]",
+    "actual": "{\"reveal\":[\"93.0%\",\"45.0 days\",\"18.0%\",\"7.0%\",\"91.0%\"],\"whatIf0\":[\"93.0%\",\"45.0 days\",\"18.0%\",\"7.0%\",\"91.0%\"]}",
+    "shot": null
+  },
+  {
+    "id": "D2-qa1-zero",
+    "name": "What-if at 0% equals the scorecard (+$0)",
+    "pass": true,
+    "expected": "C 73.5 / 100 +$0",
+    "actual": "{\"letter\":\"C\",\"score\":\"73.5 / 100\",\"money\":\"+$0 a year\",\"values\":[\"93.0%\",\"45.0 days\",\"18.0%\",\"7.0%\",\"91.0%\"]}",
+    "shot": null
+  },
+  {
+    "id": "D2-qa1-pair",
+    "name": "Denial % + first-pass % never exceeds 100 while dragging (0 to 100% in 2% steps)",
+    "pass": true,
+    "expected": "≤ 100",
+    "actual": "max 100.0 at 96%",
+    "shot": null
+  },
+  {
+    "id": "D2-qa1-top",
+    "name": "What-if at 100% equals top levels (A 100.0)",
+    "pass": true,
+    "expected": "A 100.0",
+    "actual": "{\"letter\":\"A\",\"score\":\"100.0 / 100\",\"values\":[\"98.0%\",\"30.0 days\",\"10.0%\",\"3.0%\",\"97.0%\"]}",
+    "shot": null
+  },
+  {
+    "id": "D2-qa1-good",
+    "name": "\"Good levels\" snap (67%) puts every number at or better than Good",
+    "pass": true,
+    "expected": "every value at/better than Good, grade B or better",
+    "actual": "values 96.4, 35, 12.6, 4.3, 95, grade A",
+    "shot": "qa/screenshots/D-qa1-whatif-good.png"
+  },
+  {
+    "id": "D3-qa1",
+    "name": "Ledger toggle swaps every row to its Good figure (same rows, every row answered)",
+    "pass": true,
+    "expected": "all rows switch",
+    "actual": "top $30,000 $25,000 $2,000 $6,000 | good $12,000 $8,300 $1,000 $2,300",
+    "shot": null
+  },
+  {
+    "id": "D4-qa1",
+    "name": "Print / PDF: 2 pages, and every printed number matches the screen",
+    "pass": true,
+    "expected": "2 pages, same numbers",
+    "actual": "2 pages; printed {\"verdict\":[\"$30,000\"],\"letter\":[\"C\"],\"score\":[\"73.5 / 100\"],\"values\":[\"93.0%\",\"45.0 days\",\"18.0%\",\"7.0%\",\"91.0%\"],\"ledger\":[\"$30,000\",\"$25,000\",\"$2,000\",\"$6,000\"],\"offer\":[\"$30,000 a year\"]}",
+    "shot": "qa/print-qa1.pdf"
+  }
+]
