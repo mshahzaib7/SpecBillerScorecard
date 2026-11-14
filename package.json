@@ -12,6 +12,7 @@
     "golden": "vitest run src/engine/__tests__/golden-report.test.ts --reporter=verbose"
   },
   "dependencies": {
+    "@vercel/analytics": "^2.0.1",
     "framer-motion": "11.18.2",
     "react": "18.3.1",
     "react-dom": "18.3.1"

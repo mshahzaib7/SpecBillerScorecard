@@ -1,6 +1,7 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { LazyMotion, MotionConfig } from 'framer-motion';
+import { Analytics, type BeforeSendEvent } from '@vercel/analytics/react';
 
 import App from './App';
 import { trackMotionLoad } from './lib/motion';
@@ -16,6 +17,17 @@ motionFeatures.catch(() => {
 const loadMotionFeatures = () => motionFeatures;
 import './styles/index.css';
 
+/*
+ * Vercel Web Analytics counts page views only: no custom events are ever sent. Visitor answers
+ * never go into the URL or the title, and as a safety net every event is reduced to the bare page
+ * address (origin + path), with any query string or #hash removed.
+ */
+const pageViewOnly = (event: BeforeSendEvent): BeforeSendEvent | null => {
+  if (event.type !== 'pageview') return null;
+  const u = new URL(event.url);
+  return { ...event, url: u.origin + u.pathname };
+};
+
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <MotionConfig reducedMotion="user">
@@ -24,5 +36,6 @@ createRoot(document.getElementById('root')!).render(
         <App />
       </LazyMotion>
     </MotionConfig>
+    <Analytics beforeSend={pageViewOnly} />
   </StrictMode>,
 );
