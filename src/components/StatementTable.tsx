@@ -1,4 +1,5 @@
-import { AnimatePresence, m as mo, useReducedMotion } from 'framer-motion';
+import { useReducedMotion } from 'framer-motion';
+import { Anim, Presence } from '../lib/motion';
 import { useState } from 'react';
 import {
   METRIC_ORDER,
@@ -6,13 +7,15 @@ import {
   STATUS_THRESHOLDS,
   type MetricId,
   type MetricResult,
+  type ScorecardInputs,
   type ScorecardResult,
   type Specialty,
 } from '../engine';
+import { ncrNotGradedText } from '../content/messages';
 import { METRIC_EXPLAINERS, NOT_REPORTED_NOTE, NOT_REPORTED_TEXT, PI_RULE_TEXT, SPECIALTY_LABEL, STATEMENT_COPY, type ByIssueBullets } from '../content/copy';
 import { formatMetric, formatTarget, preparedDate } from '../lib/format';
 import { FadeUp } from './FadeUp';
-import { IconChevronDown } from './Icons';
+import { IconChevronDown, IconInfo } from './Icons';
 
 /**
  * The track is measured in SCORE (better is always to the right), so the zones line up with the
@@ -47,13 +50,17 @@ function Track({ metric }: { metric: MetricResult }) {
         <span className="strack__zone strack__zone--good" style={{ width: `${100 - ZONE_EDGE.good}%` }} />
         <span className="strack__tick" style={{ left: `${ZONE_EDGE.good}%` }} />
         <span className="strack__tick strack__tick--top" style={{ left: '100%' }} />
-        <mo.span
+        <Anim
+          as="span"
           className="strack__marker"
           style={{ left: `${pos}%` }}
-          initial={reduce ? false : { opacity: 0, scale: 0.4 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.35, ease: [0.2, 0.8, 0.2, 1] }}
+          motion={{
+            // Reduced motion: fades in, no scaling. amount "some" (threshold 0): fires on any screen size.
+            initial: reduce ? { opacity: 0 } : { opacity: 0, scale: 0.4 },
+            whileInView: { opacity: 1, scale: 1 },
+            viewport: { once: true, amount: 'some' },
+            transition: { duration: reduce ? 0.3 : 0.35, ease: [0.2, 0.8, 0.2, 1] },
+          }}
         />
       </span>
       {/* Labels sit below the bar; the marker sits on the bar, so they never collide. */}
@@ -88,10 +95,13 @@ function StatusCell({ metric, biggest }: { metric: MetricResult; biggest: boolea
 
 interface Props {
   result: ScorecardResult;
+  inputs: ScorecardInputs;
   specialty: Specialty | null;
 }
 
-export function StatementTable({ result, specialty }: Props) {
+export function StatementTable({ result, inputs, specialty }: Props) {
+  // Net collection rate over 105%: shown, not graded, with the amber note on its row.
+  const ncrNote = result.ncrRuleApplied ? ncrNotGradedText(inputs) : null;
   const reduce = useReducedMotion();
   const biggest = result.biggestOpportunity;
   const [open, setOpen] = useState<MetricId | null>(biggest);
@@ -168,18 +178,27 @@ export function StatementTable({ result, specialty }: Props) {
                     {m.availability === 'graded' && <Track metric={m} />}
                     {/* Not reported: the note shows in the row itself, without expanding it. */}
                     {m.availability === 'unavailable' && <span className="srow__note">{NOT_REPORTED_NOTE}</span>}
+                    {id === 'ncr' && ncrNote && (
+                      <span className="srow__note srow__note--warn">
+                        <IconInfo size={18} />
+                        <span>{ncrNote}</span>
+                      </span>
+                    )}
                   </span>
                 </button>
 
-                <AnimatePresence initial={false}>
+                <Presence initial={false}>
                   {isOpen && (
-                    <mo.div
+                    <Anim
                       id={panelId}
                       className="srow__panel"
-                      initial={reduce ? false : { height: 0, opacity: 0 }}
-                      animate={{ height: 'auto', opacity: 1 }}
-                      exit={reduce ? { opacity: 0 } : { height: 0, opacity: 0 }}
-                      transition={{ duration: 0.25, ease: [0.2, 0.8, 0.2, 1] }}
+                      motion={{
+                        // Reduced motion: fades open, no sliding.
+                        initial: reduce ? { opacity: 0 } : { height: 0, opacity: 0 },
+                        animate: { height: 'auto', opacity: 1 },
+                        exit: reduce ? { opacity: 0 } : { height: 0, opacity: 0 },
+                        transition: { duration: 0.25, ease: [0.2, 0.8, 0.2, 1] },
+                      }}
                     >
                       <div className="srow__cols">
                         {m.availability === 'unavailable' ? (
@@ -190,7 +209,7 @@ export function StatementTable({ result, specialty }: Props) {
                         ) : (
                           <div className="srow__col">
                             <h3>{C.means}</h3>
-                            {m.availability === 'notGraded' && <p>{PI_RULE_TEXT}</p>}
+                            {m.availability === 'notGraded' && <p>{id === 'ncr' && ncrNote ? ncrNote : PI_RULE_TEXT}</p>}
                             {valueText && ex.means(valueText).map((b) => <p key={b}>{b}</p>)}
                           </div>
                         )}
@@ -211,9 +230,9 @@ export function StatementTable({ result, specialty }: Props) {
                           </ul>
                         </div>
                       </div>
-                    </mo.div>
+                    </Anim>
                   )}
-                </AnimatePresence>
+                </Presence>
               </div>
             );
           })}

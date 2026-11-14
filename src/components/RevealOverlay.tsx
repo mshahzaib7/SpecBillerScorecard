@@ -12,13 +12,16 @@ import { useCountUp } from '../lib/tween';
  *   700 ms   the total row slides in; the jade figure counts up from $0 (900 ms, ease-out)
  *   1650 ms  the grade lands (scale 1.15 to 1, 250 ms) with one light vibration on phones
  *   2600 ms  the overlay closes and the page settles on the results
- * "Skip" (or Escape) jumps to the end. Reduced motion shows the final state at once.
+ * "Skip" (or Escape) jumps to the end.
+ * Reduced motion: the same steps as gentle fades with a quick 300 ms count; no sliding, no
+ * scaling, no vibration.
  */
 const T_RULE = 400;
 const T_TOTAL = 700;
 const T_GRADE = 1650;
 const T_DONE = 2600;
 const T_DONE_REDUCED = 1600;
+const REDUCED = { rule: 0, total: 100, grade: 500 } as const;
 
 const STATUS_WORD = { good: 'Good', watch: 'Watch', problem: 'Problem' } as const;
 
@@ -30,7 +33,7 @@ interface Props {
 
 export function RevealOverlay({ result, specialty, onDone }: Props) {
   const reduce = !!useReducedMotion();
-  const [phase, setPhase] = useState(reduce ? 3 : 0);
+  const [phase, setPhase] = useState(0);
   const skipRef = useRef<HTMLButtonElement>(null);
   const doneRef = useRef(onDone);
   doneRef.current = onDone;
@@ -53,7 +56,12 @@ export function RevealOverlay({ result, specialty, onDone }: Props) {
     const prevOverflow = root.style.overflow;
     root.style.overflow = 'hidden';
     const timers = reduce
-      ? [window.setTimeout(finish, T_DONE_REDUCED)]
+      ? [
+          window.setTimeout(() => setPhase(1), REDUCED.rule),
+          window.setTimeout(() => setPhase(2), REDUCED.total),
+          window.setTimeout(() => setPhase(3), REDUCED.grade),
+          window.setTimeout(finish, T_DONE_REDUCED),
+        ]
       : [
           window.setTimeout(() => setPhase(1), T_RULE),
           window.setTimeout(() => setPhase(2), T_TOTAL),
@@ -83,7 +91,7 @@ export function RevealOverlay({ result, specialty, onDone }: Props) {
 
   return (
     <div className="reveal2" role="dialog" aria-modal="true" aria-labelledby="reveal-title">
-      <div className={`reveal2__sheet ${reduce ? '' : 'reveal2__sheet--in'}`}>
+      <div className="reveal2__sheet reveal2__sheet--in">
         <div className="reveal2__head">
           <div>
             <p className="reveal2__title" id="reveal-title">
@@ -98,7 +106,7 @@ export function RevealOverlay({ result, specialty, onDone }: Props) {
             {phase >= 3 && (
               <>
                 {letter ? (
-                  <span className={`reveal2__letter ${reduce ? '' : 'reveal2__letter--land'}`}>{letter}</span>
+                  <span className="reveal2__letter reveal2__letter--land">{letter}</span>
                 ) : (
                   <span className="reveal2__nograde">No grade</span>
                 )}

@@ -34,9 +34,11 @@ function generate(): OInputs {
   const adjustments = boundary ? I(0, Math.floor((charges * 0.75) / 1000)) * 1000 : Math.round(charges * U(0, 0.75));
   const net = charges - adjustments;
 
-  const ncrPct = boundary && chance(0.7) ? pick([80, 90, 95, 98, 100, 105]) : U(60, 105);
+  // Up to 150% (the blocking limit); 15% of cases land above 100%, where the notes and the
+  // "not graded over 105%" rule apply.
+  const ncrPct = boundary && chance(0.7) ? pick([80, 90, 95, 98, 100, 105, 150]) : chance(0.15) ? U(100, 150) : U(60, 105);
   let payments = Math.round((net * ncrPct) / 100);
-  while ((payments * 100) / net > 105) payments -= 1;
+  while ((payments * 100) / net > 150) payments -= 1;
 
   const sub = chance(0.01) ? 0 : chance(0.1) ? I(1, 29) : boundary ? I(1, 60) * 100 : I(30, 6000);
   const denPct = boundary && chance(0.7) ? pick([3, 5, 10, 20]) : U(0, 30);
@@ -84,7 +86,7 @@ describe('QA A: oracle vs engine', () => {
     const N = 10_000;
     const mismatches: string[] = [];
     let invalid = 0;
-    const counts = { pi: 0, unknownAny: 0, noGrade: 0, letters: {} as Record<string, number>, cards: 0, roomToGrow: 0, under100: 0, warnings: 0, offers: {} as Record<string, number> };
+    const counts = { pi: 0, ncrOver100: 0, ncrNotGraded: 0, unknownAny: 0, noGrade: 0, letters: {} as Record<string, number>, cards: 0, roomToGrow: 0, under100: 0, warnings: 0, offers: {} as Record<string, number> };
 
     for (let n = 0; n < N; n++) {
       const inp = generate();
@@ -129,6 +131,8 @@ describe('QA A: oracle vs engine', () => {
       if (diff.length) mismatches.push(`#${n} ${JSON.stringify(inp)}\n    ${diff.join('\n    ')}`);
 
       if (inp.specialty === 'accident' && inp.attorney) counts.pi++;
+      if ((o.metrics.ncr.value ?? 0) > 100) counts.ncrOver100++;
+      if (o.metrics.ncr.availability === 'notGraded') counts.ncrNotGraded++;
       if ([inp.claimsDenied3, inp.claimsPaidFirstPass3, inp.ar90].includes('unknown')) counts.unknownAny++;
       if (o.letter === null) counts.noGrade++;
       else counts.letters[o.letter] = (counts.letters[o.letter] ?? 0) + 1;

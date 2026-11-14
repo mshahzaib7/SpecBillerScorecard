@@ -4,7 +4,8 @@
  */
 
 /* Input borders must reach 3:1 against paper and mist (WCAG 1.4.11); --rule alone is too light. */
-:root { --field-border: color-mix(in srgb, var(--slate) 72%, var(--paper)); }
+/* = color-mix(in srgb, --slate 72%, --paper), precomputed for Safari 14 / Chrome 87. */
+:root { --field-border: #858EA1; }
 
 /* ============================== Questions section ============================== */
 .qsec {
@@ -96,10 +97,25 @@
 }
 @keyframes nq-ok { from { opacity: 0; transform: translateY(-50%) scale(0.6); } }
 
-.nq__msg { display: flex; gap: 0.4rem; align-items: flex-start; margin-top: 0.625rem; font-size: 0.9375rem; line-height: 1.45; }
-.nq__msg svg { flex: none; margin-top: 0.15em; }
-.nq__msg--error { color: var(--status-problem-text); }
-.nq__msg--warn { color: var(--status-watch); }
+/* Messages under a field: red + warning icon blocks Next; amber + info icon is a note only. */
+.nq__msg {
+  display: flex; gap: 0.5rem; align-items: flex-start; margin-top: 0.625rem;
+  padding: 0.625rem 0.75rem; border-left: 3px solid currentColor;
+  font-size: 0.9375rem; line-height: 1.45;
+}
+.nq__msg svg { flex: none; margin-top: 0.1em; }
+.nq__msgtext { margin: 0; color: var(--ink); }
+.nq__msg--error { color: var(--status-problem); background: var(--status-problem-bg); }
+.nq__msg--warn { color: var(--status-watch-fill); background: var(--status-watch-bg); }
+.nq__msg--error svg { color: var(--status-problem-text); }
+.nq__msg--warn svg { color: var(--status-watch); }
+.nq__edit {
+  display: inline; padding: 0; margin: 0; background: none; border: 0;
+  font-weight: 600; color: var(--sapphire);
+  text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px;
+  white-space: nowrap;
+}
+@media (hover: hover) { .nq__edit:hover { text-decoration-thickness: 2px; } }
 
 .nq__tools { display: flex; flex-wrap: wrap; align-items: center; gap: 0.25rem 1.75rem; margin-top: 0.75rem; }
 .nq__where {
@@ -298,6 +314,8 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .q__fill, .nq__chev, .stmt__chev, .reveal2__rule, .reveal2__total, .pain { transition: none; }
-  .nq__ok, .mock, .flash, .reveal2, .reveal2__sheet--in, .reveal2__letter--land { animation: none; }
+  /* Reduced motion: gentle opacity fades only. No sliding, scaling or drawing. */
+  .q__fill, .nq__chev, .stmt__chev, .reveal2__rule, .pain { transition: none; }
+  .reveal2__total { transform: none; transition: opacity 300ms linear; }
+  .nq__ok, .mock, .reveal2, .reveal2__sheet--in, .reveal2__letter--land { animation-name: fade-only; animation-duration: 200ms; }
 }

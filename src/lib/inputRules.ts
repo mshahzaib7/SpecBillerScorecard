@@ -9,8 +9,6 @@
  * own $ prefix). The number itself never changes: no truncation, no dropped characters.
  * Pasted text goes through the same function.
  */
-import { INTEGER_FIELDS, MESSAGES, type NumericField } from '../engine';
-
 export type NumberKind = 'money' | 'count';
 
 const COUNT_OK = /^[\d,\s]*$/;
@@ -34,18 +32,4 @@ export function formatNumberInput(raw: string, kind: NumberKind): string {
   return `${intPart === '' ? '0' : withCommas(intPart)}.${cleaned.slice(dot + 1)}`;
 }
 
-export const MONEY_FORMAT_MESSAGE = 'Numbers only, please.';
-export const COUNT_FORMAT_MESSAGE = MESSAGES.notInteger; // "Please enter a whole number of claims."
-
-/** Messages that come from how the number is written (shown at once, while typing). */
-export const FORMAT_MESSAGES: readonly string[] = [MESSAGES.invalidNumber, MESSAGES.notInteger, MESSAGES.negative];
-
-/**
- * The visitor-facing wording for an engine validation message on a number field.
- * Claim counts get one message for any non-whole number; money fields get "Numbers only, please."
- */
-export function fieldMessage(message: string, field: NumericField, dontHaveLabel: string): string {
-  if (message === MESSAGES.requiredOrUnknown) return `Enter a number, or tick “${dontHaveLabel}”.`;
-  if (!FORMAT_MESSAGES.includes(message)) return message;
-  return INTEGER_FIELDS.includes(field) ? COUNT_FORMAT_MESSAGE : MONEY_FORMAT_MESSAGE;
-}
+/* The words visitors see for these rules live in src/content/messages.ts. */

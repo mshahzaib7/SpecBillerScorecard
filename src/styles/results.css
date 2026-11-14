@@ -85,9 +85,10 @@
 .strack { display: block; padding-top: 0.25rem; }
 .strack__bar { position: relative; display: flex; height: 6px; }
 .strack__zone { display: block; height: 100%; }
-.strack__zone--problem { background: color-mix(in srgb, var(--status-problem) 16%, var(--paper)); }
-.strack__zone--watch { background: color-mix(in srgb, var(--status-watch-fill) 22%, var(--paper)); }
-.strack__zone--good { background: color-mix(in srgb, var(--status-good-fill) 20%, var(--paper)); }
+/* Status colors at 16% / 22% / 20% on paper, precomputed (color-mix() needs Safari 16.2+ / Chrome 111+). */
+.strack__zone--problem { background: #F9DDDB; }
+.strack__zone--watch { background: #FDE7C9; }
+.strack__zone--good { background: #D1F0E1; }
 .strack__tick { position: absolute; top: -4px; width: 1px; height: 14px; background: var(--slate); }
 .strack__tick--top { margin-left: -1px; }
 .strack__marker {
@@ -273,7 +274,7 @@
 
 @media (prefers-reduced-motion: reduce) {
   .srow__main, .srow__chev, .ledger__chev, .seg__opt, .range::-webkit-slider-thumb { transition: none; }
-  .whatif__letter { animation: none; }
+  .whatif__letter { animation-name: fade-only; }
 }
 
 /* Verdict band: one sentence naming the biggest opportunity, under the money line. */
@@ -286,3 +287,9 @@
 
 /* Not reported rows: the "worth asking about" note sits in the row. */
 .srow__note { display: block; font-size: 0.9375rem; line-height: 1.45; color: var(--slate); }
+.srow__note--warn {
+  display: flex; gap: 0.5rem; align-items: flex-start; margin-top: 0.25rem;
+  padding: 0.625rem 0.75rem; border-left: 3px solid var(--status-watch-fill);
+  background: var(--status-watch-bg); color: var(--ink); text-align: left;
+}
+.srow__note--warn svg { flex: none; margin-top: 0.1em; color: var(--status-watch); }

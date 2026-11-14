@@ -19,6 +19,11 @@ export function useInputFocused(): boolean {
   return focused;
 }
 
+/** Every offer and booking button opens the lead flow: scroll to it and focus its current question. */
+export function openLeadFlow(): void {
+  scrollToId('lead', '.lf__title');
+}
+
 /** Smoothly scrolls to an element id and moves keyboard focus there. */
 export function scrollToId(id: string, focusSelector?: string): void {
   const el = document.getElementById(id);
@@ -47,10 +52,13 @@ export function useSummaryVisible(enabled: boolean, afterId: string, hideIds: st
     if (!enabled) return;
     const after = document.getElementById(afterId);
     if (!after) return;
-    const io = new IntersectionObserver(([e]) => {
-      if (!e) return;
-      setPast(!e.isIntersecting && e.boundingClientRect.top < 0);
-    });
+    const io = new IntersectionObserver(
+      ([e]) => {
+        if (!e) return;
+        setPast(!e.isIntersecting && e.boundingClientRect.top < 0);
+      },
+      { threshold: 0 },
+    );
     io.observe(after);
     return () => io.disconnect();
   }, [enabled, afterId]);
@@ -65,7 +73,8 @@ export function useSummaryVisible(enabled: boolean, afterId: string, hideIds: st
           for (const e of entries) (e.isIntersecting ? next.add(e.target.id) : next.delete(e.target.id));
           return next;
         }),
-      { threshold: 0.05 },
+      // threshold 0 + a small margin: fires for elements of any height, on any screen.
+      { threshold: 0, rootMargin: '0px 0px -5% 0px' },
     );
     els.forEach((el) => io.observe(el));
     return () => io.disconnect();

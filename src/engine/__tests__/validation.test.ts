@@ -106,14 +106,30 @@ describe('validation — errors', () => {
     expect(v({ claimsDenied3: 240, claimsPaidFirstPass3: 1_260 }).valid).toBe(true);
   });
 
-  it('NCR > 105% → error', () => {
-    // netCharges 180,000 → 105% = 189,000
-    expect(errorFor({ payments3: 189_001 }, 'payments3')).toBe(MESSAGES.ncrTooHigh);
-    expect(errorFor({ payments3: 189_000 }, 'payments3')).toBeUndefined();
+  it('NCR > 150% → error; exactly 150% is allowed', () => {
+    // netCharges 180,000 → 150% = 270,000
+    expect(errorFor({ payments3: 270_001 }, 'payments3')).toBe(MESSAGES.ncrTooHigh);
+    expect(errorFor({ payments3: 270_000 }, 'payments3')).toBeUndefined();
+    expect(errorFor({ payments3: 189_001 }, 'payments3')).toBeUndefined();
+  });
+
+  it('each issue carries a code that matches its message', () => {
+    const r = v({ payments3: 270_001, ar90: 190_001 });
+    for (const e of [...r.errors, ...r.warnings]) expect(e.message).toBe(MESSAGES[e.code]);
+    expect(r.errors.map((e) => e.code).sort()).toEqual(['ar90TooHigh', 'ncrTooHigh']);
   });
 });
 
 describe('validation — warnings (allowed)', () => {
+  it('105% < NCR ≤ 150% → "not graded" note, still valid', () => {
+    const r = v({ payments3: 189_001 });
+    expect(r.valid).toBe(true);
+    expect(warningFor({ payments3: 189_001 }, 'payments3')).toBe(MESSAGES.ncrNotGraded);
+    expect(warningFor({ payments3: 270_000 }, 'payments3')).toBe(MESSAGES.ncrNotGraded);
+    // only one note on the field
+    expect(r.warnings.filter((w) => w.field === 'payments3')).toHaveLength(1);
+  });
+
   it('100% < NCR ≤ 105% → warning, still valid', () => {
     const r = v({ payments3: 189_000 });
     expect(r.valid).toBe(true);

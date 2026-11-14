@@ -3,25 +3,27 @@
   "invalidInputs": 0,
   "mismatches": 0,
   "coverage": {
-    "pi": 1241,
-    "unknownAny": 4813,
-    "noGrade": 507,
+    "pi": 1251,
+    "ncrOver100": 2489,
+    "ncrNotGraded": 1356,
+    "unknownAny": 4873,
+    "noGrade": 774,
     "letters": {
-      "C": 637,
-      "D": 848,
-      "B": 275,
-      "F": 7609,
-      "A": 124
+      "F": 7374,
+      "D": 855,
+      "C": 592,
+      "A": 140,
+      "B": 265
     },
-    "cards": 27678,
-    "roomToGrow": 3219,
-    "under100": 80,
-    "warnings": 2368,
+    "cards": 26465,
+    "roomToGrow": 3218,
+    "under100": 63,
+    "warnings": 3464,
     "offers": {
-      "gapToTop": 3492,
-      "recoverySprint": 4988,
-      "scorecardBuild": 1423,
-      "keepItTop": 97
+      "recoverySprint": 4995,
+      "gapToTop": 3325,
+      "scorecardBuild": 1567,
+      "keepItTop": 113
     }
   },
   "first20": []

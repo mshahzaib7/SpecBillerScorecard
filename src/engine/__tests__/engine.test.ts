@@ -353,3 +353,60 @@ describe('healthy practice: "Room to grow" cards (section 6)', () => {
     expect(r.headlineCard?.vsTop.rounded).toBe(14_400);
   });
 });
+
+describe('net collection rate over 105% (shown, not graded)', () => {
+  // User's example: charges 75,000, adjustments 35,000 → owed (net charges) 40,000.
+  const base: ScorecardInputs = { ...STRUGGLING_INPUTS, charges3: 75_000, adjustments3: 35_000 };
+  const at = (payments3: number) => computeScorecard({ ...base, payments3 });
+
+  it('payments 50,000 → 125%: not graded, excluded from grade, money and biggest opportunity', () => {
+    const r = at(50_000);
+    expect(r.validation.valid).toBe(true);
+    expect(r.ncrRuleApplied).toBe(true);
+    expect(r.metrics.ncr.availability).toBe('notGraded');
+    expect(r.metrics.ncr.displayValue).toBe(125);
+    expect(r.metrics.ncr.score).toBeNull();
+    expect(r.metrics.ncr.status).toBeNull();
+    expect(r.moneyCards.some((c) => c.id === 'uncollected')).toBe(false);
+    expect(r.biggestOpportunity).not.toBe('ncr');
+    // Overall = weighted average of the other graded metrics only (weight 30 removed).
+    expect(r.overall.weightTotal).toBe(100 - METRICS.ncr.weight);
+    const others = METRIC_ORDER.filter((id) => id !== 'ncr' && r.metrics[id].availability === 'graded');
+    const expected = others.reduce((s, id) => s + METRICS[id].weight * r.metrics[id].score!, 0) /
+      others.reduce((s, id) => s + METRICS[id].weight, 0);
+    expect(r.overall.weightedSum / r.overall.weightTotal).toBeCloseTo(expected, 9);
+    expect(r.validation.warnings.find((w) => w.field === 'payments3')?.code).toBe('ncrNotGraded');
+  });
+
+  it('payments 41,800 → 104.5%: graded normally, with the "a little higher" note', () => {
+    const r = at(41_800);
+    expect(r.ncrRuleApplied).toBe(false);
+    expect(r.metrics.ncr.availability).toBe('graded');
+    expect(r.metrics.ncr.displayValue).toBe(104.5);
+    expect(r.metrics.ncr.score).toBe(100);
+    expect(r.validation.warnings.find((w) => w.field === 'payments3')?.code).toBe('ncrAbove100');
+  });
+
+  it('exactly 105% is graded; just over 105% is not', () => {
+    expect(at(42_000).metrics.ncr.availability).toBe('graded');
+    expect(at(42_001).metrics.ncr.availability).toBe('notGraded');
+  });
+
+  it('payments 64,000 → 160%: blocked', () => {
+    const r = at(64_000);
+    expect(r.validation.valid).toBe(false);
+    expect(r.validation.errors.find((e) => e.field === 'payments3')?.code).toBe('ncrTooHigh');
+  });
+
+  it('exactly 150% is allowed (not graded); 150.0025% is blocked', () => {
+    expect(at(60_000).validation.valid).toBe(true);
+    expect(at(60_000).metrics.ncr.availability).toBe('notGraded');
+    expect(at(60_001).validation.valid).toBe(false);
+  });
+
+  it('the NCR rule and the PI rule together can push below 3 graded → no grade', () => {
+    const r = computeScorecard({ ...base, payments3: 50_000, specialty: 'accident', arIncludesAttorneyCases: true });
+    expect(r.overall.gradedCount).toBe(2);
+    expect(r.overall.letter).toBeNull();
+  });
+});

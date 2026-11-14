@@ -1,4 +1,5 @@
-import { AnimatePresence, m, useReducedMotion } from 'framer-motion';
+import { useReducedMotion } from 'framer-motion';
+import { Anim, Presence } from '../lib/motion';
 import { useState } from 'react';
 import { MONEY_MIN_DISPLAY, type MoneyCard, type ScorecardInputs, type ScorecardResult } from '../engine';
 import { LEDGER_COPY } from '../content/copy';
@@ -48,15 +49,18 @@ function LedgerRow({ card, level, result, inputs, onMethod }: { card: MoneyCard;
         {LEDGER_COPY.howWeGotThis}
         <IconChevronDown size={16} className={open ? 'ledger__chev ledger__chev--open' : 'ledger__chev'} />
       </button>
-      <AnimatePresence initial={false}>
+      <Presence initial={false}>
         {open && (
-          <m.div
+          <Anim
             id={panelId}
             className="ledger__calc"
-            initial={reduce ? false : { height: 0, opacity: 0 }}
-            animate={{ height: 'auto', opacity: 1 }}
-            exit={reduce ? { opacity: 0 } : { height: 0, opacity: 0 }}
-            transition={{ duration: 0.25, ease: [0.2, 0.8, 0.2, 1] }}
+            motion={{
+              // Reduced motion: fades open, no sliding.
+              initial: reduce ? { opacity: 0 } : { height: 0, opacity: 0 },
+              animate: { height: 'auto', opacity: 1 },
+              exit: reduce ? { opacity: 0 } : { height: 0, opacity: 0 },
+              transition: { duration: 0.25, ease: [0.2, 0.8, 0.2, 1] },
+            }}
           >
             <div className="ledger__calc-inner">
               <p>{f.rule}</p>
@@ -67,9 +71,9 @@ function LedgerRow({ card, level, result, inputs, onMethod }: { card: MoneyCard;
                 {LEDGER_COPY.allFormulas}
               </button>
             </div>
-          </m.div>
+          </Anim>
         )}
-      </AnimatePresence>
+      </Presence>
     </li>
   );
 }

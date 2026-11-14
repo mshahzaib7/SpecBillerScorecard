@@ -13,6 +13,7 @@ import {
   type Status,
 } from '../engine';
 import { formatMoney } from '../lib/format';
+import { afterLoadIdle } from '../lib/idle';
 import { EXAMPLE_INPUTS } from '../lib/formState';
 
 /* One loop is 6 seconds: hold, rows improve one by one, hold at Good levels, glide back. */
@@ -44,7 +45,9 @@ function formatValue(id: MetricId, v: number): string {
  * Hero example statement (DESIGN-BRIEF 7.2), driven by the real engine with the example
  * practice (golden test 1). Rows move toward Good levels one by one, the grade climbs to B,
  * and the jade total counts down to the gap that remains. Pauses on hover, touch,
- * when off screen, or with the pause button. Static with reduced motion.
+ * when off screen, or with the pause button.
+ * Reduced motion (battery saver, accessibility settings): shows the first frame and a small
+ * "Play demo" button instead of looping. One press plays one loop (numbers change, nothing slides).
  */
 export function HeroStatement() {
   const reduce = useReducedMotion();
@@ -60,41 +63,41 @@ export function HeroStatement() {
   const [hover, setHover] = useState(false);
   const [touchHold, setTouchHold] = useState(false);
   const [userPaused, setUserPaused] = useState(false);
+  // Reduced motion: the demo plays only when asked, once.
+  const [demoPlaying, setDemoPlaying] = useState(false);
   // Paused until the hero is confirmed visible (and the page is idle, below).
   const [onScreen, setOnScreen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
   const touchTimer = useRef<number>();
   const cache = useRef(new Map<number, { gap: number; score: number; letter: string; rows: { id: MetricId; value: number | null; status: Status | null }[] }>());
-  const paused = !!reduce || !ready || hover || touchHold || userPaused || !onScreen;
+  const paused = (reduce ? !demoPlaying : !ready || hover || touchHold || userPaused) || !onScreen;
 
   useEffect(() => {
     const el = ref.current;
     if (!el || typeof IntersectionObserver === 'undefined') return;
-    const io = new IntersectionObserver(([e]) => setOnScreen(!!e?.isIntersecting), { threshold: 0.2 });
+    // threshold 0 + a small margin: fires on every screen size, even when the sheet is taller than the screen.
+    const io = new IntersectionObserver(([e]) => setOnScreen(!!e?.isIntersecting), { threshold: 0, rootMargin: '0px 0px -10% 0px' });
     io.observe(el);
     return () => io.disconnect();
   }, []);
 
-  useEffect(() => {
-    const w = window as Window & { requestIdleCallback?: (cb: () => void, o?: { timeout: number }) => number; cancelIdleCallback?: (id: number) => void };
-    let idle = 0;
-    const start = () => {
-      idle = w.requestIdleCallback ? w.requestIdleCallback(() => setReady(true), { timeout: 4000 }) : window.setTimeout(() => setReady(true), 2000);
-    };
-    if (document.readyState === 'complete') start();
-    else window.addEventListener('load', start, { once: true });
-    return () => {
-      window.removeEventListener('load', start);
-      if (w.cancelIdleCallback) w.cancelIdleCallback(idle);
-      else window.clearTimeout(idle);
-    };
-  }, []);
+  // Start once the page is loaded and idle, or after 2.5 s at the latest (Safari has no requestIdleCallback).
+  useEffect(() => afterLoadIdle(() => setReady(true), 2500), []);
 
   useEffect(() => {
     if (paused) return;
-    const id = window.setInterval(() => setTick((t) => (t + 1) % TICKS), 1000 / TICK_RATE);
+    const id = window.setInterval(
+      () =>
+        setTick((t) => {
+          const next = (t + 1) % TICKS;
+          // Reduced motion: one loop, then stop on the first frame.
+          if (reduce && next === 0) setDemoPlaying(false);
+          return next;
+        }),
+      1000 / TICK_RATE,
+    );
     return () => window.clearInterval(id);
-  }, [paused]);
+  }, [paused, reduce]);
 
   useEffect(() => () => window.clearTimeout(touchTimer.current), []);
 
@@ -120,7 +123,7 @@ export function HeroStatement() {
     cache.current.set(t, frame);
     return frame;
   };
-  const frame = frameAt(reduce ? 0 : tick);
+  const frame = frameAt(tick);
   const { gap, score, letter } = frame;
 
   const startGap = roundMoney(base.moneyCards.find((c) => c.id === 'uncollected')?.vsTop.raw ?? 0);
@@ -152,7 +155,19 @@ export function HeroStatement() {
             <p className="sheet__title" aria-hidden="true">Example practice</p>
             <p className="sheet__meta">
               <span aria-hidden="true">Sample numbers</span>
-              {!reduce && (
+              {reduce ? (
+                <button
+                  type="button"
+                  className="sheet__pause"
+                  onClick={() => {
+                    setTick(0);
+                    setDemoPlaying((p) => !p);
+                  }}
+                  aria-label={demoPlaying ? 'Stop the example' : 'Play the example once'}
+                >
+                  {demoPlaying ? 'Stop' : 'Play demo'}
+                </button>
+              ) : (
                 <button
                   type="button"
                   className="sheet__pause"

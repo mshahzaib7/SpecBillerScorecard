@@ -76,23 +76,6 @@ export const CTA_HEADLINE: Record<'A' | 'BC' | 'DF' | 'none', string> = {
   DF: "Let's stop the money leak.",
   none: "Let's get you the full picture.",
 };
-
-export const LEAD_COPY = {
-  title: 'Get your full report and fix plan by email.',
-  includeNumbers: 'Include my scorecard numbers so you can prepare for our call.',
-  submit: 'Send me my report',
-  sending: 'Sending…',
-  consent: 'Only your report and one follow-up. No spam.',
-  phoneHint: 'Optional. US format, e.g. (843) 555-0142',
-  successTitle: (name: string) => (name ? `Thanks, ${name}. Your report is on its way.` : 'Thanks. Your report is on its way.'),
-  bookingIntro: 'Want to talk it through sooner? Pick a time below.',
-  mailtoTitle: 'Almost done: your email app should open with your request filled in. Just press Send.',
-  mailtoRetry: 'Email app didn’t open? Use this link',
-  errorTitle: "Sorry, we couldn't send that just now. Nothing you typed was lost.",
-  errorFallback: 'Send it by email instead',
-  errorNoFallback: 'Please try again in a moment.',
-} as const;
-
 /* ------------------------------ Methodology / footer ------------------------------ */
 
 export const METHOD_NOTE =

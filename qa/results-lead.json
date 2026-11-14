@@ -1,0 +1,170 @@
+[
+  {
+    "id": "L1a",
+    "name": "Offer button opens the flow on screen 1 with focus on the question",
+    "pass": true,
+    "expected": "screen 1, title focused",
+    "actual": "Who handles your billing right now? / lf__title",
+    "shot": null
+  },
+  {
+    "id": "L1b",
+    "name": "Tap: tile turns jade with a check, then moves on by itself after 250 ms",
+    "pass": true,
+    "expected": "billingHandler → providers",
+    "actual": "billingHandler → providers, on=1, focus=lf__title",
+    "shot": null
+  },
+  {
+    "id": "L2",
+    "name": "Back returns to the previous screen and keeps the answer",
+    "pass": true,
+    "expected": "billingHandler, staff selected",
+    "actual": "billingHandler, Someone on my staff1",
+    "shot": null
+  },
+  {
+    "id": "L2b",
+    "name": "No \"step X of N\" count shown",
+    "pass": true,
+    "expected": "no count",
+    "actual": "checked",
+    "shot": null
+  },
+  {
+    "id": "L3",
+    "name": "Number keys pick a tile; Enter continues",
+    "pass": true,
+    "expected": "providers, software, software",
+    "actual": "providers, software, software",
+    "shot": null
+  },
+  {
+    "id": "L4-behavioral",
+    "name": "Software tiles for behavioral: SimplePractice, TherapyNotes first",
+    "pass": true,
+    "expected": "SimplePractice, TherapyNotes",
+    "actual": "SimplePractice, TherapyNotes, Tebra (Kareo), AdvancedMD, athenaOne, eClinicalWorks, Something else, Not sure",
+    "shot": null
+  },
+  {
+    "id": "L4-other",
+    "name": "\"Something else\" opens a text field and does not move on by itself; Enter continues",
+    "pass": true,
+    "expected": "software + field, then timing",
+    "actual": "software, true, timing",
+    "shot": null
+  },
+  {
+    "id": "L4-general",
+    "name": "Software tiles for general: athenaOne, eClinicalWorks, AdvancedMD first",
+    "pass": true,
+    "expected": "athenaOne, eClinicalWorks, AdvancedMD",
+    "actual": "athenaOne, eClinicalWorks, AdvancedMD, SimplePractice, TherapyNotes, Tebra (Kareo), Something else, Not sure",
+    "shot": null
+  },
+  {
+    "id": "L5a",
+    "name": "\"Email me\" starts selected; it cannot be unselected when it is the only one; no auto-advance",
+    "pass": true,
+    "expected": "email on, stays on, still on contact",
+    "actual": "[\"Email me3\"] → [\"Email me3\"], contact",
+    "shot": null
+  },
+  {
+    "id": "L5b",
+    "name": "\"Almost done\" shows on the last two screens",
+    "pass": true,
+    "expected": "Almost done",
+    "actual": "Almost done",
+    "shot": null
+  },
+  {
+    "id": "L6a",
+    "name": "Email only: no phone field; name, practice and email are required",
+    "pass": true,
+    "expected": "no tel, 3 errors, nothing sent",
+    "actual": "0 tel, [\"Please enter your name.\",\"Please enter your practice name.\",\"Please enter your email. Your report goes there.\"], \"We'll reach you by email within one business day.\", posts 0",
+    "shot": null
+  },
+  {
+    "id": "L6b",
+    "name": "Call or text picked: mobile field shown and required, \"(555) 555-0142\" is only a placeholder, text hint shown",
+    "pass": true,
+    "expected": "placeholder, empty, hint, 1 error, nothing sent",
+    "actual": "ph=(555) 555-0142 val=\"\" hints=[\"Your report goes here.\",\"A mobile number that can receive texts.\"] errs=[\"Please enter a mobile number so we can call or text you.\"] posts=0",
+    "shot": null
+  },
+  {
+    "id": "L6c",
+    "name": "Phone formats as it is typed",
+    "pass": true,
+    "expected": "(843) 555-0142",
+    "actual": "(843) 555-0142",
+    "shot": null
+  },
+  {
+    "id": "L6d",
+    "name": "Reach line joins the chosen methods",
+    "pass": true,
+    "expected": "call, text or email",
+    "actual": "We'll reach you by call, text or email within one business day.",
+    "shot": null
+  },
+  {
+    "id": "L7a",
+    "name": "Send: exactly one POST; subject has priority, practice, grade, methods and timing",
+    "pass": true,
+    "expected": "[HIGH] New lead: Harbor Behavioral Health, grade F, wants a call, text or email, as soon as possible",
+    "actual": "1 posts, [HIGH] New lead: Harbor Behavioral Health, grade F, wants a call, text or email, as soon as possible",
+    "shot": null
+  },
+  {
+    "id": "L7b",
+    "name": "\"No\" picked: no scorecard numbers in the request",
+    "pass": true,
+    "expected": "no numbers",
+    "actual": "{\"_subject\":\"[HIGH] New lead: Harbor Behavioral Health, grade F, wants a call, text or email, as soon as possible\",\"priority\":\"HIGH\",\"name\":\"Dana Reyes\",\"practiceName\":\"Harbor Behavioral Health\",\"email\":\"dana@harborbh.com\",\"phone\":\"(843) 555-0142\",\"preferredContact\":\"Call, Text, Email\",\"billingHandledBy\":\"An outside billing company\",\"providers\":\"2 to 5\",\"practiceSoftware\":\"TherapyNotes\",\"wantsHelp\":\"As soon as possible\",\"reviewNumbersFirst\":\"No, just my contact details\",\"specialty\":\"Behavioral / Mental Health\",\"painPoints\":\"Insurance pays too slowly; Too many denied claims\",\"grade\":\"F\",\"overallScore\":56.3,\"offer\":\"Close the gap to top practices. (gapToTop)\"}",
+    "shot": null
+  },
+  {
+    "id": "L8",
+    "name": "Success: \"Thanks, Dana. Your report is on its way.\" + reach line + calendar",
+    "pass": true,
+    "expected": "title, reach, iframe",
+    "actual": "Thanks, Dana. Your report is on its way. | We'll call, text or email you within one business day. | iframe 1",
+    "shot": null
+  },
+  {
+    "id": "L9a",
+    "name": "Nothing leaves the page before \"Send my report\" (no Formspree, no Calendly)",
+    "pass": true,
+    "expected": "no external requests",
+    "actual": "[]",
+    "shot": null
+  },
+  {
+    "id": "L9b",
+    "name": "\"Yes, attach my scorecard\": numbers are in the request",
+    "pass": true,
+    "expected": "numbers included",
+    "actual": "Numbers entered:\n  Charges (3 months): $300,000\n  Contractual adjustments (3 months): $120,000\n  Payments (3 months): $1",
+    "shot": null
+  },
+  {
+    "id": "L10",
+    "name": "Honeypot filled: nothing is sent",
+    "pass": true,
+    "expected": "0 requests",
+    "actual": "0 requests",
+    "shot": null
+  },
+  {
+    "id": "L11",
+    "name": "Offer, verdict and booking buttons all open the lead flow (no direct Calendly links)",
+    "pass": true,
+    "expected": "all ok",
+    "actual": "[\".verdict__actions .btn--primary: ok\",\"#offer-cta: ok\",\"#cta-final .btn: ok\"] calendlyLinks=0",
+    "shot": null
+  }
+]

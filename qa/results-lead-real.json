@@ -1,0 +1,27 @@
+{
+  "sentAt": "2026-11-14T09:11:07.564Z",
+  "status": 200,
+  "respText": "{\"next\":\"/thanks?language=en\",\"ok\":true}\n",
+  "requestsBeforeSend": 0,
+  "done": "Thanks, QA. Your report is on its way.",
+  "payload": {
+    "_subject": "[HIGH] New lead: QA Test Practice Nov 14, grade F, wants a call or email, as soon as possible",
+    "priority": "HIGH",
+    "name": "QA TEST Nov 14 (please ignore)",
+    "practiceName": "QA Test Practice Nov 14",
+    "email": "shahzaib.ventures@gmail.com",
+    "phone": "(843) 555-0100",
+    "preferredContact": "Call, Email",
+    "billingHandledBy": "An outside billing company",
+    "providers": "2 to 5",
+    "practiceSoftware": "TherapyNotes",
+    "wantsHelp": "As soon as possible",
+    "reviewNumbersFirst": "Yes, attach my scorecard",
+    "specialty": "Behavioral / Mental Health",
+    "painPoints": "Insurance pays too slowly; Too many denied claims",
+    "grade": "F",
+    "overallScore": 56.3,
+    "offer": "Close the gap to top practices. (gapToTop)",
+    "scorecardNumbers": "Numbers entered:\n  Charges (3 months): $300,000\n  Contractual adjustments (3 months): $120,000\n  Payments (3 months): $166,500\n  Claims submitted (3 months): 1,500\n  Claims denied (3 months): 180\n  Claims paid on the first try (3 months): 1,260\n  Total AR today: $190,000\n  AR over 90 days: $47,500\nScorecard:\n  Net collection rate: 92.5% (watch)\n  Days in AR: 57 days (watch)\n  AR over 90 days: 25% (problem)\n  Denial rate: 12% (problem)\n  First-pass rate: 84% (problem)\n  Money (uncollected): vs. top $39,600, vs. good $18,000\n  Money (cashFaster): vs. top $54,000, vs. good $34,000\n  Money (deniedAboveTarget): vs. top $5,400, vs. good $4,200\n  Money (stuckOver90): vs. top $17,100, vs. good $11,400, stuck now $28,500"
+  }
+}

@@ -2,7 +2,7 @@
  * The scorecard engine entry point. Pure: same inputs → same outputs.
  * The reveal and the "what if" simulator both go through computeScorecard().
  */
-import { METRICS, METRIC_ORDER, MIN_METRICS_FOR_GRADE, MONEY_MIN_DISPLAY } from './config';
+import { METRICS, METRIC_ORDER, MIN_METRICS_FOR_GRADE, MONEY_MIN_DISPLAY, VALIDATION } from './config';
 import { computeBase, computeMetricValues, toNumbers, type Numbers } from './formulas';
 import { roundMoney, round1, EPS } from './math';
 import {
@@ -33,6 +33,14 @@ export function isPiRuleApplied(inputs: ScorecardInputs): boolean {
 }
 
 const PI_EXCLUDED: readonly MetricId[] = ['dar', 'ar90'];
+
+/**
+ * True when net collection rate is over 105% (and at most 150%, above which validation blocks).
+ * It is shown but not graded: usually old claims from earlier months paid in this period.
+ */
+export function isNcrRuleApplied(ncr: number | null): boolean {
+  return ncr !== null && ncr > VALIDATION.ncrNotGradedAbove;
+}
 
 function buildMetric(id: MetricId, value: number | null, excluded: boolean): MetricResult {
   if (value === null) {
@@ -166,10 +174,12 @@ export function computeScorecard(inputs: ScorecardInputs): ScorecardResult {
   const base = computeBase(n);
   const values = computeMetricValues(n, base);
   const piRuleApplied = isPiRuleApplied(inputs);
+  const ncrRuleApplied = isNcrRuleApplied(values.ncr);
 
   const metrics = {} as Record<MetricId, MetricResult>;
   for (const id of METRIC_ORDER) {
-    metrics[id] = buildMetric(id, values[id], piRuleApplied && PI_EXCLUDED.includes(id));
+    const excluded = (piRuleApplied && PI_EXCLUDED.includes(id)) || (ncrRuleApplied && id === 'ncr');
+    metrics[id] = buildMetric(id, values[id], excluded);
   }
 
   const overall = computeOverall(metrics);
@@ -184,5 +194,6 @@ export function computeScorecard(inputs: ScorecardInputs): ScorecardResult {
     headlineCard: moneyCards[0] ?? null,
     biggestOpportunity: findBiggestOpportunity(metrics),
     piRuleApplied,
+    ncrRuleApplied,
   };
 }

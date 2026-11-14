@@ -2,13 +2,14 @@ import { lazy, Suspense, useCallback, useEffect, useMemo, useState } from 'react
 import { computeScorecard, offerCopy, selectOffer, type ScorecardInputs } from './engine';
 import { HERO, REPORT_HELPER } from './content/copy';
 import { EMPTY_FORM, toInputs, type FormState } from './lib/formState';
-import { scrollToId, useSummaryVisible } from './lib/hooks';
+import { openLeadFlow, scrollToId, useSummaryVisible } from './lib/hooks';
 import { moneyFigure, UNIT_SUFFIX } from './lib/money';
 import { BOOKING_LABEL } from './components/BookingButton';
 import { Footer } from './components/Footer';
 import { Hero } from './components/Hero';
 import { TopBar, type Summary } from './components/TopBar';
-import { WhyStrip } from './components/WhyStrip';
+import { QuestionsRow } from './components/QuestionsRow';
+import { HowItWorks } from './components/HowItWorks';
 import { MobileSummary } from './components/MobileSummary';
 import { LiveStatement } from './components/LiveStatement';
 import { buildQuestions, QuestionFlow } from './components/QuestionFlow';
@@ -84,9 +85,9 @@ export default function App() {
     setScrollTarget({ id: 'results' });
   };
 
-  // One primary action after the reveal: the selected offer, which leads to the report form.
+  // One primary action after the reveal: the selected offer, which opens the lead flow.
   const primaryLabel = offer ? offerCopy(offer).button : BOOKING_LABEL;
-  const goToLead = () => scrollToId('lead', 'input');
+  const goToLead = openLeadFlow;
   const summaryVisible = useSummaryVisible(!!result && !revealing, 'results', ['form', 'offer-cta', 'lead', 'cta-final']);
   const headline = result?.headlineCard ?? null;
   const summary: Summary | null = result
@@ -116,7 +117,8 @@ export default function App() {
       </a>
       <TopBar showStart={!result} onStart={goToForm} onMethod={openMethod} summary={summary} />
       <Hero onStart={goToForm} />
-      <WhyStrip />
+      <QuestionsRow onStart={goToForm} />
+      <HowItWorks onStart={goToForm} />
 
       <main>
         <section className="qsec" id="form" aria-labelledby="q-title">

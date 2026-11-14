@@ -7,17 +7,18 @@ import {
   SWITCH_BLOCK,
   type OfferId,
   type PainPointId,
+  type ScorecardInputs,
   type ScorecardResult,
   type Specialty,
 } from '../engine';
 import { CALL_STEPS, CLOSING_COPY, OFFER_FIGURE_LABEL } from '../content/closing';
 import { CTA_HEADLINE } from '../content/sections';
-import { scrollToId } from '../lib/hooks';
+import { openLeadFlow } from '../lib/hooks';
 import { moneyFigure, UNIT_SUFFIX } from '../lib/money';
 import { BOOKING_LABEL } from './BookingButton';
 import { FadeUp } from './FadeUp';
 import { IconArrowRight, IconShare } from './Icons';
-import { LeadForm } from './LeadForm';
+import { LeadFlow } from './LeadFlow';
 
 /** The visitor's own figure for the offer's jade block (DESIGN-BRIEF 7.10, conversion rule 4). */
 function offerFigure(offer: OfferId | null, result: ScorecardResult): { label: string; amount: string; unit: string } | null {
@@ -68,17 +69,17 @@ function ShareRow() {
 
 interface Props {
   result: ScorecardResult;
+  inputs: ScorecardInputs;
   offer: OfferId | null;
   specialty: Specialty | null;
   painPoints: readonly PainPointId[];
 }
 
-/** The next step (DESIGN-BRIEF 7.10): the offer on sapphire, the form on paper. */
-export function NextStep({ result, offer, specialty, painPoints }: Props) {
+/** The next step (DESIGN-BRIEF 7.10): the offer on sapphire, the lead flow on paper. */
+export function NextStep({ result, inputs, offer, specialty, painPoints }: Props) {
   const copy = offer ? offerCopy(offer) : null;
   const figure = offerFigure(offer, result);
   const showSwitch = OFFER_CONFIG.switchSupportEnabled && offer !== 'keepItTop';
-  const goToLead = () => scrollToId('lead', 'input');
   // Up to 3 of the pains the visitor picked, each with how we handle it (from config.ts).
   const told = PAIN_POINTS.filter((p) => painPoints.includes(p.id)).slice(0, 3);
 
@@ -113,7 +114,7 @@ export function NextStep({ result, offer, specialty, painPoints }: Props) {
               </ul>
             </div>
           )}
-          <button type="button" id="offer-cta" className="btn btn--primary next__btn" onClick={goToLead}>
+          <button type="button" id="offer-cta" className="btn btn--primary next__btn" onClick={openLeadFlow}>
             {copy ? copy.button : BOOKING_LABEL}
             <IconArrowRight size={20} />
           </button>
@@ -135,7 +136,7 @@ export function NextStep({ result, offer, specialty, painPoints }: Props) {
         </FadeUp>
 
         <div className="next__form">
-          <LeadForm result={result} context={{ specialty, grade: result.overall.letter, offer, painPoints }} />
+          <LeadFlow result={result} inputs={inputs} context={{ specialty, grade: result.overall.letter, offer, painPoints }} />
         </div>
       </div>
     </section>

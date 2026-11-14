@@ -267,12 +267,25 @@ export const SPECIALTY_TILES: readonly { id: Specialty; label: string }[] = [
   { id: 'other', label: 'Something else' },
 ];
 
-export const WHY_NUMBERS: readonly { figure: string; text: string }[] = [
-  { figure: '5', text: 'The same five numbers well-run practices review every month.' },
-  { figure: '2', text: 'Reports your biller can send you today: a charges and payments summary, and an AR aging report.' },
-  { figure: '0', text: 'Numbers sent anywhere unless you ask for your report.' },
-];
+export const QUESTIONS_ROW = {
+  titleStart: 'Can you answer ',
+  titleAccent: 'these',
+  titleEnd: '?',
+  subtitle:
+    'Questions every practice owner should be able to answer. Your scorecard answers the money ones in 3 minutes. We help with the rest.',
+  cta: 'Find out in 3 minutes',
+  chip: 'Your scorecard shows this',
+} as const;
 
+export const HOW_IT_WORKS = {
+  title: 'How it works',
+  button: 'Get my free scorecard',
+  steps: [
+    { title: 'Get two reports from your biller', text: 'A charges and payments summary for the last 3 months, and an AR aging report. A good biller can send both today.' },
+    { title: 'Enter 8 numbers', text: 'About 3 minutes. Your numbers stay on your device unless you ask for your report.' },
+    { title: 'See your grade and what the gap costs', text: 'A line-by-line statement of your billing, and the money you could be collecting each year.' },
+  ],
+} as const;
 /**
  * Founder portrait. Drop the real photo in /public and set the path here, e.g. '/founder.jpg'.
  * While it is a [PLACEHOLDER], the site shows initials instead (never a stock or generated image).

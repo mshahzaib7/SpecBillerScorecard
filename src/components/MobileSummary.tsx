@@ -1,4 +1,5 @@
-import { AnimatePresence, m, useReducedMotion } from 'framer-motion';
+import { useReducedMotion } from 'framer-motion';
+import { Anim, Presence } from '../lib/motion';
 import type { Summary } from './TopBar';
 import { IconArrowRight } from './Icons';
 
@@ -6,14 +7,17 @@ import { IconArrowRight } from './Icons';
 export function MobileSummary({ summary }: { summary: Summary }) {
   const reduce = useReducedMotion();
   return (
-    <AnimatePresence>
+    <Presence>
       {summary.visible && (
-        <m.div
+        <Anim
           className="msum"
-          initial={reduce ? false : { y: '110%' }}
-          animate={{ y: 0 }}
-          exit={reduce ? { opacity: 0 } : { y: '110%' }}
-          transition={{ duration: 0.25, ease: [0.2, 0.8, 0.2, 1] }}
+          motion={{
+            // Reduced motion: fades in place instead of sliding up.
+            initial: reduce ? { opacity: 0 } : { y: '110%' },
+            animate: { y: 0, opacity: 1 },
+            exit: reduce ? { opacity: 0 } : { y: '110%' },
+            transition: { duration: 0.25, ease: [0.2, 0.8, 0.2, 1] },
+          }}
         >
           {summary.figure && (
             <span className="msum__gap">
@@ -25,8 +29,8 @@ export function MobileSummary({ summary }: { summary: Summary }) {
             {summary.label}
             <IconArrowRight size={18} />
           </button>
-        </m.div>
+        </Anim>
       )}
-    </AnimatePresence>
+    </Presence>
   );
 }

@@ -34,7 +34,7 @@
 
 /* ============================== Top bar ============================== */
 .topbar {
-  position: fixed; inset: 0 0 auto 0; z-index: 50;
+  position: fixed; top: 0; right: 0; left: 0; z-index: 50; /* not inset: Safari 14.0 lacks it */
   height: calc(var(--topbar-h) + env(safe-area-inset-top));
   padding-top: env(safe-area-inset-top);
   border-bottom: 1px solid transparent;
@@ -322,33 +322,107 @@
   .sheet__total-figure { font-size: clamp(1.875rem, 4.6dvh, 2.75rem); }
 }
 
-/* ============================== Why these numbers ============================== */
-.facts {
-  position: relative; z-index: 1; background: var(--paper);
-  /* Room for the hanging jade total and, on phones, the founder row under it. */
-  padding-top: 10.75rem;
-  padding-bottom: clamp(3.5rem, 2.5rem + 4vw, 6rem);
+/* ============================== Can you answer these? ============================== */
+/* Paper strip first: room for the hanging jade total and, on phones, the founder row under it. */
+.qrow { position: relative; z-index: 1; background: var(--paper); padding-top: 7.75rem; }
+@media (min-width: 1024px) { .qrow { padding-top: 4rem; } }
+@media (min-width: 1024px) and (max-height: 759px) { .qrow { padding-top: 4.5rem; } }
+.qrow__band {
+  background: var(--sapphire); color: var(--paper);
+  padding: clamp(3rem, 2rem + 4vw, 5.5rem) 0 clamp(1.5rem, 1rem + 1.5vw, 2.5rem);
 }
-.facts__grid { list-style: none; margin: 0; padding: 0; display: grid; gap: 2rem; }
-.facts__item { padding-top: 1.25rem; border-top: 1px solid var(--ink); }
-.facts__figure {
+.qrow__accent { color: var(--jade); }
+.qrow__sub { margin-top: 1rem; max-width: 60ch; font-size: var(--text-lead); line-height: 1.5; color: rgba(255,255,255,.85); }
+.qrow :focus-visible { outline-color: var(--paper); }
+
+/* Manual row (no JavaScript, reduced motion): scroll by hand, cards snap. */
+.qrow__viewport {
+  margin-top: clamp(2rem, 1.5rem + 2vw, 3rem);
+  overflow-x: auto; overflow-y: hidden; -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory; scroll-padding: 0 var(--gutter);
+  padding: 8px 0 12px;
+}
+.qrow__track {
+  list-style: none; margin: 0; padding: 0 var(--gutter);
+  display: flex; align-items: stretch; width: max-content;
+}
+.qrow__item { display: flex; flex: none; padding-right: 1rem; scroll-snap-align: start; }
+.qrow__item:last-child { padding-right: 0; }
+
+/* Moving row: a pure CSS transform; the list is duplicated, so -50% is one seamless loop. */
+@media (prefers-reduced-motion: no-preference) {
+  .qrow--auto .qrow__viewport { overflow: hidden; scroll-snap-type: none; }
+  .qrow--auto .qrow__track {
+    padding: 0;
+    -webkit-animation: qrow-loop var(--qrow-dur, 134s) linear infinite;
+    animation: qrow-loop var(--qrow-dur, 134s) linear infinite;
+    will-change: transform;
+  }
+  .qrow--auto .qrow__item:last-child { padding-right: 1rem; }
+  .qrow--paused .qrow__track,
+  .qrow--auto .qrow__viewport:focus-within .qrow__track { -webkit-animation-play-state: paused; animation-play-state: paused; }
+}
+@media (prefers-reduced-motion: no-preference) and (hover: hover) {
+  .qrow--auto .qrow__viewport:hover .qrow__track { -webkit-animation-play-state: paused; animation-play-state: paused; }
+}
+@-webkit-keyframes qrow-loop { from { -webkit-transform: translate3d(0,0,0); } to { -webkit-transform: translate3d(-50%,0,0); } }
+@keyframes qrow-loop { from { transform: translate3d(0,0,0); } to { transform: translate3d(-50%,0,0); } }
+
+.qcard {
+  display: flex; flex-direction: column; gap: 0.75rem;
+  width: 280px; padding: 1.125rem 1.125rem 1.125rem 1.375rem;
+  text-align: left; font: inherit; color: var(--ink); cursor: pointer;
+  background: var(--paper); border: 0; border-radius: var(--radius-sheet);
+  box-shadow: inset 4px 0 0 var(--jade);
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+.qcard__cat { font-family: var(--font-mono); font-size: var(--text-label); line-height: 1.4; color: var(--slate); }
+.qcard__q { flex: 1 0 auto; font-weight: 600; font-size: 1.125rem; line-height: 1.3; color: var(--ink); }
+.qcard__cta { display: inline-flex; align-items: center; gap: 0.375rem; font-weight: 600; font-size: 0.9375rem; color: var(--sapphire); }
+.qcard__arrow { flex: none; transition: transform var(--dur-fast) var(--ease-out); }
+.qcard__chip {
+  align-self: flex-start; padding: 0.25rem 0.5rem; border-radius: var(--radius-sheet);
+  background: var(--jade); color: var(--ink);
+  font-family: var(--font-mono); font-size: 0.75rem; line-height: 1.3;
+}
+.qrow .qcard:focus-visible { outline: 3px solid var(--jade); outline-offset: 2px; }
+@media (hover: hover) {
+  .qcard:hover { transform: translateY(-2px); }
+  .qcard:hover .qcard__arrow { transform: translateX(2px); }
+}
+@media (min-width: 640px) {
+  .qcard { width: 320px; padding: 1.25rem 1.25rem 1.25rem 1.5rem; }
+  .qcard__q { font-size: 1.25rem; }
+}
+
+.qrow__controls { display: flex; justify-content: flex-end; margin-top: 0.75rem; }
+.qrow__pause {
+  min-height: 40px; padding: 0 0.875rem; cursor: pointer;
+  font-family: var(--font-mono); font-size: var(--text-label); color: var(--paper);
+  background: transparent; border: 1px solid rgba(255,255,255,.4); border-radius: var(--radius-control);
+}
+@media (hover: hover) { .qrow__pause:hover { border-color: var(--paper); } }
+@media (prefers-reduced-motion: reduce) { .qrow__controls { display: none; } }
+
+/* ============================== How it works ============================== */
+.how { position: relative; z-index: 1; background: var(--paper); padding: clamp(3.5rem, 2.5rem + 4vw, 6rem) 0; }
+.how__grid { list-style: none; margin: clamp(2rem, 1.5rem + 2vw, 3rem) 0 0; padding: 0; display: grid; gap: 2rem; }
+.how__item { padding-top: 1.25rem; border-top: 1px solid var(--ink); }
+.how__num {
   display: block; font-family: var(--font-mono); font-weight: 500;
   font-size: clamp(3rem, 2.25rem + 3vw, 5rem); line-height: 1; letter-spacing: -0.02em;
   font-variant-numeric: tabular-nums;
 }
-.facts__text { margin-top: 1rem; max-width: 34ch; color: var(--ink); }
+.how__step { margin-top: 1rem; font-size: var(--text-h3); font-weight: 700; line-height: 1.25; }
+.how__text { margin-top: 0.5rem; max-width: 34ch; color: var(--slate); }
+.how__start { margin-top: clamp(2rem, 1.5rem + 2vw, 3rem); }
 @media (min-width: 768px) {
-  .facts__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--col-gap); }
-}
-@media (min-width: 1024px) {
-  .facts { padding-top: 7rem; }
-}
-@media (min-width: 1024px) and (max-height: 759px) {
-  .facts { padding-top: 7.5rem; }
+  .how__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--col-gap); }
 }
 
 /* ============================== Reduced motion ============================== */
 @media (prefers-reduced-motion: reduce) {
-  .sheet__letter { animation: none; }
-  .tile, .tile__check, .topbar, .btn { transition: none; }
+  .sheet__letter { animation-name: fade-only; }
+  .tile, .tile__check, .topbar, .btn, .qcard, .qcard__arrow { transition: none; }
+  .btn--primary:hover, .btn:active, .btn--primary:active { transform: none; }
 }

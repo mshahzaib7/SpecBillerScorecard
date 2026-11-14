@@ -1,7 +1,11 @@
 import { describe, expect, it } from 'vitest';
 import { validateInputs } from '../../engine';
 import { EXAMPLE_FORM, toInputs, type FormState } from '../formState';
-import { COUNT_FORMAT_MESSAGE, fieldMessage, formatNumberInput, MONEY_FORMAT_MESSAGE } from '../inputRules';
+import { formatNumberInput } from '../inputRules';
+import { explainIssue } from '../../content/messages';
+
+const COUNT_FORMAT_MESSAGE = 'Please enter a whole number of claims, like 1,500.';
+const MONEY_FORMAT_MESSAGE = 'Numbers only, please. You can type 12500, 12,500 or $12,500.';
 import type { NumericField } from '../../engine';
 
 /** What the visitor would see for `field` after typing `typed`: the field text, whether Next is blocked, and the message. */
@@ -10,13 +14,12 @@ function enter(field: NumericField, typed: string) {
   const shown = formatNumberInput(typed, kind);
   const form: FormState = { ...EXAMPLE_FORM, values: { ...EXAMPLE_FORM.values, [field]: shown } };
   const err = validateInputs(toInputs(form)).errors.find((e) => e.field === field);
-  return { shown, blocked: !!err, message: err ? fieldMessage(err.message, field, "I don't have this number") : null, value: toInputs(form)[field] };
+  return { shown, blocked: !!err, message: err ? explainIssue(err, toInputs(form)).text : null, value: toInputs(form)[field] };
 }
 
 describe('number inputs never silently change what the visitor typed', () => {
   it('"12.5" in a claim count: kept as typed, blocked, whole-number message', () => {
     expect(enter('claimsSubmitted3', '12.5')).toMatchObject({ shown: '12.5', blocked: true, message: COUNT_FORMAT_MESSAGE });
-    expect(COUNT_FORMAT_MESSAGE).toBe('Please enter a whole number of claims.');
   });
 
   it('"12k5" in a claim count: kept as typed, blocked, whole-number message', () => {
@@ -33,7 +36,6 @@ describe('number inputs never silently change what the visitor typed', () => {
 
   it('"12..5" in a money field: kept as typed, blocked, "Numbers only, please."', () => {
     expect(enter('payments3', '12..5')).toMatchObject({ shown: '12..5', blocked: true, message: MONEY_FORMAT_MESSAGE });
-    expect(MONEY_FORMAT_MESSAGE).toBe('Numbers only, please.');
   });
 
   it('pasted "$ 300,000" in a money field is valid', () => {

@@ -28,7 +28,8 @@
   --status-good:    #067647;  --status-good-fill: #17B26A;   --status-good-bg: #ECFDF3;
   --status-top:     var(--jade);
   /* Problem text on --status-problem-bg is 4.44:1 (fails AA); this darker mix is ~5.3:1. */
-  --status-problem-text: color-mix(in srgb, var(--status-problem) 82%, var(--ink));
+  /* = color-mix(in srgb, --status-problem 82%, --ink), precomputed: color-mix() needs Safari 16.2+ / Chrome 111+. */
+  --status-problem-text: #B42A25;
 
   /* The one shadow on the site: the statement sheet is paper on the page. */
   --shadow-paper: 0 1px 1px rgba(10,26,58,.06), 0 24px 48px -24px rgba(0,26,71,.35);

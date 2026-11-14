@@ -28,10 +28,10 @@ export function ResultsSections({ result, inputs, offer, primaryLabel, onPrimary
   return (
     <>
       <VerdictBand result={result} offerLabel={primaryLabel} onPrimary={onPrimary} onStatement={() => scrollToId('statement', 'h2')} />
-      <StatementTable result={result} specialty={inputs.specialty} />
+      <StatementTable result={result} inputs={inputs} specialty={inputs.specialty} />
       <MoneyLedger result={result} inputs={inputs} onMethod={onMethod} />
       <WhatIf result={result} inputs={inputs} />
-      <NextStep result={result} offer={offer} specialty={inputs.specialty} painPoints={inputs.painPoints} />
+      <NextStep result={result} inputs={inputs} offer={offer} specialty={inputs.specialty} painPoints={inputs.painPoints} />
       <Faq />
       <Founder />
     </>

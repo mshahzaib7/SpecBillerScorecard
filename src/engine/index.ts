@@ -1,7 +1,7 @@
 export * from './types';
 export * from './config';
 export { round1, roundMoney, safeDiv } from './math';
-export { computeScorecard, deniedClaimParts, isPiRuleApplied } from './compute';
+export { computeScorecard, deniedClaimParts, isPiRuleApplied, isNcrRuleApplied } from './compute';
 export {
   simulateScorecard,
   inputsForMetricValues,

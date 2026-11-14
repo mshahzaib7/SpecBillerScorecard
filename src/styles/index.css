@@ -36,13 +36,33 @@
   input { font: inherit; color: inherit; }
   :focus-visible { outline: 2px solid var(--sapphire); outline-offset: 2px; box-shadow: none; }
   .on-dark :focus-visible, .section--dark :focus-visible { outline-color: var(--paper); }
-  ::selection { background: color-mix(in srgb, var(--ocean) 30%, var(--paper)); color: var(--ink); }
+  ::selection { background: #B3F2FE; color: var(--ink); } /* = --ocean 30% on --paper */
 }
 @media (max-width: 639px) {
   body { font-size: 1.0625rem; } /* 17px body on phones */
 }
+/* overflow: clip needs Safari 16 / Chrome 90. Older browsers get hidden (same look; no sticky children here). */
+@supports not (overflow: clip) {
+  body { overflow-x: hidden; }
+  .section--dark { overflow: hidden; }
+}
 
 .num, .mono { font-variant-numeric: tabular-nums; }
+
+/* Shared by every reduced-motion fallback: an opacity fade, never movement. */
+@keyframes fade-only { from { opacity: 0; } }
+
+/* Scroll-in fade (src/components/FadeUp.tsx). Hidden only while JS waits for it to scroll in. */
+.fadeup--wait { opacity: 0; transform: translateY(12px); }
+.fadeup--in { animation: fadeup-in 400ms var(--ease-out) var(--fade-delay, 0s) both; }
+@keyframes fadeup-in { from { opacity: 0; transform: translateY(12px); } }
+@media (prefers-reduced-motion: reduce) {
+  .fadeup--wait { transform: none; }
+  .fadeup--in { animation: fade-only 300ms linear var(--fade-delay, 0s) both; }
+}
+@media print {
+  .fadeup--wait { opacity: 1; transform: none; }
+}
 .mono { font-family: var(--font-mono); }
 
 .skiplink {

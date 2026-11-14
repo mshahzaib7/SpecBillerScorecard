@@ -55,8 +55,29 @@ export type NumericField =
 
 export type InputField = NumericField | 'specialty' | 'arIncludesAttorneyCases';
 
+/** Which rule raised a validation issue. The UI turns the code into a message with the visitor's own numbers. */
+export type IssueCode =
+  | 'required'
+  | 'requiredOrUnknown'
+  | 'invalidNumber'
+  | 'negative'
+  | 'notInteger'
+  | 'specialtyRequired'
+  | 'attorneyRequired'
+  | 'adjustmentsTooHigh'
+  | 'ar90TooHigh'
+  | 'deniedTooHigh'
+  | 'firstPassTooHigh'
+  | 'deniedPlusFirstPassTooHigh'
+  | 'ncrTooHigh'
+  | 'ncrNotGraded'
+  | 'ncrAbove100'
+  | 'darVeryHigh'
+  | 'smallClaims';
+
 export interface ValidationIssue {
   field: InputField;
+  code: IssueCode;
   message: string;
 }
 
@@ -71,7 +92,8 @@ export type Status = 'good' | 'watch' | 'problem';
 
 /**
  * - graded      → value available and counted in the overall score
- * - notGraded   → value available but excluded (Accident / PI attorney-case rule)
+ * - notGraded   → value available but excluded (Accident / PI attorney-case rule, or
+ *                 net collection rate over 105%)
  * - unavailable → "I don't know" or a zero denominator ("Not reported")
  */
 export type MetricAvailability = 'graded' | 'notGraded' | 'unavailable';
@@ -144,4 +166,6 @@ export interface ScorecardResult {
   biggestOpportunity: MetricId | null;
   /** True when DAR and AR90 are excluded by the Accident / PI attorney-case rule. */
   piRuleApplied: boolean;
+  /** True when net collection rate is over 105% (and at most 150%): shown, but not graded. */
+  ncrRuleApplied: boolean;
 }

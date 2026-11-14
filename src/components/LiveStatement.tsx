@@ -1,4 +1,5 @@
-import { m, useReducedMotion } from 'framer-motion';
+import { useReducedMotion } from 'framer-motion';
+import { Anim } from '../lib/motion';
 import { useEffect, useRef, useState } from 'react';
 import { METRICS, type MetricId, type NumericField, type ScorecardResult } from '../engine';
 import { NOT_REPORTED_NOTE, QUESTION_COPY, RATE_LINE, SPECIALTY_LABEL } from '../content/copy';
@@ -136,18 +137,21 @@ export function LiveStatement({ form, result }: Props) {
         ) : (
           <ul className="stmt__lines" aria-live="polite" aria-relevant="additions text">
             {lines.map((l) => (
-              <m.li
+              <Anim
+                as="li"
                 key={l.key}
                 className={`stmt__line stmt__line--${l.kind} ${l.muted ? 'stmt__line--muted' : ''}`}
-                initial={reduce ? false : { opacity: 0, y: 6 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.2, ease: [0.2, 0.8, 0.2, 1] }}
+                motion={{
+                  initial: reduce ? { opacity: 0 } : { opacity: 0, y: 6 },
+                  animate: { opacity: 1, y: 0 },
+                  transition: { duration: 0.2, ease: [0.2, 0.8, 0.2, 1] },
+                }}
               >
                 <span className="stmt__label">{l.label}</span>
                 <FlashValue value={l.value} className="stmt__value" />
                 {l.tag && <span className="stmt__tag">{l.tag}</span>}
                 {l.note && <span className="stmt__note">{l.note}</span>}
-              </m.li>
+              </Anim>
             ))}
           </ul>
         )}

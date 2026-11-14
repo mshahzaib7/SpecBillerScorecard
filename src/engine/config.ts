@@ -164,8 +164,13 @@ export const MIN_METRICS_FOR_GRADE = 3;
 /** Validation limits. */
 export const VALIDATION = {
   /** NCR above this blocks the scorecard (error). */
-  ncrMaxError: 105,
-  /** NCR above this (and ≤ ncrMaxError) shows a warning. */
+  ncrMaxError: 150,
+  /**
+   * NCR above this (and ≤ ncrMaxError) is shown but NOT graded: excluded from the overall score,
+   * the money cards and the biggest opportunity, like the Accident / PI rule. A note explains why.
+   */
+  ncrNotGradedAbove: 105,
+  /** NCR above this (and ≤ ncrNotGradedAbove) is graded normally and shows a note. */
   ncrWarnAbove: 100,
   /** Days in AR above this shows a warning. */
   darWarnAbove: 365,
@@ -344,8 +349,216 @@ export const REFERRAL_BLOCK = {
   copied: 'Link copied',
 } as const;
 
-/** Lead form (spec 12.4). */
+/** Lead capture endpoint (spec 12.4). */
 export const LEAD_CONFIG = {
-  /** POST JSON endpoint (e.g. Formspree). While a placeholder, Submit opens a pre-filled email instead. */
+  /** POST JSON endpoint (e.g. Formspree). While a placeholder, "Send my report" opens a pre-filled email instead. */
   formEndpoint: 'https://formspree.io/f/xpppgarr',
 } as const;
+
+/**
+ * ============================================================================
+ *  LEAD FLOW: one question per screen, in the "Next step" panel.
+ *  Every screen, tile, line and promise has an `on` flag. Turn a flag to false
+ *  and the site stops showing it (a screen that's off is skipped).
+ *  The flow never re-asks what the scorecard already knows (specialty, pains,
+ *  grade, numbers). Nothing is sent before "Send my report".
+ * ============================================================================
+ */
+export type BillingHandlerId = 'staff' | 'company' | 'self' | 'mix';
+export type ProvidersId = 'solo' | 'twoToFive' | 'sixToFifteen' | 'overFifteen';
+export type SoftwareId =
+  | 'simplePractice'
+  | 'therapyNotes'
+  | 'tebra'
+  | 'advancedMD'
+  | 'athenaOne'
+  | 'eClinicalWorks'
+  | 'other'
+  | 'notSure';
+export type TimingId = 'asap' | 'soon' | 'looking';
+export type ReviewId = 'yes' | 'no';
+export type ContactMethod = 'call' | 'text' | 'email';
+/** Line icons available to tiles (see src/components/Icons.tsx). */
+export type TileIcon = 'staff' | 'company' | 'self' | 'mix' | 'call' | 'text' | 'email';
+
+export interface LeadTile<Id extends string> {
+  readonly id: Id;
+  readonly label: string;
+  readonly on: boolean;
+  readonly icon?: TileIcon;
+}
+
+export const LEAD_FLOW = {
+  billingHandler: {
+    on: true,
+    title: 'Who handles your billing right now?',
+    note: { on: true, text: "There's no wrong answer. It helps us prepare for your practice." },
+    tiles: [
+      { id: 'staff', label: 'Someone on my staff', on: true, icon: 'staff' },
+      { id: 'company', label: 'An outside billing company', on: true, icon: 'company' },
+      { id: 'self', label: 'I do it myself', on: true, icon: 'self' },
+      { id: 'mix', label: "It's a mix", on: true, icon: 'mix' },
+    ] as readonly LeadTile<BillingHandlerId>[],
+  },
+  providers: {
+    on: true,
+    title: 'How many providers bill under your practice?',
+    tiles: [
+      { id: 'solo', label: 'Just me', on: true },
+      { id: 'twoToFive', label: '2 to 5', on: true },
+      { id: 'sixToFifteen', label: '6 to 15', on: true },
+      { id: 'overFifteen', label: 'More than 15', on: true },
+    ] as readonly LeadTile<ProvidersId>[],
+  },
+  software: {
+    on: true,
+    title: 'Which practice software do you use?',
+    tiles: [
+      { id: 'simplePractice', label: 'SimplePractice', on: true },
+      { id: 'therapyNotes', label: 'TherapyNotes', on: true },
+      { id: 'tebra', label: 'Tebra (Kareo)', on: true },
+      { id: 'advancedMD', label: 'AdvancedMD', on: true },
+      { id: 'athenaOne', label: 'athenaOne', on: true },
+      { id: 'eClinicalWorks', label: 'eClinicalWorks', on: true },
+      { id: 'other', label: 'Something else', on: true },
+      { id: 'notSure', label: 'Not sure', on: true },
+    ] as readonly LeadTile<SoftwareId>[],
+    /** "Something else" opens a small text field. */
+    otherLabel: 'Which software?',
+    otherPlaceholder: 'Type the name',
+    continueLabel: 'Continue',
+    /** Tiles moved to the front for a specialty, in this order. The rest keep the list order. */
+    orderBySpecialty: {
+      on: true,
+      behavioral: ['simplePractice', 'therapyNotes'],
+      general: ['athenaOne', 'eClinicalWorks', 'advancedMD'],
+    } as { on: boolean; behavioral: readonly SoftwareId[]; general: readonly SoftwareId[] },
+  },
+  timing: {
+    on: true,
+    title: 'When would you want help?',
+    tiles: [
+      { id: 'asap', label: 'As soon as possible', on: true },
+      { id: 'soon', label: 'In the next month or two', on: true },
+      { id: 'looking', label: "I'm just looking for now", on: true },
+    ] as readonly LeadTile<TimingId>[],
+    /** How each answer reads in the lead email subject. */
+    subject: { asap: 'as soon as possible', soon: 'in the next month or two', looking: 'just looking for now' } as Record<TimingId, string>,
+  },
+  review: {
+    on: true,
+    title: 'Want us to review your numbers before we talk?',
+    note: { on: true, text: "We'll only see the numbers you entered. No patient information." },
+    recommended: { on: true, text: 'Recommended' },
+    tiles: [
+      { id: 'yes', label: 'Yes, attach my scorecard', on: true },
+      { id: 'no', label: 'No, just my contact details', on: true },
+    ] as readonly LeadTile<ReviewId>[],
+  },
+  contact: {
+    on: true,
+    title: 'How should we reach you? Pick any.',
+    tiles: [
+      { id: 'call', label: 'Call me', on: true, icon: 'call' },
+      { id: 'text', label: 'Text me', on: true, icon: 'text' },
+      { id: 'email', label: 'Email me', on: true, icon: 'email' },
+    ] as readonly LeadTile<ContactMethod>[],
+    /** Starts selected. At least one method always stays selected. */
+    defaultSelected: ['email'] as readonly ContactMethod[],
+    continueLabel: 'Continue',
+  },
+  details: {
+    title: 'Where should we send your report?',
+    name: 'Name',
+    practiceName: 'Practice name',
+    email: 'Email',
+    emailHint: { on: true, text: 'Your report goes here.' },
+    phone: 'Mobile number',
+    /** A format hint shown inside the empty field, never a filled-in value. */
+    phonePlaceholder: '(555) 555-0142',
+    phoneTextHint: { on: true, text: 'A mobile number that can receive texts.' },
+    submit: 'Send my report',
+    sending: 'Sending…',
+    consent: { on: true, text: 'Only your report and one follow-up. No spam.' },
+    errors: {
+      name: 'Please enter your name.',
+      practiceName: 'Please enter your practice name.',
+      email: 'Please enter your email. Your report goes there.',
+      emailInvalid: 'Please check your email. It should look like name@practice.com.',
+      phone: 'Please enter a mobile number so we can call or text you.',
+      phoneInvalid: 'Please enter a 10-digit US number, like (555) 555-0142.',
+    },
+  },
+  /** The response-time promise. Off: the sentences drop the time promise. */
+  promise: { on: true, text: 'within one business day' },
+  progress: { almostDone: { on: true, text: 'Almost done' } },
+  back: 'Back',
+  sidePanel: {
+    on: true,
+    title: 'Your report will include',
+    /** Each line ticks on once the visitor has answered this many screens. */
+    items: [
+      { text: 'Your grade and statement', on: true, after: 1 },
+      { text: 'The 3 fixes that matter most', on: true, after: 3 },
+      { text: 'What the gap means in dollars', on: true, after: 5 },
+      { text: 'Your next steps', on: true, after: 6 },
+    ],
+    footer: { on: true, text: 'Every request is read by a person, not a bot.' },
+  },
+  success: {
+    title: (name: string) => (name ? `Thanks, ${name}. Your report is on its way.` : 'Thanks. Your report is on its way.'),
+    /** The inline Calendly calendar. It loads only on the success screen. */
+    booking: { on: true, text: 'Want to pick a time now?' },
+  },
+  failure: {
+    mailtoTitle: 'Almost done: your email app should open with your request filled in. Just press Send.',
+    mailtoRetry: 'Email app didn’t open? Use this link',
+    errorTitle: "Sorry, we couldn't send that just now. Nothing you typed was lost.",
+    errorFallback: 'Send it by email instead',
+    errorNoFallback: 'Please try again in a moment.',
+  },
+} as const;
+
+export type LeadPriority = 'HIGH' | 'MEDIUM' | 'LOW';
+
+/**
+ * Lead priority, shown as "[HIGH]" at the start of the lead email subject (off: no tag).
+ * HIGH: wants help as soon as possible, or the grade is D or F.
+ * MEDIUM: wants help in the next month or two (also the fallback when timing isn't asked).
+ * LOW: just looking.
+ */
+export const LEAD_PRIORITY_RULE = {
+  on: true,
+  high: { timing: ['asap'] as readonly TimingId[], grades: ['D', 'F'] as readonly string[] },
+  low: { timing: ['looking'] as readonly TimingId[] },
+} as const;
+
+export function leadPriority(timing: TimingId | null, grade: string | null): LeadPriority {
+  const rule = LEAD_PRIORITY_RULE;
+  if ((timing !== null && rule.high.timing.includes(timing)) || (grade !== null && rule.high.grades.includes(grade))) return 'HIGH';
+  if (timing !== null && rule.low.timing.includes(timing)) return 'LOW';
+  return 'MEDIUM';
+}
+
+/**
+ * "Can you answer these?" row under the hero. Order is the display order.
+ * `scorecard: true` marks the questions the scorecard itself answers.
+ */
+export const QUESTION_CARDS: readonly { category: string; question: string; scorecard: boolean }[] = [
+  { category: 'Collections', question: 'What percent of what you’re owed actually gets collected?', scorecard: true },
+  { category: 'Authorizations', question: 'Are any sessions being billed after the authorization ran out?', scorecard: false },
+  { category: 'Getting paid', question: 'How many days does it take you to get paid, on average?', scorecard: true },
+  { category: 'Eligibility', question: 'Is insurance checked before every new patient’s first visit?', scorecard: false },
+  { category: 'Denials', question: 'Which denial reason costs you the most money each month?', scorecard: false },
+  { category: 'Old claims', question: 'How much of your unpaid money is older than 90 days?', scorecard: true },
+  { category: 'Contracts', question: 'When did someone last check payments against your contract rates?', scorecard: false },
+  { category: 'Claims', question: 'How many days pass between a visit and the claim going out?', scorecard: false },
+  { category: 'Telehealth', question: 'Do your telehealth claims use the place of service each payer wants?', scorecard: false },
+  { category: 'Denials', question: 'How many of your claims get denied the first time?', scorecard: true },
+  { category: 'Deadlines', question: 'How many claims missed the filing deadline last year?', scorecard: false },
+  { category: 'Credentialing', question: 'Is every provider credentialed with every payer you bill?', scorecard: false },
+  { category: 'Secondary claims', question: 'Are secondary claims sent after the primary insurance pays?', scorecard: false },
+  { category: 'Patient balances', question: 'How much do your patients owe you right now?', scorecard: false },
+  { category: 'Accident cases', question: 'Do you know how much PIP each accident patient has left?', scorecard: false },
+  { category: 'Reporting', question: 'Does your biller send you a monthly report you actually understand?', scorecard: false },
+];

@@ -1,0 +1,32 @@
+[
+  {
+    "viewport": "390x844",
+    "page": "home",
+    "identical": false,
+    "diff": {
+      "pixels": 2348,
+      "of": 1064310
+    }
+  },
+  {
+    "viewport": "390x844",
+    "page": "results",
+    "identical": true,
+    "diff": null
+  },
+  {
+    "viewport": "1536x730",
+    "page": "home",
+    "identical": true,
+    "diff": null
+  },
+  {
+    "viewport": "1536x730",
+    "page": "results",
+    "identical": false,
+    "diff": {
+      "pixels": 26278,
+      "of": 11707392
+    }
+  }
+]

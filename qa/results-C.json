@@ -1,90 +1,114 @@
 [
   {
     "id": "C1a",
-    "name": "Adjustments equal to charges is blocked with a message at the field",
+    "name": "Adjustments equal to charges is blocked with message 3 (own numbers, red)",
     "pass": true,
-    "expected": "blocked + message",
-    "actual": "{\"shown\":\"300,000\",\"afterBlur\":\"Adjustments must be less than total charges. Please double-check both numbers.\",\"cls\":\"nq__msg nq__msg--error\",\"advanced\":false,\"nextMsg\":\"Adjustments must be less than total charges. Please double-check both numbers.\"}",
+    "expected": "blocked + message 3",
+    "actual": "{\"shown\":\"300,000\",\"afterBlur\":\"Adjustments ($300,000) can't be more than charges ($300,000). This usually happens when a yearly total or other write-offs get included. Use contractual adjustments for the same 3 months only.\",\"cls\":\"nq__msg nq__msg--error\",\"advanced\":false,\"nextMsg\":\"Adjustments ($300,000) can't be more than charges ($300,000). This usually happens when a yearly total or other write-offs get included. Use contractual adjustments for the same 3 months only.\"}",
     "shot": null
   },
   {
     "id": "C1b",
     "name": "Adjustments larger than charges is blocked",
     "pass": true,
-    "expected": "blocked + message",
-    "actual": "{\"shown\":\"350,000\",\"afterBlur\":\"Adjustments must be less than total charges. Please double-check both numbers.\",\"cls\":\"nq__msg nq__msg--error\",\"advanced\":false,\"nextMsg\":\"Adjustments must be less than total charges. Please double-check both numbers.\"}",
+    "expected": "blocked + message 3",
+    "actual": "{\"shown\":\"350,000\",\"afterBlur\":\"Adjustments ($350,000) can't be more than charges ($300,000). This usually happens when a yearly total or other write-offs get included. Use contractual adjustments for the same 3 months only.\",\"cls\":\"nq__msg nq__msg--error\",\"advanced\":false,\"nextMsg\":\"Adjustments ($350,000) can't be more than charges ($300,000). This usually happens when a yearly total or other write-offs get included. Use contractual adjustments for the same 3 months only.\"}",
     "shot": "qa/screenshots/C1-adjustments-too-high.png"
   },
   {
     "id": "C2",
-    "name": "AR over 90 days larger than total AR is blocked",
+    "name": "AR over 90 days larger than total AR is blocked with message 10 and \"Edit total AR\"",
     "pass": true,
-    "expected": "blocked + message",
-    "actual": "{\"shown\":\"200,000\",\"afterBlur\":\"AR over 90 days can't be more than your total AR.\",\"cls\":\"nq__msg nq__msg--error\",\"advanced\":false,\"nextMsg\":\"AR over 90 days can't be more than your total AR.\"}",
+    "expected": "blocked + message 10 + link",
+    "actual": "{\"shown\":\"200,000\",\"afterBlur\":\"This can't be more than your total AR ($190,000), because it's part of that total. On your aging report, add only the 91 to 120 and 120+ columns. Edit total AR\",\"cls\":\"nq__msg nq__msg--error\",\"advanced\":false,\"nextMsg\":\"This can't be more than your total AR ($190,000), because it's part of that total. On your aging report, add only the 91 to 120 and 120+ columns. Edit total AR\"}",
     "shot": "qa/screenshots/C2-ar90-too-high.png"
   },
   {
-    "id": "C3a",
-    "name": "Denied larger than submitted is blocked",
+    "id": "C2-edit",
+    "name": "\"Edit total AR\" jumps back to the total AR question with the answer kept",
     "pass": true,
-    "expected": "blocked + message",
-    "actual": "{\"shown\":\"1,600\",\"afterBlur\":\"Denied claims can't be more than the claims you submitted.\",\"cls\":\"nq__msg nq__msg--error\",\"advanced\":false,\"nextMsg\":\"Denied claims can't be more than the claims you submitted.\"}",
+    "expected": "total AR question, 190,000",
+    "actual": "How much is still unpaid today? / 190,000",
+    "shot": null
+  },
+  {
+    "id": "C3a",
+    "name": "Denied larger than submitted is blocked (message 7, \"Edit claims submitted\")",
+    "pass": true,
+    "expected": "blocked + message 7",
+    "actual": "{\"shown\":\"1,600\",\"afterBlur\":\"Denied claims (1,600) can't be more than claims submitted (1,500). Check that both numbers cover the same 3 months. Edit claims submitted\",\"cls\":\"nq__msg nq__msg--error\",\"advanced\":false,\"nextMsg\":\"Denied claims (1,600) can't be more than claims submitted (1,500). Check that both numbers cover the same 3 months. Edit claims submitted\"}",
     "shot": null
   },
   {
     "id": "C3b",
-    "name": "Paid first try larger than submitted is blocked",
+    "name": "Paid first try larger than submitted is blocked (message 8)",
     "pass": true,
-    "expected": "blocked + message",
-    "actual": "{\"shown\":\"1,600\",\"afterBlur\":\"First-pass paid claims can't be more than the claims you submitted.\",\"cls\":\"nq__msg nq__msg--error\",\"advanced\":false,\"nextMsg\":\"First-pass paid claims can't be more than the claims you submitted.\"}",
+    "expected": "blocked + message 8",
+    "actual": "{\"shown\":\"1,600\",\"afterBlur\":\"Claims paid on the first try (1,600) can't be more than claims submitted (1,500). Check that both numbers cover the same 3 months. Edit claims submitted\",\"cls\":\"nq__msg nq__msg--error\",\"advanced\":false,\"nextMsg\":\"Claims paid on the first try (1,600) can't be more than claims submitted (1,500). Check that both numbers cover the same 3 months. Edit claims submitted\"}",
     "shot": null
   },
   {
     "id": "C3c",
-    "name": "Denied + paid first try larger than submitted is blocked",
+    "name": "Denied + paid first try larger than submitted is blocked (message 9, \"Edit denied claims\")",
     "pass": true,
-    "expected": "blocked + message",
-    "actual": "{\"shown\":\"1,400\",\"afterBlur\":\"Denied claims plus first-pass paid claims can't be more than the claims you submitted.\",\"cls\":\"nq__msg nq__msg--error\",\"advanced\":false,\"nextMsg\":\"Denied claims plus first-pass paid claims can't be more than the claims you submitted.\"}",
+    "expected": "blocked + message 9",
+    "actual": "{\"shown\":\"1,400\",\"afterBlur\":\"Denied (180) plus paid on the first try (1,400) adds up to 1,580, more than the 1,500 claims you sent. A claim can't be both. Check that each count covers the same 3 months. Edit denied claims\",\"cls\":\"nq__msg nq__msg--error\",\"advanced\":false,\"nextMsg\":\"Denied (180) plus paid on the first try (1,400) adds up to 1,580, more than the 1,500 claims you sent. A claim can't be both. Check that each count covers the same 3 months. Edit denied claims\"}",
     "shot": "qa/screenshots/C3-denied-plus-firstpass.png"
   },
   {
     "id": "C4a",
-    "name": "Net collection rate above 105% is blocked",
+    "name": "Payments 64,000 (160%) are blocked with message 4 and \"Edit adjustments\"",
     "pass": true,
-    "expected": "blocked + message",
-    "actual": "{\"shown\":\"190,000\",\"afterBlur\":\"Payments look too high for these charges. Please double-check the numbers.\",\"cls\":\"nq__msg nq__msg--error\",\"advanced\":false,\"nextMsg\":\"Payments look too high for these charges. Please double-check the numbers.\"}",
+    "expected": "blocked + message 4",
+    "actual": "{\"shown\":\"64,000\",\"afterBlur\":\"After $35,000 in contractual adjustments, you were owed about $40,000. Payments of $64,000 would mean collecting 160% of that, so one number is probably off. Check that adjustments are contractual only, with no bad debt or other write-offs. Edit adjustments\",\"cls\":\"nq__msg nq__msg--error\",\"advanced\":false,\"nextMsg\":\"After $35,000 in contractual adjustments, you were owed about $40,000. Payments of $64,000 would mean collecting 160% of that, so one number is probably off. Check that adjustments are contractual only, with no bad debt or other write-offs. Edit adjustments\"}",
     "shot": null
   },
   {
     "id": "C4b",
-    "name": "Net collection rate between 100% and 105% shows a warning and allows Next",
+    "name": "Payments 50,000 (125%): amber note 5, Next allowed",
     "pass": true,
-    "expected": "warning + allowed",
-    "actual": "{\"shown\":\"185,000\",\"afterBlur\":\"Above 100% can happen when late payments from earlier months land in this period.\",\"cls\":\"nq__msg nq__msg--warn\",\"advanced\":true,\"nextMsg\":null}",
+    "expected": "note 5 + allowed",
+    "actual": "{\"shown\":\"50,000\",\"afterBlur\":\"Your payments ($50,000) are higher than what was owed after adjustments ($40,000). This happens when old claims from earlier months get paid in these 3 months. We've left this number out of your grade so it stays fair. You can continue.\",\"cls\":\"nq__msg nq__msg--warn\",\"advanced\":true,\"nextMsg\":null}",
+    "shot": null
+  },
+  {
+    "id": "C4c",
+    "name": "Payments 41,800 (104.5%): amber note 6, Next allowed",
+    "pass": true,
+    "expected": "note 6 + allowed",
+    "actual": "{\"shown\":\"41,800\",\"afterBlur\":\"Payments are a little higher than what was owed (104.5%). That's normal when late payments from earlier months arrive in this period. You can continue.\",\"cls\":\"nq__msg nq__msg--warn\",\"advanced\":true,\"nextMsg\":null}",
+    "shot": null
+  },
+  {
+    "id": "C4d",
+    "name": "125% in the results: \"Not graded\" row with note 5, no uncollected-money line, grade from the other 4",
+    "pass": true,
+    "expected": "Not graded + note, no NCR money, graded",
+    "actual": "125.0% Not graded; note \"Your payments ($50,000) are higher than what was owed after adjustments ($40,000). This happens when old claims from earlier months get paid in these 3 months. We've left this number out of your grade so it stays fair.\"; ledger Cash that could come in faster | Denied claims above target | Money stuck over 90 days; F 49.3 / 100",
     "shot": null
   },
   {
     "id": "C5",
-    "name": "Days in AR above 365 shows a warning and allows Next",
+    "name": "Days in AR above 365: amber note 11 with the visitor's days, Next allowed",
     "pass": true,
-    "expected": "warning + allowed",
-    "actual": "{\"shown\":\"1,300,000\",\"afterBlur\":\"This is unusually high. Please double-check total AR and charges.\",\"cls\":\"nq__msg nq__msg--warn\",\"advanced\":true,\"nextMsg\":null}",
+    "expected": "note 11 + allowed",
+    "actual": "{\"shown\":\"1,300,000\",\"afterBlur\":\"Your total AR is more than a full year of charges (390 days). That's unusual. Check that total AR is today's total and charges cover only the last 3 months. You can continue.\",\"cls\":\"nq__msg nq__msg--warn\",\"advanced\":true,\"nextMsg\":null}",
     "shot": null
   },
   {
     "id": "C6",
-    "name": "Fewer than 30 claims shows a warning and allows Next",
+    "name": "Fewer than 30 claims: amber note 12, Next allowed",
     "pass": true,
-    "expected": "warning + allowed",
-    "actual": "{\"shown\":\"25\",\"afterBlur\":\"Small numbers can swing a lot. Results are less reliable.\",\"cls\":\"nq__msg nq__msg--warn\",\"advanced\":true,\"nextMsg\":null}",
+    "expected": "note 12 + allowed",
+    "actual": "{\"shown\":\"25\",\"afterBlur\":\"With fewer than 30 claims, a few claims can move the results a lot. You can continue, but treat the grade as a rough guide.\",\"cls\":\"nq__msg nq__msg--warn\",\"advanced\":true,\"nextMsg\":null}",
     "shot": null
   },
   {
     "id": "C7a",
-    "name": "A minus sign in a money field is kept as typed, flagged \"Numbers only, please.\" and blocked",
+    "name": "A minus sign in a money field is kept as typed, flagged with message 1 and blocked",
     "pass": true,
     "expected": "kept + message + blocked",
-    "actual": "{\"shown\":\"-5000\",\"afterBlur\":\"Numbers only, please.\",\"cls\":\"nq__msg nq__msg--error\",\"advanced\":false,\"nextMsg\":\"Numbers only, please.\"}",
+    "actual": "{\"shown\":\"-5000\",\"afterBlur\":\"Numbers only, please. You can type 12500, 12,500 or $12,500.\",\"cls\":\"nq__msg nq__msg--error\",\"advanced\":false,\"nextMsg\":\"Numbers only, please. You can type 12500, 12,500 or $12,500.\"}",
     "shot": null
   },
   {
@@ -92,15 +116,15 @@
     "name": "Letters in a money field are kept, flagged and blocked",
     "pass": true,
     "expected": "kept + message + blocked",
-    "actual": "{\"shown\":\"abc\",\"afterBlur\":\"Numbers only, please.\",\"cls\":\"nq__msg nq__msg--error\",\"advanced\":false,\"nextMsg\":\"Numbers only, please.\"}",
+    "actual": "{\"shown\":\"abc\",\"afterBlur\":\"Numbers only, please. You can type 12500, 12,500 or $12,500.\",\"cls\":\"nq__msg nq__msg--error\",\"advanced\":false,\"nextMsg\":\"Numbers only, please. You can type 12500, 12,500 or $12,500.\"}",
     "shot": null
   },
   {
     "id": "C7c",
-    "name": "Empty required field is blocked with a message",
+    "name": "Empty required field is blocked with message 13",
     "pass": true,
-    "expected": "message \"Please enter this number.\"",
-    "actual": "Please enter this number.",
+    "expected": "Please enter this number to continue.",
+    "actual": "Please enter this number to continue.",
     "shot": null
   },
   {
@@ -108,7 +132,7 @@
     "name": "\"12k5\" in a money field is kept, flagged and blocked (never silently stripped)",
     "pass": true,
     "expected": "kept + message + blocked",
-    "actual": "{\"shown\":\"12k5\",\"afterBlur\":\"Numbers only, please.\",\"cls\":\"nq__msg nq__msg--error\",\"advanced\":false,\"nextMsg\":\"Numbers only, please.\"}",
+    "actual": "{\"shown\":\"12k5\",\"afterBlur\":\"Numbers only, please. You can type 12500, 12,500 or $12,500.\",\"cls\":\"nq__msg nq__msg--error\",\"advanced\":false,\"nextMsg\":\"Numbers only, please. You can type 12500, 12,500 or $12,500.\"}",
     "shot": null
   },
   {
@@ -116,7 +140,7 @@
     "name": "\"12..5\" in a money field is kept, flagged and blocked",
     "pass": true,
     "expected": "kept + message + blocked",
-    "actual": "{\"shown\":\"12..5\",\"afterBlur\":\"Numbers only, please.\",\"cls\":\"nq__msg nq__msg--error\",\"advanced\":false,\"nextMsg\":\"Numbers only, please.\"}",
+    "actual": "{\"shown\":\"12..5\",\"afterBlur\":\"Numbers only, please. You can type 12500, 12,500 or $12,500.\",\"cls\":\"nq__msg nq__msg--error\",\"advanced\":false,\"nextMsg\":\"Numbers only, please. You can type 12500, 12,500 or $12,500.\"}",
     "shot": null
   },
   {
@@ -140,15 +164,15 @@
     "name": "Pasted \"$ 300,000\" in a money field is valid and moves on",
     "pass": true,
     "expected": "\"300,000\", accepted",
-    "actual": "\"300,000\", message null, now Question 3 of 9",
+    "actual": "\"300,000\", message null, now Question 4 of 10",
     "shot": null
   },
   {
     "id": "C9a",
-    "name": "\"12.5\" claims: kept as typed, \"Please enter a whole number of claims.\", Next blocked",
+    "name": "\"12.5\" claims: kept as typed, message 2, Next blocked",
     "pass": true,
     "expected": "kept + message + blocked",
-    "actual": "\"12.5\", \"Please enter a whole number of claims.\", blocked true",
+    "actual": "\"12.5\", \"Please enter a whole number of claims, like 1,500.\", blocked true",
     "shot": "qa/screenshots/C9-decimal-claims.png"
   },
   {
@@ -156,7 +180,7 @@
     "name": "\"12k5\" claims: kept as typed, whole-number message, Next blocked",
     "pass": true,
     "expected": "kept + message + blocked",
-    "actual": "\"12k5\", \"Please enter a whole number of claims.\"",
+    "actual": "\"12k5\", \"Please enter a whole number of claims, like 1,500.\"",
     "shot": null
   },
   {
@@ -164,7 +188,7 @@
     "name": "\"1,500\" claims is valid and moves on",
     "pass": true,
     "expected": "accepted",
-    "actual": "\"1,500\", now Question 6 of 9",
+    "actual": "\"1,500\", now Question 7 of 10",
     "shot": null
   },
   {
@@ -196,7 +220,7 @@
     "name": "Specialty Behavioral → Primary care: same math, explanations and label change",
     "pass": true,
     "expected": "identical figures; specialty line and label change",
-    "actual": "same figures true; why text changed true; label \"Prepared November 10, 2026 · Primary care and general medicine\"",
+    "actual": "same figures true; why text changed true; label \"Prepared November 14, 2026 · Primary care and general medicine\"",
     "shot": null
   },
   {

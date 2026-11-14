@@ -104,8 +104,10 @@ export function oracle(i: OInputs): OResult {
     fpr: val(i.claimsPaidFirstPass3, 100, i.claimsSubmitted3),
   };
 
-  /* Section 5: PI rule, scores, statuses, top performer. */
+  /* Section 5: PI rule, NCR-over-105% rule, scores, statuses, top performer. */
   const pi = i.specialty === 'accident' && i.attorney === true;
+  // Spec 5 (Nov 14 rule change): NCR over 105% (up to 150%) is shown but not graded.
+  const ncrHigh = raw.ncr !== null && raw.ncr > 105;
   const metrics = {} as Record<Id, OMetric>;
   for (const id of ORDER) {
     const v = raw[id];
@@ -113,7 +115,7 @@ export function oracle(i: OInputs): OResult {
       metrics[id] = { availability: 'unavailable', value: null, display: null, score: null, status: null, top: false };
       continue;
     }
-    if (pi && (id === 'dar' || id === 'ar90')) {
+    if ((pi && (id === 'dar' || id === 'ar90')) || (ncrHigh && id === 'ncr')) {
       metrics[id] = { availability: 'notGraded', value: v, display: round1(v), score: null, status: null, top: false };
       continue;
     }

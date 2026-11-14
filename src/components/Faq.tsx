@@ -1,4 +1,5 @@
-import { AnimatePresence, m, useReducedMotion } from 'framer-motion';
+import { useReducedMotion } from 'framer-motion';
+import { Anim, Presence } from '../lib/motion';
 import { useState } from 'react';
 import { isPlaceholder } from '../engine';
 import { FAQ, FAQ_TITLE } from '../content/closing';
@@ -31,20 +32,23 @@ export function Faq() {
                     <IconChevronDown size={20} className="faq__chev" />
                   </button>
                 </h3>
-                <AnimatePresence initial={false}>
+                <Presence initial={false}>
                   {isOpen && (
-                    <m.div
+                    <Anim
                       id={pid}
                       className="faq__a"
-                      initial={reduce ? false : { height: 0, opacity: 0 }}
-                      animate={{ height: 'auto', opacity: 1 }}
-                      exit={reduce ? { opacity: 0 } : { height: 0, opacity: 0 }}
-                      transition={{ duration: 0.25, ease: [0.2, 0.8, 0.2, 1] }}
+                      motion={{
+                        // Reduced motion: fades open, no sliding.
+                        initial: reduce ? { opacity: 0 } : { height: 0, opacity: 0 },
+                        animate: { height: 'auto', opacity: 1 },
+                        exit: reduce ? { opacity: 0 } : { height: 0, opacity: 0 },
+                        transition: { duration: 0.25, ease: [0.2, 0.8, 0.2, 1] },
+                      }}
                     >
                       <p>{f.a}</p>
-                    </m.div>
+                    </Anim>
                   )}
-                </AnimatePresence>
+                </Presence>
               </li>
             );
           })}

@@ -35,7 +35,8 @@ export function TopBar({ showStart, onStart, onMethod, summary }: Props) {
   useEffect(() => {
     const el = document.getElementById('form');
     if (!el || typeof IntersectionObserver === 'undefined') return;
-    const io = new IntersectionObserver(([e]) => setInQuestions(!!e?.isIntersecting), { threshold: 0.15 });
+    // threshold 0 + margin (not a share of the element): works however tall the section is.
+    const io = new IntersectionObserver(([e]) => setInQuestions(!!e?.isIntersecting), { threshold: 0, rootMargin: '0px 0px -15% 0px' });
     io.observe(el);
     return () => io.disconnect();
   }, []);

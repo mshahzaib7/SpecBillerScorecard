@@ -8,8 +8,8 @@ export const EXE = {
 const TILE = { behavioral: 0, general: 1, accident: 2, other: 3 };
 
 /** Answer the whole flow like a person: tap a tile, then type each number and press Enter. */
-export async function answerFlow(page, { specialty, values, attorney = null, pains = [] }) {
-  await page.goto(BASE);
+export async function answerFlow(page, { specialty, values, attorney = null, pains = [], base = BASE }) {
+  await page.goto(base);
   await page.evaluate(() => document.fonts.ready);
   await page.locator('.tile').nth(TILE[specialty]).click();
   await page.waitForSelector('.pain');

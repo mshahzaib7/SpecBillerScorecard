@@ -155,6 +155,9 @@ Show the card as "Not reported" with: *"A good biller reports this number every 
 ### Accident / PI rule
 If specialty = Accident/PI AND `arIncludesAttorneyCases = yes`, mark DAR and AR90 as **not graded** (excluded from overall score and from money cards) and show: *"Attorney and LOP cases naturally take months to settle, so Days in AR and AR over 90 days can't be fairly graded here. For a fair grade, enter health-insurance numbers only."* Keep showing the raw values, ungraded.
 
+### Net collection rate over 105% rule (rule change, November 14, 2026)
+If NCR is over 105% and at most 150%, mark NCR as **not graded** (excluded from the overall score, the money cards and the biggest opportunity, like the PI rule). Grade the other numbers normally. Keep showing the raw value, ungraded, with the amber note: *"Your payments ([pay]) are higher than what was owed after adjustments ([owed]). This happens when old claims from earlier months get paid in these 3 months. We've left this number out of your grade so it stays fair."* NCR up to 105% is graded normally. Over 150% is blocked (section 7). Thresholds live in `config.ts` (`VALIDATION`).
+
 ---
 
 ## 6. Money gaps (two levels, honest and clearly labeled)
@@ -193,16 +196,17 @@ If no card applies at all: *"Your billing is performing at a top level. That's r
 
 ## 7. Validation (block bad results)
 
-Errors (block the scorecard until fixed, with a friendly message next to the field):
+Errors (block the scorecard until fixed, with a friendly message next to the field). The exact visitor-facing wording of every message, with the visitor's own numbers, lives in `src/content/messages.ts`:
 - Any negative number, or a required field empty
 - `adjustments3 >= charges3`
 - `ar90 > totalAR`
 - `claimsDenied3 > claimsSubmitted3` or `claimsPaidFirstPass3 > claimsSubmitted3`
 - `claimsDenied3 + claimsPaidFirstPass3 > claimsSubmitted3`
-- NCR > 105% → "Payments look too high for these charges. Please double-check the numbers."
+- NCR > 150% → blocks Next: "After [adj] in contractual adjustments, you were owed about [owed]. Payments of [pay] would mean collecting [N]% of that, so one number is probably off. Check that adjustments are contractual only, with no bad debt or other write-offs." (with an "Edit adjustments" link)
 
 Warnings (allow, but show a note):
-- 100% < NCR ≤ 105% → "Above 100% can happen when late payments from earlier months land in this period."
+- 105% < NCR ≤ 150% → NCR not graded (section 5), note shown on the payments question and on the statement row.
+- 100% < NCR ≤ 105% → graded normally, note: "Payments are a little higher than what was owed ([N]%). That's normal when late payments from earlier months arrive in this period. You can continue."
 - DAR > 365 → "This is unusually high. Please double-check total AR and charges."
 - `claimsSubmitted3 < 30` → "Small numbers can swing a lot. Results are less reliable."
 

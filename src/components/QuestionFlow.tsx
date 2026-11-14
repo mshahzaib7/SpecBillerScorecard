@@ -1,7 +1,6 @@
-import { AnimatePresence, m, useReducedMotion } from 'framer-motion';
+import { useReducedMotion } from 'framer-motion';
 import { useEffect, useId, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import {
-  MESSAGES,
   PAIN_POINTS,
   UNKNOWN_ALLOWED_FIELDS,
   type InputField,
@@ -19,11 +18,13 @@ import {
   SPECIALTY_QUESTION,
   SPECIALTY_TILES,
 } from '../content/copy';
+import { EMPTY_CODES, explainIssue, FORMAT_CODES, type ShownMessage } from '../content/messages';
 import { caretAfterSignificant, significantBefore } from '../lib/format';
-import { fieldMessage, FORMAT_MESSAGES, formatNumberInput } from '../lib/inputRules';
-import type { FormState } from '../lib/formState';
-import { IconAlert, IconArrowRight, IconCheck, IconChevronDown } from './Icons';
+import { formatNumberInput } from '../lib/inputRules';
+import { toInputs, type FormState } from '../lib/formState';
+import { IconAlert, IconArrowRight, IconCheck, IconChevronDown, IconInfo } from './Icons';
 import { ReportMock } from './ReportMock';
+import { Anim, Presence } from '../lib/motion';
 
 export type Question =
   | { kind: 'specialty' }
@@ -56,16 +57,6 @@ const fieldsOf = (q: Question): InputField[] =>
 
 const keyOf = (q: Question) => (q.kind === 'number' ? q.field : q.kind);
 
-/** Empty-field messages wait for "Next"; the rest show once the visitor leaves the field. */
-const EMPTY_MESSAGES: string[] = [MESSAGES.required, MESSAGES.requiredOrUnknown, MESSAGES.specialtyRequired, MESSAGES.attorneyRequired];
-
-/** Visitor-facing wording for a validation message (number fields use src/lib/inputRules.ts). */
-function friendly(message: string, field: InputField): string {
-  if (NUMERIC.includes(field as NumericField)) return fieldMessage(message, field as NumericField, DONT_HAVE_LABEL);
-  return message;
-}
-const NUMERIC: readonly InputField[] = ['charges3', 'adjustments3', 'payments3', 'claimsSubmitted3', 'claimsDenied3', 'claimsPaidFirstPass3', 'totalAR', 'ar90'];
-
 interface Props {
   form: FormState;
   setForm: (updater: (f: FormState) => FormState) => void;
@@ -90,17 +81,27 @@ export function QuestionFlow({ form, setForm, questions, step, setStep, result, 
   useEffect(() => () => window.clearTimeout(autoTimer.current), []);
 
   const { errors, warnings } = result.validation;
-  const errorFor = (f: InputField): string | null => {
+  const inputs = useMemo(() => toInputs(form), [form]);
+  const errorFor = (f: InputField): ShownMessage | null => {
     const e = errors.find((x) => x.field === f);
     if (!e) return null;
-    if (attempted[key]) return friendly(e.message, f);
+    const shown = explainIssue(e, inputs);
+    if (attempted[key]) return shown;
     // A badly written number is flagged at once, while typing; other messages wait for leaving the field.
-    if (FORMAT_MESSAGES.includes(e.message)) return friendly(e.message, f);
-    if (touched[f] && !EMPTY_MESSAGES.includes(e.message)) return friendly(e.message, f);
+    if (FORMAT_CODES.includes(e.code)) return shown;
+    if (touched[f] && !EMPTY_CODES.includes(e.code)) return shown;
     return null;
   };
-  const warningFor = (f: InputField): string | null =>
-    touched[f] || attempted[key] ? warnings.find((x) => x.field === f)?.message ?? null : null;
+  const warningFor = (f: InputField): ShownMessage | null => {
+    if (!touched[f] && !attempted[key]) return null;
+    const w = warnings.find((x) => x.field === f);
+    return w ? explainIssue(w, inputs) : null;
+  };
+  /** "Edit [field]" link: jump back to that earlier question. */
+  const editField = (f: NumericField) => {
+    const idx = questions.findIndex((x) => x.kind === 'number' && x.field === f);
+    if (idx !== -1) go(idx);
+  };
 
   // After moving between questions: keep the card in view and move focus into it.
   // useLayoutEffect: runs before the browser can deliver the next keystroke, so none is lost.
@@ -199,15 +200,18 @@ export function QuestionFlow({ form, setForm, questions, step, setStep, result, 
           }
         }}
       >
-        <AnimatePresence mode="popLayout" initial={false}>
-          <m.div
+        <Presence mode="popLayout" initial={false}>
+          <Anim
             key={key}
             data-qkey={key}
             className="q__body"
-            initial={reduce ? false : { opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={reduce ? { opacity: 1 } : { opacity: 0, y: -8 }}
-            transition={{ duration: 0.2, ease: [0.2, 0.8, 0.2, 1] }}
+            motion={{
+              // Reduced motion: a gentle fade only, no movement.
+              initial: reduce ? { opacity: 0 } : { opacity: 0, y: 12 },
+              animate: { opacity: 1, y: 0 },
+              exit: reduce ? { opacity: 0 } : { opacity: 0, y: -8 },
+              transition: { duration: 0.2, ease: [0.2, 0.8, 0.2, 1] },
+            }}
           >
             <h2 className="q__title" id="q-title" ref={titleRef} tabIndex={-1}>
               {title}
@@ -250,8 +254,8 @@ export function QuestionFlow({ form, setForm, questions, step, setStep, result, 
                 onPick={(id) => pickThenAdvance((f) => ({ ...f, arIncludesAttorneyCases: id === 'yes' }))}
               />
             )}
-          </m.div>
-        </AnimatePresence>
+          </Anim>
+        </Presence>
 
         {/*
           One persistent input for every number question: it never unmounts between them (only its
@@ -264,8 +268,8 @@ export function QuestionFlow({ form, setForm, questions, step, setStep, result, 
             value={form.values[q.field]}
             unknown={form.unknown[q.field]}
             valid={!errors.some((e) => e.field === q.field) && (form.values[q.field] !== '' || form.unknown[q.field])}
-            error={errorFor(q.field)}
-            warning={warningFor(q.field)}
+            message={errorFor(q.field) ?? warningFor(q.field)}
+            onEdit={editField}
             onChange={(v) => setForm((s) => ({ ...s, values: { ...s.values, [q.field]: v } }))}
             onUnknown={(u) => setForm((s) => ({ ...s, unknown: { ...s.unknown, [q.field]: u } }))}
             onBlur={() => setTouched((t) => ({ ...t, [q.field]: true }))}
@@ -300,14 +304,15 @@ interface NumberProps {
   value: string;
   unknown: boolean;
   valid: boolean;
-  error: string | null;
-  warning: string | null;
+  message: ShownMessage | null;
+  onEdit: (f: NumericField) => void;
   onChange: (v: string) => void;
   onUnknown: (u: boolean) => void;
   onBlur: () => void;
 }
 
-function NumberQuestion({ field, value, unknown, valid, error, warning, onChange, onUnknown, onBlur }: NumberProps) {
+function NumberQuestion({ field, value, unknown, valid, message, onEdit, onChange, onUnknown, onBlur }: NumberProps) {
+  const error = message?.tone === 'error' ? message : null;
   const id = useId();
   const money = MONEY_FIELDS.includes(field);
   const optional = UNKNOWN_ALLOWED_FIELDS.includes(field);
@@ -328,7 +333,7 @@ function NumberQuestion({ field, value, unknown, valid, error, warning, onChange
 
   const mockId = `${id}-mock`;
   const msgId = `${id}-msg`;
-  const describedBy = useMemo(() => ['q-hint', error || warning ? msgId : ''].filter(Boolean).join(' '), [error, warning, msgId]);
+  const describedBy = useMemo(() => ['q-hint', message ? msgId : ''].filter(Boolean).join(' '), [message, msgId]);
 
   return (
     <div className={`nq ${error ? 'nq--error' : ''} ${unknown ? 'nq--unknown' : ''}`}>
@@ -371,12 +376,7 @@ function NumberQuestion({ field, value, unknown, valid, error, warning, onChange
         )}
       </div>
 
-      {(error || warning) && (
-        <p className={`nq__msg ${error ? 'nq__msg--error' : 'nq__msg--warn'}`} id={msgId} role={error ? 'alert' : 'status'}>
-          <IconAlert size={16} />
-          {error ?? warning}
-        </p>
-      )}
+      {message && <FieldMessage message={message} id={msgId} onEdit={onEdit} />}
 
       <div className="nq__tools">
         <button type="button" className="nq__where" aria-expanded={open} aria-controls={mockId} onClick={() => setOpen((o) => !o)}>
@@ -407,7 +407,7 @@ function ChoiceTiles({
 }: {
   options: { id: string; label: string }[];
   value: string | null;
-  error: string | null;
+  error: ShownMessage | null;
   onPick: (id: string) => void;
 }) {
   return (
@@ -425,12 +425,31 @@ function ChoiceTiles({
           );
         })}
       </div>
-      {error && (
-        <p className="nq__msg nq__msg--error" role="alert">
-          <IconAlert size={16} />
-          {error}
-        </p>
-      )}
+      {error && <FieldMessage message={error} />}
     </>
+  );
+}
+
+/**
+ * One message under a field. Red with a warning icon blocks Next; amber with an info icon is a
+ * note only. An "Edit [field]" link jumps back to the earlier question the message is about.
+ */
+function FieldMessage({ message, id, onEdit }: { message: ShownMessage; id?: string; onEdit?: (f: NumericField) => void }) {
+  const isError = message.tone === 'error';
+  return (
+    <div className={`nq__msg ${isError ? 'nq__msg--error' : 'nq__msg--warn'}`} id={id} role={isError ? 'alert' : 'status'}>
+      {isError ? <IconAlert size={18} /> : <IconInfo size={18} />}
+      <p className="nq__msgtext">
+        {message.text}
+        {message.edit && onEdit && (
+          <>
+            {' '}
+            <button type="button" className="nq__edit" onClick={() => onEdit(message.edit!.field)}>
+              {message.edit.label}
+            </button>
+          </>
+        )}
+      </p>
+    </div>
   );
 }
