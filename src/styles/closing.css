@@ -275,7 +275,7 @@
 @media print {
   * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   html, body { background: #fff !important; font-size: 10pt; }
-  .topbar, .hero, .qrow, .how, .qsec, .whatif, .msum, .mdraw, .faq, .founder2, .reveal2, .skiplink,
+  .topbar, .hero, .qrow, .proof, .how, .qsec, .whatif, .msum, .mdraw, .faq, .founder2, .reveal2, .skiplink,
   .verdict__actions, .ledger__how, .ledger__calc, .ledger__method, .seg, .srow__chev, .srow__panel,
   .next__btn, .next__form, .next__share, .footer2__links { display: none !important; }
   .section, .next { padding-block: 0 !important; }

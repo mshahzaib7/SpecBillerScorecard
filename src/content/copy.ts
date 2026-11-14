@@ -277,6 +277,37 @@ export const QUESTIONS_ROW = {
   chip: 'Your scorecard shows this',
 } as const;
 
+/**
+ * What practice owners told us: real email replies, shown as screenshots. The sender's name, photo
+ * and every send time are covered in the image files themselves (never only hidden with CSS).
+ */
+export const PROOF = {
+  title: 'What practice owners told us',
+  sub: 'Real emails from practices that ran their scorecard. Names, photos and times are hidden to protect their privacy.',
+  items: [
+    {
+      src: '/proof/proof-insight.webp', w: 671, h: 861,
+      quote: 'It highlighted several important areas of our revenue cycle.',
+      alt: 'Email from a practice, subject "Valuable insight\'s into our revenue cycle": "We found the scorecard very informative. It highlighted several important areas of our revenue cycle that we wanted to look at more closely. Having these metrics presented in one place made it much easier to understand where our attention should go." Muhammad replied with thanks.',
+    },
+    {
+      src: '/proof/proof-clarity.webp', w: 660, h: 891,
+      quote: 'It made it easier to understand our collections, denials, and outstanding claims.',
+      alt: 'Email from a practice, subject "Clarity on billing numbers.": "The billing scorecard was quite useful. It brought our key billing numbers together and made it easier to understand our collections, denials, and outstanding claims. We especially liked how clearly everything was presented. It gave us a better perspective on our billing performance." Muhammad replied with thanks.',
+    },
+    {
+      src: '/proof/proof-reports.webp', w: 668, h: 890,
+      quote: 'How simple the scorecard made complex billing information.',
+      alt: 'Email from a practice, subject "Billing reports that make sense": "One thing we really liked was how simple the scorecard made complex billing information. The breakdown of claim performance, collections, and denial trends gave us a clearer understanding of our financial operations. Definitely a valuable resource for practice management." Muhammad replied with thanks.',
+    },
+    {
+      src: '/proof/proof-impressed.webp', w: 721, h: 985,
+      quote: 'We would be interested in moving forward with your team.',
+      alt: 'Email from a practice, subject "Impressed with scorecard, ready for next step.": "We were impressed with the insights provided through the billing scorecard. It gave us a better understanding of our current billing position and areas that deserve attention. We appreciate your approach and would be interested in moving forward with your team for medical billing services." Muhammad replied that he looks forward to the next steps.',
+    },
+  ],
+} as const;
+
 export const HOW_IT_WORKS = {
   title: 'How it works',
   button: 'Get my free scorecard',

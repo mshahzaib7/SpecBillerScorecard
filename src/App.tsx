@@ -10,6 +10,7 @@ import { Hero } from './components/Hero';
 import { TopBar, type Summary } from './components/TopBar';
 import { QuestionsRow } from './components/QuestionsRow';
 import { HowItWorks } from './components/HowItWorks';
+import { Proof } from './components/Proof';
 import { MobileSummary } from './components/MobileSummary';
 import { LiveStatement } from './components/LiveStatement';
 import { buildQuestions, QuestionFlow } from './components/QuestionFlow';
@@ -118,6 +119,7 @@ export default function App() {
       <TopBar showStart={!result} onStart={goToForm} onMethod={openMethod} summary={summary} />
       <Hero onStart={goToForm} />
       <QuestionsRow onStart={goToForm} />
+      <Proof />
       <HowItWorks onStart={goToForm} />
 
       <main>
