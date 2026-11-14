@@ -331,6 +331,7 @@
   /* Ink on top; the switch to mist runs through the middle of the card row (see .qrow__viewport). */
   background: var(--ink); color: var(--paper);
   padding: clamp(3rem, 2rem + 4vw, 5.5rem) 0 0;
+  position: relative; isolation: isolate;
 }
 /* The band's bottom padding, painted mist (same height as before). */
 .qrow__band::after { content: ''; display: block; height: clamp(1.5rem, 1rem + 1.5vw, 2.5rem); background: var(--mist); }
@@ -404,9 +405,10 @@
 
 .qrow__controls {
   display: flex; justify-content: flex-end; padding-top: 0.75rem;
-  /* Full-width mist behind the (centered) controls row. */
-  position: relative; z-index: 1; background: var(--mist);
-  box-shadow: 0 0 0 100vmax var(--mist); clip-path: inset(0 -100vmax);
+  /* Full-width mist behind the (centered) controls row, painted under the card strip so the card
+     shadows stay soft, and 1px over the bottom padding so no ink line shows between them. */
+  position: relative; z-index: -1; background: var(--mist);
+  box-shadow: 0 0 0 100vmax var(--mist); clip-path: inset(0 -100vmax -1px);
 }
 .qrow__pause {
   min-height: 40px; padding: 0 0.875rem; cursor: pointer;
